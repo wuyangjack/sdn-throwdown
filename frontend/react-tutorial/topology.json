@@ -1,0 +1,408 @@
+{
+    "nodes": [
+        {
+            "index": 2,
+            "hostname": "DALLAS",
+            "ipAddress": "10.210.10.106",
+            "coordinates": [
+                32.790001,
+                -96.769997
+            ]
+        },
+        {
+            "index": 3,
+            "hostname": "MIAMI",
+            "ipAddress": "10.210.10.112",
+            "coordinates": [
+                25.780001,
+                -80.209999
+            ]
+        },
+        {
+            "index": 4,
+            "hostname": "LA",
+            "ipAddress": "10.210.10.113",
+            "coordinates": [
+                34.110001,
+                -118.410004
+            ]
+        },
+        {
+            "index": 5,
+            "hostname": "HOUSTON",
+            "ipAddress": "10.210.10.114",
+            "coordinates": [
+                29.77,
+                -95.389999
+            ]
+        },
+        {
+            "index": 6,
+            "hostname": "TAMPA",
+            "ipAddress": "10.210.10.115",
+            "coordinates": [
+                27.959999,
+                -82.480003
+            ]
+        },
+        {
+            "index": 1,
+            "hostname": "SF",
+            "ipAddress": "10.210.10.100",
+            "coordinates": [
+                37.790001,
+                -122.550003
+            ]
+        },
+        {
+            "index": 7,
+            "hostname": "NY",
+            "ipAddress": "10.210.10.118",
+            "coordinates": [
+                40.669998,
+                -73.940002
+            ]
+        },
+        {
+            "index": 8,
+            "hostname": "CHICAGO",
+            "ipAddress": "10.210.10.124",
+            "coordinates": [
+                41.84,
+                -87.68
+            ]
+        }
+    ],
+    "links": [
+        {
+            "status": "Up",
+            "index": 4,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 8,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 5,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 8,
+                "name": "CHICAGO",
+                "coordinates": [
+                    41.84,
+                    -87.68
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 9,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 8,
+                "name": "CHICAGO",
+                "coordinates": [
+                    41.84,
+                    -87.68
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 1,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 2,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 8,
+                "name": "CHICAGO",
+                "coordinates": [
+                    41.84,
+                    -87.68
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 15,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 8,
+                "name": "CHICAGO",
+                "coordinates": [
+                    41.84,
+                    -87.68
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 3,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 4,
+                "name": "LA",
+                "coordinates": [
+                    34.110001,
+                    -118.410004
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 6,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 4,
+                "name": "LA",
+                "coordinates": [
+                    34.110001,
+                    -118.410004
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 12,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 4,
+                "name": "LA",
+                "coordinates": [
+                    34.110001,
+                    -118.410004
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 5,
+                "name": "HOUSTON",
+                "coordinates": [
+                    29.77,
+                    -95.389999
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 7,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 5,
+                "name": "HOUSTON",
+                "coordinates": [
+                    29.77,
+                    -95.389999
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 10,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 5,
+                "name": "HOUSTON",
+                "coordinates": [
+                    29.77,
+                    -95.389999
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 11,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 6,
+                "name": "TAMPA",
+                "coordinates": [
+                    27.959999,
+                    -82.480003
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 13,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 5,
+                "name": "HOUSTON",
+                "coordinates": [
+                    29.77,
+                    -95.389999
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 6,
+                "name": "TAMPA",
+                "coordinates": [
+                    27.959999,
+                    -82.480003
+                ]
+            }
+        },
+        {
+            "status": "Up",
+            "index": 14,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 6,
+                "name": "TAMPA",
+                "coordinates": [
+                    27.959999,
+                    -82.480003
+                ]
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            }
+        }
+    ]
+}
