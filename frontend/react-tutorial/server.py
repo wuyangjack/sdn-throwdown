@@ -32,5 +32,17 @@ def comments_handler():
 
     return Response(json.dumps(comments), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
 
+@app.route('/api/topology', methods=['GET'])
+def get_topology():
+
+    with open('topology.json', 'r') as file:
+        topology = json.loads(file.read())
+
+    return Response(json.dumps(topology), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
+
+
 if __name__ == '__main__':
     app.run(port=int(os.environ.get("PORT",3000)), debug=True)
+
+
+
