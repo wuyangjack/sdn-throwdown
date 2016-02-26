@@ -265,23 +265,27 @@ var LinkPath = {
 
 var QueryForm = React.createClass({
   getInitialState: function() {
-    return {name: '', text: ''};
+    return {name: '', link: '', lsp: ''};
   },
   handleNameChange: function(e) {
     this.setState({name: e.target.value});
   },
-  handleQueryChange: function(e) {
-    this.setState({text: e.target.value});
+  handleLinkChange: function(e) {
+    this.setState({link: e.target.value});
+  },
+  handleLSPChange: function(e) {
+    this.setState({lsp: e.target.value});
   },
   handleSubmit: function(e) {
     e.preventDefault();
     var name = this.state.name.trim();
-    var text = this.state.text.trim();
-    if (!text || !name) {
+    var link = this.state.link.trim();
+    var lsp = this.state.lsp.trim();
+    if (!link || !name || !lsp) {
       return;
     }
-    this.props.onCommentSubmit({name: name, text: text});
-    this.setState({name: '', text: ''});
+    this.props.onQuerySubmit({name: name, link: link, lsp: lsp});
+    this.setState({name: '', link: '', lsp: ''});
   },
   render: function() {
     return (
@@ -292,17 +296,70 @@ var QueryForm = React.createClass({
         </div>
         <div className="form-group">
           <label>Link</label>
-          <input type="text" className="form-control" value={this.state.text} placeholder="Link ..." onChange={this.handleQueryChange} />
+          <input type="text" className="form-control" value={this.state.link} placeholder="Link ..." onChange={this.handleLinkChange} />
         </div>
         <div className="form-group">
           <label>LSP</label>
-          <input type="text" className="form-control" value={this.state.text} placeholder="LSP ..." onChange={this.handleQueryChange} />
+          <input type="text" className="form-control" value={this.state.lsp} placeholder="LSP ..." onChange={this.handleLSPChange} />
         </div>
         <button type="submit" className="btn btn-default">Submit</button>
       </form>
     );
   }
 });
+
+var queries = [
+  {id: 1, name: "Our LSP", query: "This is one query"},
+  {id: 2, name: "Other Query", query: "This is *another* query"}
+];
+
+var QueryList = React.createClass({
+  render: function() {
+    var queryNodes = this.props.queries.map(function(query) {
+      return (
+        <Query author={query.name} key={query.id}>
+          {query.query}
+        </Query>
+      );
+    });
+    return (
+      <div className="querytList">
+        {queryNodes}
+      </div>
+    );
+  }
+});
+
+var Query = React.createClass({
+  render: function() {
+    return (
+      <div className="query">
+        <h4 className="queryName">
+          {this.props.name}
+        </h4>
+        {this.props.children}
+      </div>
+    );
+  }
+});
+
+// var QueryHistory = React.createClass({
+//   rawMarkup: function() {
+//     var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
+//     return { __html: rawMarkup };
+//   },
+
+//   render: function() {
+//     return (
+//       <div className="comment">
+//         <h2 className="commentAuthor">
+//           {this.props.author}
+//         </h2>
+//         <span dangerouslySetInnerHTML={this.rawMarkup()} />
+//       </div>
+//     );
+//   }
+// });
 
 var NetworkMap = React.createClass({
   getInitialState: function() {
@@ -312,7 +369,8 @@ var NetworkMap = React.createClass({
       },
       routerMarkers: {},
       linkPaths: {},
-      lspPaths: {}
+      lspPaths: {},
+      queries: []
     };
   },
 
@@ -403,11 +461,45 @@ var NetworkMap = React.createClass({
     });
   },
 
+  loadQueriesFromServer: function() {
+    $.ajax({
+      url: this.props.query_url,
+      dataType: 'json',
+      cache: false,
+      success: function(queries) {
+        this.setState({queries: queries});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.query_url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  handleQuerySubmit: function(query) {
+    var query_history = this.state.queries;
+    query.id = Date.now();
+    var newQueries = query_history.concat([query]);
+    this.setState({queries: newQueries});
+    $.ajax({
+      url: this.props.query_url,
+      dataType: 'json',
+      type: 'POST',
+      queries: query,
+      success: function(query) {
+        this.setState({query: query});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        this.setState({queries: query_history});
+        console.error(this.props.query_url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
   initializeGoogleMap: function() {
     // canvas
     var map = new google.maps.Map(document.getElementById('googleMap'), {
         center: {lat: 37, lng: -100},
-        zoom: 5
+        zoom: 4
     });
     this.state.map = map;
     this.state.direction = true;
@@ -416,6 +508,8 @@ var NetworkMap = React.createClass({
 
   componentDidMount: function() {
     this.initializeGoogleMap();
+    this.loadQueriesFromServer();
+    setInterval(this.loadQueriesFromServer, this.props.pollInterval);
     setInterval(this.loadTopologyFromServer, this.props.pollInterval);
   },
 
@@ -435,9 +529,11 @@ var NetworkMap = React.createClass({
             </div>
           </div>
           <div className="col-md-4">
+            <h1>Queries</h1>
+            <QueryList queries={this.state.queries} />
           </div>
           <div className="col-md-8">
-            <QueryForm onCommentSubmit={this.handleCommentSubmit} />
+            <QueryForm onQuerySubmit={this.handleQuerySubmit} />
           </div>
       </div>
     );
@@ -445,6 +541,6 @@ var NetworkMap = React.createClass({
 });
 
 ReactDOM.render(
-  <NetworkMap url="/api/topology" pollInterval={1000} />,
+  <NetworkMap url="/api/topology" query_url="/api/sqls" pollInterval={1000}/>,
   document.getElementById('content')
 );
