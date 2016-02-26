@@ -4,10 +4,12 @@ var RouterMarker = {
   },
 
   draw: function(self) {
-    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    //var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    var image = '/router.png';
     var marker = new google.maps.Marker({
         position: {lat: self.json.coordinates[0], lng: self.json.coordinates[1]},
         map: self.map,
+        icon: image,
         animation: google.maps.Animation.DROP
     });
     self.marker = marker;
@@ -49,12 +51,30 @@ var LinkPath = {
       var color = '#000000';
     }
 
+    var arrow = {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+    };
+
+    // var p1 = {lat: a_node[0], lng: a_node[1]};
+    // var p2 = {lat: z_node[0], lng: z_node[1]};
+    // var coordinates = [p1];
+    // for (var i = 0; i < 10; i++) {
+    //   var x = a_node[0] + (z_node[0] - a_node[0]) * i / 10;
+    //   var y = a_node[1] + (z_node[1] - a_node[1]) * i / 10;
+    //   y = y * (1 + (5 - Math.abs(i - 5)) / 100);
+    //   coordinates.push({lat: x, lng: y});
+    // }
+    // coordinates.push(p2);
+
     var path = new google.maps.Polyline({
       path: coordinates,
-      geodesic: true,
       strokeColor: color,
       strokeOpacity: 1.0,
-      strokeWeight: 2
+      strokeWeight: 2,
+      icons: [{
+        icon: arrow,
+        offset: '50%'
+      }],
     });
 
     path.setMap(self.map);
