@@ -6,7 +6,7 @@ var RouterMarker = {
   draw: function(self) {
 
     var image = {
-      url: 'images/router.png',
+      url: '/router.png',
       // This marker is 20 pixels wide by 32 pixels high.
       size: new google.maps.Size(40, 40),
       // The origin for this image is (0, 0).
@@ -21,20 +21,6 @@ var RouterMarker = {
         icon: image,
         animation: google.maps.Animation.DROP
     });
-
-    var info = new google.maps.InfoWindow({
-      content: "<strong>" + self.json.hostname + "</strong>",
-      maxWidth: 200
-    });
-
-    marker.addListener('mouseover', function() {
-      info.open(self.map, marker);
-    });
-
-    marker.addListener('mouseout', function() {
-      info.close();
-    });
-
     self.marker = marker;
     return self;
   },
@@ -52,105 +38,6 @@ var RouterMarker = {
     }
     return JSON.stringify(self.json) === JSON.stringify(other.json);
   }
-}
-
-var LspPath = {
-  new: function(json, map) {
-    return {json: json, map: map};
-  },
-
-  name: function(self) {
-    return self.json.lspIndex + self.json.name;
-  },
- 
-  draw: function(self) {
-    var nodes = self.json.ero;
-    var paths = [];
-    var scale = 3;
-    var color = '#F00';
-
-    var arrow = {
-      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-      strokeColor: color,
-      fillColor: color,
-      fillOpacity: 1,
-      scale: scale
-    };
-
-    var dash = {
-      path: 'M 0,-1 0,1',
-      strokeColor: color,
-      fillColor: color,
-      strokeOpacity: 1,
-      scale: scale
-    };
-
-    for (var i = 1; i < nodes.length; i++) {
-      var a_node = LspPath.nodeCoordinates[nodes[i - 1]];
-      var z_node = LspPath.nodeCoordinates[nodes[i]];
-
-      var coordinates = [
-        {lat: a_node[0], lng: a_node[1]},
-        {lat: z_node[0], lng: z_node[1]}
-      ];
-
-      var color = '#FF0000';
-
-      var path = new google.maps.Polyline({
-        path: coordinates,
-        strokeOpacity: 0,
-        geodesic: true,
-        icons: [
-          {
-            icon: arrow,
-            offset: '0',
-            repeat: '80px'
-          },
-          {
-            icon: dash,
-            offset: '0',
-            repeat: '20px'
-          }
-        ],
-      });
-
-      path.setMap(self.map);
-      /*
-      var info = new google.maps.InfoWindow({
-        content: "<strong>" + self.json.name + "</strong>",
-        maxWidth: 200
-      });
-
-      path.addListener('mouseover', function() {
-        info.open(self.map, path);
-      });
-
-      path.addListener('mouseout', function() {
-        info.close();
-      });
-      */
-      paths.push(path);
-    }
-
-    self.paths = paths;
-    return self;
-  },
-
-  delete: function(self) {
-    if (self != null) {
-      for (var i = 0; i < self.paths.length; i++) {
-        self.paths[i].setMap(null);
-      }
-    }
-    return self;
-  },
-
-  same: function(self, other) {
-    if (other == null || self == null) {
-      return false;
-    }
-    return JSON.stringify(self.json) == JSON.stringify(other.json);
-  } 
 }
 
 var LinkPath = {
@@ -181,12 +68,20 @@ var LinkPath = {
                   '#22FF00','#11FF00','#00FF00'];
 
     var offset = 0;
-    var coordinates = [
-        {lat: a_node[0], lng: a_node[1]},
-        {lat: z_node[0], lng: z_node[1]}
-    ];
-
+    var coordinates;
+    var icons = [];
+    var arrow = {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+    };
     if (self.direction) {
+      coordinates = [
+        {lat: a_node[0] + offset, lng: a_node[1] + offset},
+        {lat: z_node[0] + offset, lng: z_node[1] + offset}
+      ];
+      icons =[
+        {icon: arrow, offset: '33%'},
+        {icon: arrow, offset: '66%'},
+      ];
       if (self.json.status == 'Up') {
         var scale = Math.round((1 - parseFloat(self.json.AZUtility)) * 30);
         var color = colors[scale];
@@ -194,7 +89,19 @@ var LinkPath = {
         var color = '#FF0000';
       }
       var stroke_weight = parseFloat(self.json.AZlspCount) * 0.2 + 2;
+      if (parseFloat(self.json.AZlspCount) > 30) {
+        console.log(parseFloat(self.json.AZUtility));
+        console.log(scale);
+      }
     } else {
+      coordinates = [
+        {lat: z_node[0] - offset, lng: z_node[1] - offset},
+        {lat: a_node[0] - offset, lng: a_node[1] - offset}
+      ];
+      icons =[
+        {icon: arrow, offset: '33%'},
+        {icon: arrow, offset: '66%'},
+      ];
       if (self.json.status == 'Up') {
         var scale = Math.round((1 - parseFloat(self.json.ZAUtility)) * 30);
         var color = colors[scale];
@@ -202,48 +109,25 @@ var LinkPath = {
         var color = '#FF0000';
       }
       var stroke_weight = parseFloat(self.json.ZAlspCount) * 0.2 + 2;
+      if (parseFloat(self.json.ZAlspCount) > 30) {
+        console.log(parseFloat(self.json.ZAUtility));
+        console.log(scale);
+      }
     }
 
-    var opacity = 0.6;
-    var arrow = {
-      path: self.direction ? google.maps.SymbolPath.FORWARD_CLOSED_ARROW : google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-      strokeColor: color,
-      strokeOpacity: 0,
-      fillColor: color,
-      fillOpacity: opacity
-    };
+    //LinkPath.circle(a_node, z_node);
 
     var path = new google.maps.Polyline({
       path: coordinates,
+      geodesic: true,
       strokeColor: color,
-      fillColor: color,
-      strokeOpacity: opacity,
+      strokeOpacity: 1.0,
       strokeWeight: stroke_weight,
-      icons: [
-          {
-            icon: arrow,
-            offset: '50px',
-            repeat: '100px'
-          }
-        ]
+      icons: icons
     });
 
     path.setMap(self.map);
 
-    /*
-    var info = new google.maps.InfoWindow({
-      content: "<strong>" + self.json.index + "</strong>",
-      maxWidth: 200
-    });
-
-    path.addListener('mouseover', function() {
-      info.open(self.map, path);
-    });
-
-    path.addListener('mouseout', function() {
-      info.close();
-    });
-    */
     self.path = path;
     return self;
   },
@@ -262,47 +146,50 @@ var LinkPath = {
     return JSON.stringify(self.json) == JSON.stringify(other.json) && self.direction == other.direction;
   } 
 }
-
+/*
 var QueryForm = React.createClass({
   getInitialState: function() {
-    return {name: '', text: ''};
+    return {author: '', text: ''};
   },
-  handleNameChange: function(e) {
-    this.setState({name: e.target.value});
+  handleAuthorChange: function(e) {
+    this.setState({author: e.target.value});
   },
-  handleQueryChange: function(e) {
+  handleTextChange: function(e) {
     this.setState({text: e.target.value});
   },
   handleSubmit: function(e) {
     e.preventDefault();
-    var name = this.state.name.trim();
+    var author = this.state.author.trim();
     var text = this.state.text.trim();
-    if (!text || !name) {
+    if (!text || !author) {
       return;
     }
-    this.props.onCommentSubmit({name: name, text: text});
-    this.setState({name: '', text: ''});
+    this.props.onCommentSubmit({author: author, text: text});
+    this.setState({author: '', text: ''});
   },
   render: function() {
     return (
-      <form>
-        <div className="form-group">
-          <label>Name</label>
-          <input type="text" className="form-control" value={this.state.name} placeholder="Name ..." onChange={this.handleNameChange} />
-        </div>
-        <div className="form-group">
-          <label>Link</label>
-          <input type="text" className="form-control" value={this.state.text} placeholder="Link ..." onChange={this.handleQueryChange} />
-        </div>
-        <div className="form-group">
-          <label>LSP</label>
-          <input type="text" className="form-control" value={this.state.text} placeholder="LSP ..." onChange={this.handleQueryChange} />
-        </div>
-        <button type="submit" className="btn btn-default">Submit</button>
+      <form className="queryForm" onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          placeholder="Your name"
+          value={this.state.author}
+          onChange={this.handleAuthorChange}
+        />
+        <input
+          type="text"
+          placeholder="Say something..."
+          value={this.state.text}
+          onChange={this.handleTextChange}
+        />
+        <input type="submit" value="Post" />
       </form>
     );
   }
 });
+*/
+
+// TODO: visualize links
 
 var NetworkMap = React.createClass({
   getInitialState: function() {
@@ -311,8 +198,7 @@ var NetworkMap = React.createClass({
           nodes: []
       },
       routerMarkers: {},
-      linkPaths: {},
-      lspPaths: {}
+      linkPaths: {}
     };
   },
 
@@ -344,14 +230,15 @@ var NetworkMap = React.createClass({
 
     // update coordinates
     LinkPath.nodeCoordinates = nodeCoordinates;
-    LspPath.nodeCoordinates = nodeCoordinates;
 
     // update links
     var links = this.state.topology.links;
     var linkPaths = this.state.linkPaths;
     var direction = this.state.direction;
 
+    //console.log(linkPaths);
     _.mapObject(linkPaths, function(linkPath, name) {
+      //console.log(linkPath);
       LinkPath.delete(linkPath);
     });
 
@@ -364,28 +251,25 @@ var NetworkMap = React.createClass({
 
     this.state.direction = !this.state.direction;
 
-    // update LSPs
-    var lsps = this.state.topology.lsps;
-    var lspPaths = this.state.lspPaths;
-
-    _.map(lsps, function(lsp) {
-      if (lsp.name == 'GROUP_FIVE_NY_SF_LSP2') {
-        var lp_new = LspPath.new(lsp, map);
-        var name = LspPath.name(lp_new);
-        var lp_old = lspPaths[name];
+    /*
+    _.map(links, function(link) {
+      for (var i = 0; i < directions.length; i++) {
+        var pt_new = LinkPath.new(link, map, directions[i]);
+        var name = LinkPath.name(pt_new);
+        var pt_old = linkPaths[name];
 
         // update marker if necessary
-        if (false == LspPath.same(lp_new, lp_old)) {
-          console.log("updated lsp path");
-          lp_old = LspPath.delete(lp_old);
-          lp_new = LspPath.draw(lp_new);
-          lspPaths[name] = lp_new;
+        if (false == LinkPath.same(pt_new, pt_old)) {
+          console.log("updated link path");
+          pt_old = LinkPath.delete(pt_old);
+          pt_new = LinkPath.draw(pt_new);
+          linkPaths[name] = pt_new;
         } else {
-          //console.log("ingore lsp path");
+          //console.log("ingore link path");
         }
       }
     });
-
+    */
   },
 
   loadTopologyFromServer: function() {
@@ -407,7 +291,7 @@ var NetworkMap = React.createClass({
     // canvas
     var map = new google.maps.Map(document.getElementById('googleMap'), {
         center: {lat: 37, lng: -100},
-        zoom: 5
+        zoom: 4
     });
     this.state.map = map;
     this.state.direction = true;
@@ -427,19 +311,33 @@ var NetworkMap = React.createClass({
     this.drawTopology();
 
     return (
-      <div>
-          <div className="col-md-8">
-            <div className="networkMap">
-              <div id="googleMap">
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-          </div>
-          <div className="col-md-8">
-            <QueryForm onCommentSubmit={this.handleCommentSubmit} />
-          </div>
+      <div className="networkMap">
+        <div id="googleMap"></div>
+        <FilterBox />
       </div>
+    );
+  }
+});
+
+var FilterBox = React.createClass({
+  render: function() {
+    return (
+      <div className="filterBox">
+        <h3>Filter</h3>
+        <FilterForm />
+      </div>
+    );
+  }
+});
+
+var FilterForm = React.createClass({
+  render: function() {
+    return (
+      <form className="commentForm">
+        <input type="text" placeholder="Your name" />
+        <input type="text" placeholder="Say something..." />
+        <input type="submit" value="Post" />
+      </form>
     );
   }
 });
