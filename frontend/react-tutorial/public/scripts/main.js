@@ -60,6 +60,12 @@ var LinkPath = {
   draw: function(self) {
     var a_node = LinkPath.nodeCoordinates[self.json.ANode.nodeIndex];
     var z_node = LinkPath.nodeCoordinates[self.json.ZNode.nodeIndex];
+    // color:
+    var colors = ['#FF0000','#FF1100','#FF2200','#FF3300','#FF4400','#FF5500','#FF6600',
+                  '#FF7700','#FF8800','#FF9900','#FFAA00','#FFBB00','#FFCC00','#FFDD00',
+                  '#FFEE00','#FFFF00','#EEFF00','#DDFF00','#CCFF00','#BBFF00','#AAFF00',
+                  '#99FF00','#88FF00','#77FF00','#66FF00','#55FF00','#44FF00','#33FF00',
+                  '#22FF00','#11FF00','#00FF00'];
 
     var offset = 0;
     var coordinates;
@@ -76,6 +82,17 @@ var LinkPath = {
         {icon: arrow, offset: '33%'},
         {icon: arrow, offset: '66%'},
       ];
+      if (self.json.status == 'Up') {
+        var scale = Math.round((1 - parseFloat(self.json.AZUtility)) * 30);
+        var color = colors[scale];
+      } else {
+        var color = '#FF0000';
+      }
+      var stroke_weight = parseFloat(self.json.AZlspCount) * 0.2 + 2;
+      if (parseFloat(self.json.AZlspCount) > 30) {
+        console.log(parseFloat(self.json.AZUtility));
+        console.log(scale);
+      }
     } else {
       coordinates = [
         {lat: z_node[0] - offset, lng: z_node[1] - offset},
@@ -85,21 +102,27 @@ var LinkPath = {
         {icon: arrow, offset: '33%'},
         {icon: arrow, offset: '66%'},
       ];
+      if (self.json.status == 'Up') {
+        var scale = Math.round((1 - parseFloat(self.json.ZAUtility)) * 30);
+        var color = colors[scale];
+      } else {
+        var color = '#FF0000';
+      }
+      var stroke_weight = parseFloat(self.json.ZAlspCount) * 0.2 + 2;
+      if (parseFloat(self.json.ZAlspCount) > 30) {
+        console.log(parseFloat(self.json.ZAUtility));
+        console.log(scale);
+      }
     }
 
     //LinkPath.circle(a_node, z_node);
 
-    if (self.json.status == 'Up') {
-      var color = '#FF0000';
-    } else {
-      var color = '#000000';
-    }
     var path = new google.maps.Polyline({
       path: coordinates,
       geodesic: true,
       strokeColor: color,
       strokeOpacity: 1.0,
-      strokeWeight: 2,
+      strokeWeight: stroke_weight,
       icons: icons
     });
 
