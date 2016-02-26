@@ -68,7 +68,7 @@
             "toNodeIndex": 1,
             "ero": [
                 7,
-                6,
+                8,
                 3,
                 5,
                 2,
@@ -97,7 +97,8 @@
             "toNodeIndex": 1,
             "ero": [
                 7,
-                6,
+                8,
+                3,
                 5,
                 2,
                 1
@@ -112,7 +113,8 @@
             "toNodeIndex": 1,
             "ero": [
                 7,
-                6,
+                8,
+                3,
                 5,
                 2,
                 1
@@ -343,11 +345,13 @@
         {
             "group": 7,
             "fromNodeIndex": 7,
-            "operationalStatus": "Active",
+            "operationalStatus": "Down",
             "toNodeIndex": 1,
             "ero": [
                 7,
-                8,
+                3,
+                5,
+                4,
                 1
             ],
             "lspIndex": 25,
@@ -356,11 +360,13 @@
         {
             "group": 7,
             "fromNodeIndex": 7,
-            "operationalStatus": "Active",
+            "operationalStatus": "Down",
             "toNodeIndex": 1,
             "ero": [
                 7,
-                8,
+                3,
+                5,
+                4,
                 1
             ],
             "lspIndex": 26,
@@ -369,11 +375,13 @@
         {
             "group": 7,
             "fromNodeIndex": 7,
-            "operationalStatus": "Active",
+            "operationalStatus": "Down",
             "toNodeIndex": 1,
             "ero": [
                 7,
-                8,
+                3,
+                5,
+                4,
                 1
             ],
             "lspIndex": 27,
@@ -382,11 +390,13 @@
         {
             "group": 7,
             "fromNodeIndex": 7,
-            "operationalStatus": "Active",
+            "operationalStatus": "Down",
             "toNodeIndex": 1,
             "ero": [
                 7,
-                8,
+                3,
+                5,
+                4,
                 1
             ],
             "lspIndex": 28,
@@ -603,7 +613,7 @@
         {
             "group": 8,
             "fromNodeIndex": 1,
-            "operationalStatus": "Active",
+            "operationalStatus": "Down",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -670,6 +680,7 @@
                 4,
                 5,
                 3,
+                6,
                 7
             ],
             "lspIndex": 49,
@@ -698,6 +709,7 @@
                 4,
                 5,
                 3,
+                6,
                 7
             ],
             "lspIndex": 51,
@@ -713,6 +725,7 @@
                 4,
                 5,
                 3,
+                6,
                 7
             ],
             "lspIndex": 52,
@@ -946,7 +959,9 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                2,
+                5,
+                6,
                 7
             ],
             "lspIndex": 69,
@@ -959,7 +974,9 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                2,
+                5,
+                6,
                 7
             ],
             "lspIndex": 70,
@@ -972,7 +989,9 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                2,
+                5,
+                6,
                 7
             ],
             "lspIndex": 71,
@@ -985,7 +1004,9 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                2,
+                5,
+                6,
                 7
             ],
             "lspIndex": 72,
@@ -1200,7 +1221,7 @@
             "name": "GROUP_TWO_SF_NY_LSP4"
         }
     ],
-    "timestamp": 1456519083.282888,
+    "timestamp": 1456523288.572449,
     "nodes": [
         {
             "index": 2,
@@ -1279,8 +1300,8 @@
         {
             "status": "Up",
             "index": 4,
-            "AZUtility": 0.87222584,
-            "ZAUtility": 0.484503012,
+            "AZUtility": 0.872564748,
+            "ZAUtility": 0.330338504,
             "AZlspCount": 0,
             "ZAlspCount": 0,
             "AZbandwidth": 1000000000,
@@ -1297,10 +1318,10 @@
         {
             "status": "Up",
             "index": 15,
-            "AZUtility": 0.372483328,
-            "ZAUtility": 0.95355418,
-            "AZlspCount": 35,
-            "ZAlspCount": 34,
+            "AZUtility": 0.051543392,
+            "ZAUtility": 0.352925004,
+            "AZlspCount": 34,
+            "ZAlspCount": 30,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 7,
@@ -1315,10 +1336,10 @@
         {
             "status": "Up",
             "index": 12,
-            "AZUtility": 6.576e-06,
-            "ZAUtility": 0.078349648,
+            "AZUtility": 3.616e-06,
+            "ZAUtility": 0.104344688,
             "AZlspCount": 8,
-            "ZAlspCount": 6,
+            "ZAlspCount": 10,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 4,
@@ -1333,8 +1354,8 @@
         {
             "status": "Up",
             "index": 6,
-            "AZUtility": 0.868180524,
-            "ZAUtility": 0.026114976,
+            "AZUtility": 0.868252844,
+            "ZAUtility": 0.13052872,
             "AZlspCount": 5,
             "ZAlspCount": 4,
             "AZbandwidth": 1000000000,
@@ -1351,10 +1372,10 @@
         {
             "status": "Up",
             "index": 2,
-            "AZUtility": 0.103078776,
-            "ZAUtility": 0.910500896,
-            "AZlspCount": 34,
-            "ZAlspCount": 33,
+            "AZUtility": 0.1030747,
+            "ZAUtility": 0.910917676,
+            "AZlspCount": 30,
+            "ZAlspCount": 29,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 1,
@@ -1367,18 +1388,18 @@
             }
         },
         {
-            "status": "Up",
+            "status": "Down",
             "index": 8,
-            "AZUtility": 0.239040044,
-            "ZAUtility": 0.863388512,
-            "AZlspCount": 4,
-            "ZAlspCount": 0,
-            "AZbandwidth": 1000000000,
+            "AZUtility": 0,
+            "ZAUtility": 0,
+            "AZlspCount": 1,
+            "ZAlspCount": 4,
+            "AZbandwidth": 0,
             "ANode": {
                 "nodeIndex": 3,
                 "ipAddress": "10.210.12.1"
             },
-            "ZAbandwidth": 1000000000,
+            "ZAbandwidth": 0,
             "ZNode": {
                 "nodeIndex": 7,
                 "ipAddress": "10.210.12.2"
@@ -1387,10 +1408,10 @@
         {
             "status": "Up",
             "index": 11,
-            "AZUtility": 0.24691826,
-            "ZAUtility": 0.606045556,
-            "AZlspCount": 1,
-            "ZAlspCount": 1,
+            "AZUtility": 0.363825224,
+            "ZAUtility": 0.606283488,
+            "AZlspCount": 4,
+            "ZAlspCount": 0,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 3,
@@ -1405,8 +1426,8 @@
         {
             "status": "Up",
             "index": 5,
-            "AZUtility": 0.221869184,
-            "ZAUtility": 0.860634604,
+            "AZUtility": 0.340244112,
+            "ZAUtility": 0.861006616,
             "AZlspCount": 2,
             "ZAlspCount": 2,
             "AZbandwidth": 1000000000,
@@ -1423,9 +1444,9 @@
         {
             "status": "Up",
             "index": 1,
-            "AZUtility": 0.862192944,
-            "ZAUtility": 0.126456288,
-            "AZlspCount": 6,
+            "AZUtility": 0.861959056,
+            "ZAUtility": 0.149603832,
+            "AZlspCount": 10,
             "ZAlspCount": 8,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1441,10 +1462,10 @@
         {
             "status": "Up",
             "index": 3,
-            "AZUtility": 0.154767216,
-            "ZAUtility": 7e-07,
+            "AZUtility": 0.25920284,
+            "ZAUtility": 0.026026504,
             "AZlspCount": 4,
-            "ZAlspCount": 3,
+            "ZAlspCount": 7,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 1,
@@ -1459,9 +1480,9 @@
         {
             "status": "Up",
             "index": 7,
-            "AZUtility": 0.33850364,
-            "ZAUtility": 0.063292404,
-            "AZlspCount": 1,
+            "AZUtility": 0.216191312,
+            "ZAUtility": 0.07106746,
+            "AZlspCount": 5,
             "ZAlspCount": 4,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1477,10 +1498,10 @@
         {
             "status": "Up",
             "index": 13,
-            "AZUtility": 0.584506872,
-            "ZAUtility": 0.129904284,
-            "AZlspCount": 5,
-            "ZAlspCount": 8,
+            "AZUtility": 0.569964052,
+            "ZAUtility": 0.155770144,
+            "AZlspCount": 9,
+            "ZAlspCount": 6,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 5,
@@ -1495,10 +1516,10 @@
         {
             "status": "Up",
             "index": 9,
-            "AZUtility": 1.592e-06,
-            "ZAUtility": 0.1290053,
+            "AZUtility": 0.245352072,
+            "ZAUtility": 0.009264176,
             "AZlspCount": 0,
-            "ZAlspCount": 2,
+            "ZAlspCount": 5,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 3,
@@ -1513,10 +1534,10 @@
         {
             "status": "Up",
             "index": 14,
-            "AZUtility": 0.321903188,
-            "ZAUtility": 0.154648888,
-            "AZlspCount": 6,
-            "ZAlspCount": 9,
+            "AZUtility": 8e-07,
+            "ZAUtility": 0.154640068,
+            "AZlspCount": 13,
+            "ZAlspCount": 6,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 6,
@@ -1531,9 +1552,9 @@
         {
             "status": "Up",
             "index": 10,
-            "AZUtility": 1.52e-06,
-            "ZAUtility": 0.129630592,
-            "AZlspCount": 2,
+            "AZUtility": 0.01739868,
+            "ZAUtility": 0.13125596,
+            "AZlspCount": 8,
             "ZAlspCount": 4,
             "AZbandwidth": 1000000000,
             "ANode": {

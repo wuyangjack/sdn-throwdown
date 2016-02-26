@@ -21,6 +21,20 @@ var RouterMarker = {
         icon: image,
         animation: google.maps.Animation.DROP
     });
+
+    var info = new google.maps.InfoWindow({
+      content: "<strong>" + self.json.hostname + "</strong>",
+      maxWidth: 200
+    });
+
+    marker.addListener('mouseover', function() {
+      info.open(self.map, marker);
+    });
+
+    marker.addListener('mouseout', function() {
+      info.close();
+    });
+
     self.marker = marker;
     return self;
   },
@@ -101,6 +115,20 @@ var LspPath = {
       });
 
       path.setMap(self.map);
+      /*
+      var info = new google.maps.InfoWindow({
+        content: "<strong>" + self.json.name + "</strong>",
+        maxWidth: 200
+      });
+
+      path.addListener('mouseover', function() {
+        info.open(self.map, path);
+      });
+
+      path.addListener('mouseout', function() {
+        info.close();
+      });
+      */
       paths.push(path);
     }
 
@@ -202,6 +230,20 @@ var LinkPath = {
 
     path.setMap(self.map);
 
+    /*
+    var info = new google.maps.InfoWindow({
+      content: "<strong>" + self.json.index + "</strong>",
+      maxWidth: 200
+    });
+
+    path.addListener('mouseover', function() {
+      info.open(self.map, path);
+    });
+
+    path.addListener('mouseout', function() {
+      info.close();
+    });
+    */
     self.path = path;
     return self;
   },
@@ -220,50 +262,43 @@ var LinkPath = {
     return JSON.stringify(self.json) == JSON.stringify(other.json) && self.direction == other.direction;
   } 
 }
-/*
+
 var QueryForm = React.createClass({
   getInitialState: function() {
-    return {author: '', text: ''};
+    return {name: '', text: ''};
   },
-  handleAuthorChange: function(e) {
-    this.setState({author: e.target.value});
+  handleNameChange: function(e) {
+    this.setState({name: e.target.value});
   },
-  handleTextChange: function(e) {
+  handleQueryChange: function(e) {
     this.setState({text: e.target.value});
   },
   handleSubmit: function(e) {
     e.preventDefault();
-    var author = this.state.author.trim();
+    var name = this.state.name.trim();
     var text = this.state.text.trim();
-    if (!text || !author) {
+    if (!text || !name) {
       return;
     }
-    this.props.onCommentSubmit({author: author, text: text});
-    this.setState({author: '', text: ''});
+    this.props.onCommentSubmit({name: name, text: text});
+    this.setState({name: '', text: ''});
   },
   render: function() {
     return (
-      <form className="queryForm" onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          placeholder="Your name"
-          value={this.state.author}
-          onChange={this.handleAuthorChange}
-        />
-        <input
-          type="text"
-          placeholder="Say something..."
-          value={this.state.text}
-          onChange={this.handleTextChange}
-        />
-        <input type="submit" value="Post" />
+      <form>
+        <div className="form-group">
+          <label>Name</label>
+          <input type="text" className="form-control" value={this.state.name} placeholder="Name ..." onChange={this.handleNameChange} />
+        </div>
+        <div className="form-group">
+          <label>Query</label>
+          <input type="text" className="form-control" value={this.state.text} placeholder="Query ..." onChange={this.handleQueryChange} />
+        </div>
+        <button type="submit" className="btn btn-default">Submit</button>
       </form>
     );
   }
 });
-*/
-
-// TODO: visualize links
 
 var NetworkMap = React.createClass({
   getInitialState: function() {
@@ -388,8 +423,18 @@ var NetworkMap = React.createClass({
     this.drawTopology();
 
     return (
-      <div className="networkMap">
-        <div id="googleMap"></div>
+      <div>
+          <div className="col-md-8">
+            <div className="networkMap">
+              <div id="googleMap">
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+          </div>
+          <div className="col-md-8">
+            <QueryForm onCommentSubmit={this.handleCommentSubmit} />
+          </div>
       </div>
     );
   }
