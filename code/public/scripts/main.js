@@ -40,6 +40,91 @@ var RouterMarker = {
   }
 }
 
+var LspPath = {
+  new: function(json, map) {
+    return {json: json, map: map};
+  },
+
+  name: function(self) {
+    return self.json.lspIndex + self.json.name;
+  },
+ 
+  draw: function(self) {
+    var nodes = self.json.ero;
+    var paths = [];
+    var scale = 3;
+    var color = '#F00';
+
+    var arrow = {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+      strokeColor: color,
+      fillColor: color,
+      fillOpacity: 1,
+      scale: scale
+    };
+
+    var dash = {
+      path: 'M 0,-1 0,1',
+      strokeColor: color,
+      fillColor: color,
+      strokeOpacity: 1,
+      scale: scale
+    };
+
+    for (var i = 1; i < nodes.length; i++) {
+      var a_node = LspPath.nodeCoordinates[nodes[i - 1]];
+      var z_node = LspPath.nodeCoordinates[nodes[i]];
+
+      var coordinates = [
+        {lat: a_node[0], lng: a_node[1]},
+        {lat: z_node[0], lng: z_node[1]}
+      ];
+
+      var color = '#FF0000';
+
+      var path = new google.maps.Polyline({
+        path: coordinates,
+        strokeOpacity: 0,
+        geodesic: true,
+        icons: [
+          {
+            icon: arrow,
+            offset: '0',
+            repeat: '80px'
+          },
+          {
+            icon: dash,
+            offset: '0',
+            repeat: '20px'
+          }
+        ],
+      });
+
+      path.setMap(self.map);
+      paths.push(path);
+    }
+
+    self.paths = paths;
+    return self;
+  },
+
+  delete: function(self) {
+    if (self != null) {
+      for (var i = 0; i < self.paths.length; i++) {
+        self.paths[i].setMap(null);
+      }
+    }
+    return self;
+  },
+
+  same: function(self, other) {
+    if (other == null || self == null) {
+      return false;
+    }
+    return JSON.stringify(self.json) == JSON.stringify(other.json);
+  } 
+}
+
 var LinkPath = {
   new: function(json, map, direction) {
     return {json: json, map: map, direction: direction};
@@ -68,20 +153,12 @@ var LinkPath = {
                   '#22FF00','#11FF00','#00FF00'];
 
     var offset = 0;
-    var coordinates;
-    var icons = [];
-    var arrow = {
-      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
-    };
+    var coordinates = [
+        {lat: a_node[0], lng: a_node[1]},
+        {lat: z_node[0], lng: z_node[1]}
+    ];
+
     if (self.direction) {
-      coordinates = [
-        {lat: a_node[0] + offset, lng: a_node[1] + offset},
-        {lat: z_node[0] + offset, lng: z_node[1] + offset}
-      ];
-      icons =[
-        {icon: arrow, offset: '33%'},
-        {icon: arrow, offset: '66%'},
-      ];
       if (self.json.status == 'Up') {
         var scale = Math.round((1 - parseFloat(self.json.AZUtility)) * 30);
         var color = colors[scale];
@@ -89,19 +166,7 @@ var LinkPath = {
         var color = '#FF0000';
       }
       var stroke_weight = parseFloat(self.json.AZlspCount) * 0.2 + 2;
-      if (parseFloat(self.json.AZlspCount) > 30) {
-        console.log(parseFloat(self.json.AZUtility));
-        console.log(scale);
-      }
     } else {
-      coordinates = [
-        {lat: z_node[0] - offset, lng: z_node[1] - offset},
-        {lat: a_node[0] - offset, lng: a_node[1] - offset}
-      ];
-      icons =[
-        {icon: arrow, offset: '33%'},
-        {icon: arrow, offset: '66%'},
-      ];
       if (self.json.status == 'Up') {
         var scale = Math.round((1 - parseFloat(self.json.ZAUtility)) * 30);
         var color = colors[scale];
@@ -109,21 +174,30 @@ var LinkPath = {
         var color = '#FF0000';
       }
       var stroke_weight = parseFloat(self.json.ZAlspCount) * 0.2 + 2;
-      if (parseFloat(self.json.ZAlspCount) > 30) {
-        console.log(parseFloat(self.json.ZAUtility));
-        console.log(scale);
-      }
     }
 
-    //LinkPath.circle(a_node, z_node);
+    var opacity = 0.6;
+    var arrow = {
+      path: self.direction ? google.maps.SymbolPath.FORWARD_CLOSED_ARROW : google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+      strokeColor: color,
+      strokeOpacity: 0,
+      fillColor: color,
+      fillOpacity: opacity
+    };
 
     var path = new google.maps.Polyline({
       path: coordinates,
-      geodesic: true,
       strokeColor: color,
-      strokeOpacity: 1.0,
+      fillColor: color,
+      strokeOpacity: opacity,
       strokeWeight: stroke_weight,
-      icons: icons
+      icons: [
+          {
+            icon: arrow,
+            offset: '50px',
+            repeat: '100px'
+          }
+        ]
     });
 
     path.setMap(self.map);
@@ -198,7 +272,8 @@ var NetworkMap = React.createClass({
           nodes: []
       },
       routerMarkers: {},
-      linkPaths: {}
+      linkPaths: {},
+      lspPaths: {}
     };
   },
 
@@ -230,15 +305,14 @@ var NetworkMap = React.createClass({
 
     // update coordinates
     LinkPath.nodeCoordinates = nodeCoordinates;
+    LspPath.nodeCoordinates = nodeCoordinates;
 
     // update links
     var links = this.state.topology.links;
     var linkPaths = this.state.linkPaths;
     var direction = this.state.direction;
 
-    //console.log(linkPaths);
     _.mapObject(linkPaths, function(linkPath, name) {
-      //console.log(linkPath);
       LinkPath.delete(linkPath);
     });
 
@@ -251,25 +325,28 @@ var NetworkMap = React.createClass({
 
     this.state.direction = !this.state.direction;
 
-    /*
-    _.map(links, function(link) {
-      for (var i = 0; i < directions.length; i++) {
-        var pt_new = LinkPath.new(link, map, directions[i]);
-        var name = LinkPath.name(pt_new);
-        var pt_old = linkPaths[name];
+    // update LSPs
+    var lsps = this.state.topology.lsps;
+    var lspPaths = this.state.lspPaths;
+
+    _.map(lsps, function(lsp) {
+      if (lsp.name == 'GROUP_FIVE_NY_SF_LSP2') {
+        var lp_new = LspPath.new(lsp, map);
+        var name = LspPath.name(lp_new);
+        var lp_old = lspPaths[name];
 
         // update marker if necessary
-        if (false == LinkPath.same(pt_new, pt_old)) {
-          console.log("updated link path");
-          pt_old = LinkPath.delete(pt_old);
-          pt_new = LinkPath.draw(pt_new);
-          linkPaths[name] = pt_new;
+        if (false == LspPath.same(lp_new, lp_old)) {
+          console.log("updated lsp path");
+          lp_old = LspPath.delete(lp_old);
+          lp_new = LspPath.draw(lp_new);
+          lspPaths[name] = lp_new;
         } else {
-          //console.log("ingore link path");
+          //console.log("ingore lsp path");
         }
       }
     });
-    */
+
   },
 
   loadTopologyFromServer: function() {
