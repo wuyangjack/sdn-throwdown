@@ -1,4 +1,1203 @@
 {
+    "lsps": [
+        {
+            "group": 8,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                5,
+                2,
+                1
+            ],
+            "lspIndex": 1,
+            "name": "GROUP_EIGHT_NY_SF_LSP1"
+        },
+        {
+            "group": 8,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                3,
+                5,
+                4,
+                1
+            ],
+            "lspIndex": 2,
+            "name": "GROUP_EIGHT_NY_SF_LSP2"
+        },
+        {
+            "group": 8,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                5,
+                4,
+                1
+            ],
+            "lspIndex": 3,
+            "name": "GROUP_EIGHT_NY_SF_LSP3"
+        },
+        {
+            "group": 8,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                2,
+                4,
+                1
+            ],
+            "lspIndex": 4,
+            "name": "GROUP_EIGHT_NY_SF_LSP4"
+        },
+        {
+            "group": 11,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                5,
+                4,
+                1
+            ],
+            "lspIndex": 5,
+            "name": "GROUP_ELEVEN_NY_SF_LSP1"
+        },
+        {
+            "group": 11,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 6,
+            "name": "GROUP_ELEVEN_NY_SF_LSP2"
+        },
+        {
+            "group": 11,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                5,
+                4,
+                1
+            ],
+            "lspIndex": 7,
+            "name": "GROUP_ELEVEN_NY_SF_LSP3"
+        },
+        {
+            "group": 11,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                5,
+                4,
+                1
+            ],
+            "lspIndex": 8,
+            "name": "GROUP_ELEVEN_NY_SF_LSP4"
+        },
+        {
+            "group": 5,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 9,
+            "name": "GROUP_FIVE_NY_SF_LSP1"
+        },
+        {
+            "group": 5,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 10,
+            "name": "GROUP_FIVE_NY_SF_LSP2"
+        },
+        {
+            "group": 5,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 11,
+            "name": "GROUP_FIVE_NY_SF_LSP3"
+        },
+        {
+            "group": 5,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 12,
+            "name": "GROUP_FIVE_NY_SF_LSP4"
+        },
+        {
+            "group": 4,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                5,
+                4,
+                2,
+                1
+            ],
+            "lspIndex": 13,
+            "name": "GROUP_FOUR_NY_SF_LSP1"
+        },
+        {
+            "group": 4,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                5,
+                4,
+                2,
+                1
+            ],
+            "lspIndex": 14,
+            "name": "GROUP_FOUR_NY_SF_LSP2"
+        },
+        {
+            "group": 4,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                5,
+                4,
+                2,
+                1
+            ],
+            "lspIndex": 15,
+            "name": "GROUP_FOUR_NY_SF_LSP3"
+        },
+        {
+            "group": 4,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                5,
+                4,
+                2,
+                1
+            ],
+            "lspIndex": 16,
+            "name": "GROUP_FOUR_NY_SF_LSP4"
+        },
+        {
+            "group": 9,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 17,
+            "name": "GROUP_NINE_NY_SF_LSP1"
+        },
+        {
+            "group": 9,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 18,
+            "name": "GROUP_NINE_NY_SF_LSP2"
+        },
+        {
+            "group": 9,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 19,
+            "name": "GROUP_NINE_NY_SF_LSP3"
+        },
+        {
+            "group": 9,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 20,
+            "name": "GROUP_NINE_NY_SF_LSP4"
+        },
+        {
+            "group": 1,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 21,
+            "name": "GROUP_ONE_NY_SF_LSP1"
+        },
+        {
+            "group": 1,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 22,
+            "name": "GROUP_ONE_NY_SF_LSP2"
+        },
+        {
+            "group": 1,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 23,
+            "name": "GROUP_ONE_NY_SF_LSP3"
+        },
+        {
+            "group": 1,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 24,
+            "name": "GROUP_ONE_NY_SF_LSP4"
+        },
+        {
+            "group": 7,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 25,
+            "name": "GROUP_SEVEN_NY_SF_LSP1"
+        },
+        {
+            "group": 7,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 26,
+            "name": "GROUP_SEVEN_NY_SF_LSP2"
+        },
+        {
+            "group": 7,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 27,
+            "name": "GROUP_SEVEN_NY_SF_LSP3"
+        },
+        {
+            "group": 7,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 28,
+            "name": "GROUP_SEVEN_NY_SF_LSP4"
+        },
+        {
+            "group": 6,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 29,
+            "name": "GROUP_SIX_NY_SF_LSP1"
+        },
+        {
+            "group": 6,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 30,
+            "name": "GROUP_SIX_NY_SF_LSP2"
+        },
+        {
+            "group": 6,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 31,
+            "name": "GROUP_SIX_NY_SF_LSP3"
+        },
+        {
+            "group": 6,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 32,
+            "name": "GROUP_SIX_NY_SF_LSP4"
+        },
+        {
+            "group": 12,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 33,
+            "name": "GROUP_TEN_NY_SF_LSP1"
+        },
+        {
+            "group": 12,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 34,
+            "name": "GROUP_TEN_NY_SF_LSP2"
+        },
+        {
+            "group": 12,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 35,
+            "name": "GROUP_TEN_NY_SF_LSP3"
+        },
+        {
+            "group": 12,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 36,
+            "name": "GROUP_TEN_NY_SF_LSP4"
+        },
+        {
+            "group": 3,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 37,
+            "name": "GROUP_THREE_NY_SF_LSP1"
+        },
+        {
+            "group": 3,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 38,
+            "name": "GROUP_THREE_NY_SF_LSP2"
+        },
+        {
+            "group": 3,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 39,
+            "name": "GROUP_THREE_NY_SF_LSP3"
+        },
+        {
+            "group": 3,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 40,
+            "name": "GROUP_THREE_NY_SF_LSP4"
+        },
+        {
+            "group": 2,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 41,
+            "name": "GROUP_TWO_NY_SF_LSP1"
+        },
+        {
+            "group": 2,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 42,
+            "name": "GROUP_TWO_NY_SF_LSP2"
+        },
+        {
+            "group": 2,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 43,
+            "name": "GROUP_TWO_NY_SF_LSP3"
+        },
+        {
+            "group": 2,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                8,
+                1
+            ],
+            "lspIndex": 44,
+            "name": "GROUP_TWO_NY_SF_LSP4"
+        },
+        {
+            "group": 8,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                3,
+                7
+            ],
+            "lspIndex": 45,
+            "name": "GROUP_EIGHT_SF_NY_LSP1"
+        },
+        {
+            "group": 8,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                4,
+                5,
+                3,
+                6,
+                7
+            ],
+            "lspIndex": 46,
+            "name": "GROUP_EIGHT_SF_NY_LSP2"
+        },
+        {
+            "group": 8,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                2,
+                8,
+                7
+            ],
+            "lspIndex": 47,
+            "name": "GROUP_EIGHT_SF_NY_LSP3"
+        },
+        {
+            "group": 8,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                2,
+                5,
+                6,
+                7
+            ],
+            "lspIndex": 48,
+            "name": "GROUP_EIGHT_SF_NY_LSP4"
+        },
+        {
+            "group": 11,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                4,
+                2,
+                5,
+                3,
+                7
+            ],
+            "lspIndex": 49,
+            "name": "GROUP_ELEVEN_SF_NY_LSP1"
+        },
+        {
+            "group": 11,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 50,
+            "name": "GROUP_ELEVEN_SF_NY_LSP2"
+        },
+        {
+            "group": 11,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                3,
+                7
+            ],
+            "lspIndex": 51,
+            "name": "GROUP_ELEVEN_SF_NY_LSP3"
+        },
+        {
+            "group": 11,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                3,
+                7
+            ],
+            "lspIndex": 52,
+            "name": "GROUP_ELEVEN_SF_NY_LSP4"
+        },
+        {
+            "group": 5,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 53,
+            "name": "GROUP_FIVE_SF_NY_LSP1"
+        },
+        {
+            "group": 5,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 54,
+            "name": "GROUP_FIVE_SF_NY_LSP2"
+        },
+        {
+            "group": 5,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                2,
+                8,
+                7
+            ],
+            "lspIndex": 55,
+            "name": "GROUP_FIVE_SF_NY_LSP3"
+        },
+        {
+            "group": 5,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 56,
+            "name": "GROUP_FIVE_SF_NY_LSP4"
+        },
+        {
+            "group": 4,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                2,
+                4,
+                5,
+                6,
+                7
+            ],
+            "lspIndex": 57,
+            "name": "GROUP_FOUR_SF_NY_LSP1"
+        },
+        {
+            "group": 4,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                2,
+                4,
+                5,
+                6,
+                7
+            ],
+            "lspIndex": 58,
+            "name": "GROUP_FOUR_SF_NY_LSP2"
+        },
+        {
+            "group": 4,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                2,
+                4,
+                5,
+                6,
+                7
+            ],
+            "lspIndex": 59,
+            "name": "GROUP_FOUR_SF_NY_LSP3"
+        },
+        {
+            "group": 4,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                2,
+                4,
+                5,
+                6,
+                7
+            ],
+            "lspIndex": 60,
+            "name": "GROUP_FOUR_SF_NY_LSP4"
+        },
+        {
+            "group": 9,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 61,
+            "name": "GROUP_NINE_SF_NY_LSP1"
+        },
+        {
+            "group": 9,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 62,
+            "name": "GROUP_NINE_SF_NY_LSP2"
+        },
+        {
+            "group": 9,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 63,
+            "name": "GROUP_NINE_SF_NY_LSP3"
+        },
+        {
+            "group": 9,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 64,
+            "name": "GROUP_NINE_SF_NY_LSP4"
+        },
+        {
+            "group": 1,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 65,
+            "name": "GROUP_ONE_SF_NY_LSP1"
+        },
+        {
+            "group": 1,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 66,
+            "name": "GROUP_ONE_SF_NY_LSP2"
+        },
+        {
+            "group": 1,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 67,
+            "name": "GROUP_ONE_SF_NY_LSP3"
+        },
+        {
+            "group": 1,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 68,
+            "name": "GROUP_ONE_SF_NY_LSP4"
+        },
+        {
+            "group": 7,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 69,
+            "name": "GROUP_SEVEN_SF_NY_LSP1"
+        },
+        {
+            "group": 7,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 70,
+            "name": "GROUP_SEVEN_SF_NY_LSP2"
+        },
+        {
+            "group": 7,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 71,
+            "name": "GROUP_SEVEN_SF_NY_LSP3"
+        },
+        {
+            "group": 7,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 72,
+            "name": "GROUP_SEVEN_SF_NY_LSP4"
+        },
+        {
+            "group": 6,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 73,
+            "name": "GROUP_SIX_SF_NY_LSP1"
+        },
+        {
+            "group": 6,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 74,
+            "name": "GROUP_SIX_SF_NY_LSP2"
+        },
+        {
+            "group": 6,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 75,
+            "name": "GROUP_SIX_SF_NY_LSP3"
+        },
+        {
+            "group": 6,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 76,
+            "name": "GROUP_SIX_SF_NY_LSP4"
+        },
+        {
+            "group": 12,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 77,
+            "name": "GROUP_TEN_SF_NY_LSP1"
+        },
+        {
+            "group": 12,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 78,
+            "name": "GROUP_TEN_SF_NY_LSP2"
+        },
+        {
+            "group": 12,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 79,
+            "name": "GROUP_TEN_SF_NY_LSP3"
+        },
+        {
+            "group": 12,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 80,
+            "name": "GROUP_TEN_SF_NY_LSP4"
+        },
+        {
+            "group": 3,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 81,
+            "name": "GROUP_THREE_SF_NY_LSP1"
+        },
+        {
+            "group": 3,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 82,
+            "name": "GROUP_THREE_SF_NY_LSP2"
+        },
+        {
+            "group": 3,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 83,
+            "name": "GROUP_THREE_SF_NY_LSP3"
+        },
+        {
+            "group": 3,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 84,
+            "name": "GROUP_THREE_SF_NY_LSP4"
+        },
+        {
+            "group": 2,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 85,
+            "name": "GROUP_TWO_SF_NY_LSP1"
+        },
+        {
+            "group": 2,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 86,
+            "name": "GROUP_TWO_SF_NY_LSP2"
+        },
+        {
+            "group": 2,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 87,
+            "name": "GROUP_TWO_SF_NY_LSP3"
+        },
+        {
+            "group": 2,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                8,
+                7
+            ],
+            "lspIndex": 88,
+            "name": "GROUP_TWO_SF_NY_LSP4"
+        }
+    ],
     "nodes": [
         {
             "index": 2,
@@ -77,331 +1276,271 @@
         {
             "status": "Up",
             "index": 4,
+            "AZUtility": 0.872355032,
+            "ZAUtility": 0.38822296,
+            "AZlspCount": 0,
+            "ZAlspCount": 0,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 2,
-                "name": "DALLAS",
-                "coordinates": [
-                    32.790001,
-                    -96.769997
-                ]
+                "ipAddress": "10.210.11.1"
             },
             "ZAbandwidth": 1000000000,
             "ZNode": {
                 "nodeIndex": 3,
-                "name": "MIAMI",
-                "coordinates": [
-                    25.780001,
-                    -80.209999
-                ]
-            }
-        },
-        {
-            "status": "Up",
-            "index": 8,
-            "AZbandwidth": 1000000000,
-            "ANode": {
-                "nodeIndex": 3,
-                "name": "MIAMI",
-                "coordinates": [
-                    25.780001,
-                    -80.209999
-                ]
-            },
-            "ZAbandwidth": 1000000000,
-            "ZNode": {
-                "nodeIndex": 7,
-                "name": "NY",
-                "coordinates": [
-                    40.669998,
-                    -73.940002
-                ]
-            }
-        },
-        {
-            "status": "Up",
-            "index": 5,
-            "AZbandwidth": 1000000000,
-            "ANode": {
-                "nodeIndex": 2,
-                "name": "DALLAS",
-                "coordinates": [
-                    32.790001,
-                    -96.769997
-                ]
-            },
-            "ZAbandwidth": 1000000000,
-            "ZNode": {
-                "nodeIndex": 8,
-                "name": "CHICAGO",
-                "coordinates": [
-                    41.84,
-                    -87.68
-                ]
-            }
-        },
-        {
-            "status": "Up",
-            "index": 9,
-            "AZbandwidth": 1000000000,
-            "ANode": {
-                "nodeIndex": 3,
-                "name": "MIAMI",
-                "coordinates": [
-                    25.780001,
-                    -80.209999
-                ]
-            },
-            "ZAbandwidth": 1000000000,
-            "ZNode": {
-                "nodeIndex": 8,
-                "name": "CHICAGO",
-                "coordinates": [
-                    41.84,
-                    -87.68
-                ]
-            }
-        },
-        {
-            "status": "Up",
-            "index": 1,
-            "AZbandwidth": 1000000000,
-            "ANode": {
-                "nodeIndex": 1,
-                "name": "SF",
-                "coordinates": [
-                    37.790001,
-                    -122.550003
-                ]
-            },
-            "ZAbandwidth": 1000000000,
-            "ZNode": {
-                "nodeIndex": 2,
-                "name": "DALLAS",
-                "coordinates": [
-                    32.790001,
-                    -96.769997
-                ]
-            }
-        },
-        {
-            "status": "Up",
-            "index": 2,
-            "AZbandwidth": 1000000000,
-            "ANode": {
-                "nodeIndex": 1,
-                "name": "SF",
-                "coordinates": [
-                    37.790001,
-                    -122.550003
-                ]
-            },
-            "ZAbandwidth": 1000000000,
-            "ZNode": {
-                "nodeIndex": 8,
-                "name": "CHICAGO",
-                "coordinates": [
-                    41.84,
-                    -87.68
-                ]
+                "ipAddress": "10.210.11.2"
             }
         },
         {
             "status": "Up",
             "index": 15,
+            "AZUtility": 0.622174076,
+            "ZAUtility": 0.953501368,
+            "AZlspCount": 35,
+            "ZAlspCount": 34,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 7,
-                "name": "NY",
-                "coordinates": [
-                    40.669998,
-                    -73.940002
-                ]
+                "ipAddress": "10.210.17.1"
             },
             "ZAbandwidth": 1000000000,
             "ZNode": {
                 "nodeIndex": 8,
-                "name": "CHICAGO",
-                "coordinates": [
-                    41.84,
-                    -87.68
-                ]
-            }
-        },
-        {
-            "status": "Up",
-            "index": 3,
-            "AZbandwidth": 1000000000,
-            "ANode": {
-                "nodeIndex": 1,
-                "name": "SF",
-                "coordinates": [
-                    37.790001,
-                    -122.550003
-                ]
-            },
-            "ZAbandwidth": 1000000000,
-            "ZNode": {
-                "nodeIndex": 4,
-                "name": "LA",
-                "coordinates": [
-                    34.110001,
-                    -118.410004
-                ]
-            }
-        },
-        {
-            "status": "Up",
-            "index": 6,
-            "AZbandwidth": 1000000000,
-            "ANode": {
-                "nodeIndex": 2,
-                "name": "DALLAS",
-                "coordinates": [
-                    32.790001,
-                    -96.769997
-                ]
-            },
-            "ZAbandwidth": 1000000000,
-            "ZNode": {
-                "nodeIndex": 4,
-                "name": "LA",
-                "coordinates": [
-                    34.110001,
-                    -118.410004
-                ]
+                "ipAddress": "10.210.17.2"
             }
         },
         {
             "status": "Up",
             "index": 12,
+            "AZUtility": 0.130540072,
+            "ZAUtility": 0.078348552,
+            "AZlspCount": 5,
+            "ZAlspCount": 9,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 4,
-                "name": "LA",
-                "coordinates": [
-                    34.110001,
-                    -118.410004
-                ]
+                "ipAddress": "10.210.20.1"
             },
             "ZAbandwidth": 1000000000,
             "ZNode": {
                 "nodeIndex": 5,
-                "name": "HOUSTON",
-                "coordinates": [
-                    29.77,
-                    -95.389999
-                ]
+                "ipAddress": "10.210.20.2"
             }
         },
         {
             "status": "Up",
-            "index": 7,
+            "index": 6,
+            "AZUtility": 0.868248964,
+            "ZAUtility": 0.025801308,
+            "AZlspCount": 5,
+            "ZAlspCount": 5,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 2,
-                "name": "DALLAS",
-                "coordinates": [
-                    32.790001,
-                    -96.769997
-                ]
+                "ipAddress": "10.210.19.1"
             },
             "ZAbandwidth": 1000000000,
             "ZNode": {
-                "nodeIndex": 5,
-                "name": "HOUSTON",
-                "coordinates": [
-                    29.77,
-                    -95.389999
-                ]
+                "nodeIndex": 4,
+                "ipAddress": "10.210.19.2"
             }
         },
         {
             "status": "Up",
-            "index": 10,
+            "index": 2,
+            "AZUtility": 0.206280436,
+            "ZAUtility": 0.911949848,
+            "AZlspCount": 36,
+            "ZAlspCount": 33,
             "AZbandwidth": 1000000000,
             "ANode": {
-                "nodeIndex": 3,
-                "name": "MIAMI",
-                "coordinates": [
-                    25.780001,
-                    -80.209999
-                ]
+                "nodeIndex": 1,
+                "ipAddress": "10.210.16.1"
             },
             "ZAbandwidth": 1000000000,
             "ZNode": {
-                "nodeIndex": 5,
-                "name": "HOUSTON",
-                "coordinates": [
-                    29.77,
-                    -95.389999
-                ]
+                "nodeIndex": 8,
+                "ipAddress": "10.210.16.2"
+            }
+        },
+        {
+            "status": "Up",
+            "index": 8,
+            "AZUtility": 0.237230572,
+            "ZAUtility": 0.863398856,
+            "AZlspCount": 4,
+            "ZAlspCount": 0,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 3,
+                "ipAddress": "10.210.12.1"
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 7,
+                "ipAddress": "10.210.12.2"
             }
         },
         {
             "status": "Up",
             "index": 11,
+            "AZUtility": 0.385995404,
+            "ZAUtility": 3.92e-07,
+            "AZlspCount": 1,
+            "ZAlspCount": 0,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 3,
-                "name": "MIAMI",
-                "coordinates": [
-                    25.780001,
-                    -80.209999
-                ]
+                "ipAddress": "10.210.24.1"
             },
             "ZAbandwidth": 1000000000,
             "ZNode": {
                 "nodeIndex": 6,
-                "name": "TAMPA",
-                "coordinates": [
-                    27.959999,
-                    -82.480003
-                ]
+                "ipAddress": "10.210.24.2"
+            }
+        },
+        {
+            "status": "Up",
+            "index": 5,
+            "AZUtility": 0.1141046,
+            "ZAUtility": 0.860187524,
+            "AZlspCount": 2,
+            "ZAlspCount": 2,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 2,
+                "ipAddress": "10.210.13.1"
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 8,
+                "ipAddress": "10.210.13.2"
+            }
+        },
+        {
+            "status": "Up",
+            "index": 1,
+            "AZUtility": 0.862902328,
+            "ZAUtility": 0.157953884,
+            "AZlspCount": 6,
+            "ZAlspCount": 5,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 1,
+                "ipAddress": "10.210.15.1"
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 2,
+                "ipAddress": "10.210.15.2"
+            }
+        },
+        {
+            "status": "Up",
+            "index": 3,
+            "AZUtility": 0.259206556,
+            "ZAUtility": 1.316e-06,
+            "AZlspCount": 2,
+            "ZAlspCount": 6,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 1,
+                "ipAddress": "10.210.18.1"
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 4,
+                "ipAddress": "10.210.18.2"
+            }
+        },
+        {
+            "status": "Down",
+            "index": 7,
+            "AZUtility": 0.433328672,
+            "ZAUtility": 0.077427432,
+            "AZlspCount": 2,
+            "ZAlspCount": 1,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 2,
+                "ipAddress": "10.210.21.1"
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 5,
+                "ipAddress": "10.210.21.2"
             }
         },
         {
             "status": "Up",
             "index": 13,
+            "AZUtility": 0.595520724,
+            "ZAUtility": 0.155766128,
+            "AZlspCount": 5,
+            "ZAlspCount": 9,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 5,
-                "name": "HOUSTON",
-                "coordinates": [
-                    29.77,
-                    -95.389999
-                ]
+                "ipAddress": "10.210.25.1"
             },
             "ZAbandwidth": 1000000000,
             "ZNode": {
                 "nodeIndex": 6,
-                "name": "TAMPA",
-                "coordinates": [
-                    27.959999,
-                    -82.480003
-                ]
+                "ipAddress": "10.210.25.2"
+            }
+        },
+        {
+            "status": "Up",
+            "index": 9,
+            "AZUtility": 2.8e-07,
+            "ZAUtility": 0.257983632,
+            "AZlspCount": 0,
+            "ZAlspCount": 4,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 3,
+                "ipAddress": "10.210.14.1"
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 8,
+                "ipAddress": "10.210.14.2"
             }
         },
         {
             "status": "Up",
             "index": 14,
+            "AZUtility": 0.57410492,
+            "ZAUtility": 0.154642968,
+            "AZlspCount": 6,
+            "ZAlspCount": 9,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 6,
-                "name": "TAMPA",
-                "coordinates": [
-                    27.959999,
-                    -82.480003
-                ]
+                "ipAddress": "10.210.26.2"
             },
             "ZAbandwidth": 1000000000,
             "ZNode": {
                 "nodeIndex": 7,
-                "name": "NY",
-                "coordinates": [
-                    40.669998,
-                    -73.940002
-                ]
+                "ipAddress": "10.210.26.1"
+            }
+        },
+        {
+            "status": "Up",
+            "index": 10,
+            "AZUtility": 0.0,
+            "ZAUtility": 0.02610868,
+            "AZlspCount": 1,
+            "ZAlspCount": 2,
+            "AZbandwidth": 1000000000,
+            "ANode": {
+                "nodeIndex": 3,
+                "ipAddress": "10.210.22.1"
+            },
+            "ZAbandwidth": 1000000000,
+            "ZNode": {
+                "nodeIndex": 5,
+                "ipAddress": "10.210.22.2"
             }
         }
     ]

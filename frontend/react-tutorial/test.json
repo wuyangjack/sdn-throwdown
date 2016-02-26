@@ -1,4 +1,5414 @@
 {
+    "lsps": [
+        {
+            "group": 8,
+            "name": "GROUP_EIGHT_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 1
+        },
+        {
+            "group": 8,
+            "name": "GROUP_EIGHT_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 4,
+                    "name": "LA",
+                    "coordinates": [
+                        34.110001,
+                        -118.410004
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 2
+        },
+        {
+            "group": 8,
+            "name": "GROUP_EIGHT_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 3
+        },
+        {
+            "group": 8,
+            "name": "GROUP_EIGHT_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 4,
+                    "name": "LA",
+                    "coordinates": [
+                        34.110001,
+                        -118.410004
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 4
+        },
+        {
+            "group": 11,
+            "name": "GROUP_ELEVEN_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 5
+        },
+        {
+            "group": 11,
+            "name": "GROUP_ELEVEN_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 6
+        },
+        {
+            "group": 11,
+            "name": "GROUP_ELEVEN_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 7
+        },
+        {
+            "group": 11,
+            "name": "GROUP_ELEVEN_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 8
+        },
+        {
+            "group": 5,
+            "name": "GROUP_FIVE_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 9
+        },
+        {
+            "group": 5,
+            "name": "GROUP_FIVE_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 10
+        },
+        {
+            "group": 5,
+            "name": "GROUP_FIVE_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 11
+        },
+        {
+            "group": 5,
+            "name": "GROUP_FIVE_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 12
+        },
+        {
+            "group": 4,
+            "name": "GROUP_FOUR_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 13
+        },
+        {
+            "group": 4,
+            "name": "GROUP_FOUR_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 14
+        },
+        {
+            "group": 4,
+            "name": "GROUP_FOUR_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 15
+        },
+        {
+            "group": 4,
+            "name": "GROUP_FOUR_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 16
+        },
+        {
+            "group": 9,
+            "name": "GROUP_NINE_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 17
+        },
+        {
+            "group": 9,
+            "name": "GROUP_NINE_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 18
+        },
+        {
+            "group": 9,
+            "name": "GROUP_NINE_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 19
+        },
+        {
+            "group": 9,
+            "name": "GROUP_NINE_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 20
+        },
+        {
+            "group": 1,
+            "name": "GROUP_ONE_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 21
+        },
+        {
+            "group": 1,
+            "name": "GROUP_ONE_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 22
+        },
+        {
+            "group": 1,
+            "name": "GROUP_ONE_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 23
+        },
+        {
+            "group": 1,
+            "name": "GROUP_ONE_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 24
+        },
+        {
+            "group": 7,
+            "name": "GROUP_SEVEN_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 25
+        },
+        {
+            "group": 7,
+            "name": "GROUP_SEVEN_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 26
+        },
+        {
+            "group": 7,
+            "name": "GROUP_SEVEN_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 27
+        },
+        {
+            "group": 7,
+            "name": "GROUP_SEVEN_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 28
+        },
+        {
+            "group": 6,
+            "name": "GROUP_SIX_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 29
+        },
+        {
+            "group": 6,
+            "name": "GROUP_SIX_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 30
+        },
+        {
+            "group": 6,
+            "name": "GROUP_SIX_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 31
+        },
+        {
+            "group": 6,
+            "name": "GROUP_SIX_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 32
+        },
+        {
+            "group": 12,
+            "name": "GROUP_TEN_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 33
+        },
+        {
+            "group": 12,
+            "name": "GROUP_TEN_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 34
+        },
+        {
+            "group": 12,
+            "name": "GROUP_TEN_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 35
+        },
+        {
+            "group": 12,
+            "name": "GROUP_TEN_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 36
+        },
+        {
+            "group": 3,
+            "name": "GROUP_THREE_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 37
+        },
+        {
+            "group": 3,
+            "name": "GROUP_THREE_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 38
+        },
+        {
+            "group": 3,
+            "name": "GROUP_THREE_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 39
+        },
+        {
+            "group": 3,
+            "name": "GROUP_THREE_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 40
+        },
+        {
+            "group": 2,
+            "name": "GROUP_TWO_NY_SF_LSP1",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 41
+        },
+        {
+            "group": 2,
+            "name": "GROUP_TWO_NY_SF_LSP2",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 42
+        },
+        {
+            "group": 2,
+            "name": "GROUP_TWO_NY_SF_LSP3",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 43
+        },
+        {
+            "group": 2,
+            "name": "GROUP_TWO_NY_SF_LSP4",
+            "fromNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                }
+            ],
+            "lspIndex": 44
+        },
+        {
+            "group": 8,
+            "name": "GROUP_EIGHT_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 4,
+                    "name": "LA",
+                    "coordinates": [
+                        34.110001,
+                        -118.410004
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 45
+        },
+        {
+            "group": 8,
+            "name": "GROUP_EIGHT_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 46
+        },
+        {
+            "group": 8,
+            "name": "GROUP_EIGHT_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 47
+        },
+        {
+            "group": 8,
+            "name": "GROUP_EIGHT_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 4,
+                    "name": "LA",
+                    "coordinates": [
+                        34.110001,
+                        -118.410004
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 48
+        },
+        {
+            "group": 11,
+            "name": "GROUP_ELEVEN_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 4,
+                    "name": "LA",
+                    "coordinates": [
+                        34.110001,
+                        -118.410004
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 49
+        },
+        {
+            "group": 11,
+            "name": "GROUP_ELEVEN_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 50
+        },
+        {
+            "group": 11,
+            "name": "GROUP_ELEVEN_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 4,
+                    "name": "LA",
+                    "coordinates": [
+                        34.110001,
+                        -118.410004
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 51
+        },
+        {
+            "group": 11,
+            "name": "GROUP_ELEVEN_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 52
+        },
+        {
+            "group": 5,
+            "name": "GROUP_FIVE_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 53
+        },
+        {
+            "group": 5,
+            "name": "GROUP_FIVE_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 54
+        },
+        {
+            "group": 5,
+            "name": "GROUP_FIVE_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 55
+        },
+        {
+            "group": 5,
+            "name": "GROUP_FIVE_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 56
+        },
+        {
+            "group": 4,
+            "name": "GROUP_FOUR_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 57
+        },
+        {
+            "group": 4,
+            "name": "GROUP_FOUR_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 58
+        },
+        {
+            "group": 4,
+            "name": "GROUP_FOUR_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 59
+        },
+        {
+            "group": 4,
+            "name": "GROUP_FOUR_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 3,
+                    "name": "MIAMI",
+                    "coordinates": [
+                        25.780001,
+                        -80.209999
+                    ]
+                },
+                {
+                    "nodeIndex": 5,
+                    "name": "HOUSTON",
+                    "coordinates": [
+                        29.77,
+                        -95.389999
+                    ]
+                },
+                {
+                    "nodeIndex": 6,
+                    "name": "TAMPA",
+                    "coordinates": [
+                        27.959999,
+                        -82.480003
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 60
+        },
+        {
+            "group": 9,
+            "name": "GROUP_NINE_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 61
+        },
+        {
+            "group": 9,
+            "name": "GROUP_NINE_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 62
+        },
+        {
+            "group": 9,
+            "name": "GROUP_NINE_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 63
+        },
+        {
+            "group": 9,
+            "name": "GROUP_NINE_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 64
+        },
+        {
+            "group": 1,
+            "name": "GROUP_ONE_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 65
+        },
+        {
+            "group": 1,
+            "name": "GROUP_ONE_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 66
+        },
+        {
+            "group": 1,
+            "name": "GROUP_ONE_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 67
+        },
+        {
+            "group": 1,
+            "name": "GROUP_ONE_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 68
+        },
+        {
+            "group": 7,
+            "name": "GROUP_SEVEN_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 69
+        },
+        {
+            "group": 7,
+            "name": "GROUP_SEVEN_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 70
+        },
+        {
+            "group": 7,
+            "name": "GROUP_SEVEN_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 71
+        },
+        {
+            "group": 7,
+            "name": "GROUP_SEVEN_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 72
+        },
+        {
+            "group": 6,
+            "name": "GROUP_SIX_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 73
+        },
+        {
+            "group": 6,
+            "name": "GROUP_SIX_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 74
+        },
+        {
+            "group": 6,
+            "name": "GROUP_SIX_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 75
+        },
+        {
+            "group": 6,
+            "name": "GROUP_SIX_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 76
+        },
+        {
+            "group": 12,
+            "name": "GROUP_TEN_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 77
+        },
+        {
+            "group": 12,
+            "name": "GROUP_TEN_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 78
+        },
+        {
+            "group": 12,
+            "name": "GROUP_TEN_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 79
+        },
+        {
+            "group": 12,
+            "name": "GROUP_TEN_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 80
+        },
+        {
+            "group": 3,
+            "name": "GROUP_THREE_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 2,
+                    "name": "DALLAS",
+                    "coordinates": [
+                        32.790001,
+                        -96.769997
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 81
+        },
+        {
+            "group": 3,
+            "name": "GROUP_THREE_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 82
+        },
+        {
+            "group": 3,
+            "name": "GROUP_THREE_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 83
+        },
+        {
+            "group": 3,
+            "name": "GROUP_THREE_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 84
+        },
+        {
+            "group": 2,
+            "name": "GROUP_TWO_SF_NY_LSP1",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 85
+        },
+        {
+            "group": 2,
+            "name": "GROUP_TWO_SF_NY_LSP2",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 86
+        },
+        {
+            "group": 2,
+            "name": "GROUP_TWO_SF_NY_LSP3",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 87
+        },
+        {
+            "group": 2,
+            "name": "GROUP_TWO_SF_NY_LSP4",
+            "fromNode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
+            "toNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
+            "operationalStatus": "Active",
+            "ero": [
+                {
+                    "nodeIndex": 1,
+                    "name": "SF",
+                    "coordinates": [
+                        37.790001,
+                        -122.550003
+                    ]
+                },
+                {
+                    "nodeIndex": 8,
+                    "name": "CHICAGO",
+                    "coordinates": [
+                        41.84,
+                        -87.68
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                },
+                {
+                    "nodeIndex": 7,
+                    "name": "NY",
+                    "coordinates": [
+                        40.669998,
+                        -73.940002
+                    ]
+                }
+            ],
+            "lspIndex": 88
+        }
+    ],
     "nodes": [
         {
             "index": 2,
@@ -75,214 +5485,334 @@
     ],
     "links": [
         {
-            "status": "Up",
+            "status": "Down",
             "index": 4,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                32.790001,
-                -96.769997
-            ],
+            "ANode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                25.780001,
-                -80.209999
-            ]
+            "ZNode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 8,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                25.780001,
-                -80.209999
-            ],
+            "ANode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                40.669998,
-                -73.940002
-            ]
+            "ZNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 5,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                32.790001,
-                -96.769997
-            ],
+            "ANode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                41.84,
-                -87.68
-            ]
+            "ZNode": {
+                "nodeIndex": 8,
+                "name": "CHICAGO",
+                "coordinates": [
+                    41.84,
+                    -87.68
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 9,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                25.780001,
-                -80.209999
-            ],
+            "ANode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                41.84,
-                -87.68
-            ]
+            "ZNode": {
+                "nodeIndex": 8,
+                "name": "CHICAGO",
+                "coordinates": [
+                    41.84,
+                    -87.68
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 1,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                37.790001,
-                -122.550003
-            ],
+            "ANode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                32.790001,
-                -96.769997
-            ]
+            "ZNode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 2,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                37.790001,
-                -122.550003
-            ],
+            "ANode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                41.84,
-                -87.68
-            ]
+            "ZNode": {
+                "nodeIndex": 8,
+                "name": "CHICAGO",
+                "coordinates": [
+                    41.84,
+                    -87.68
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 15,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                40.669998,
-                -73.940002
-            ],
+            "ANode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                41.84,
-                -87.68
-            ]
+            "ZNode": {
+                "nodeIndex": 8,
+                "name": "CHICAGO",
+                "coordinates": [
+                    41.84,
+                    -87.68
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 3,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                37.790001,
-                -122.550003
-            ],
+            "ANode": {
+                "nodeIndex": 1,
+                "name": "SF",
+                "coordinates": [
+                    37.790001,
+                    -122.550003
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                34.110001,
-                -118.410004
-            ]
+            "ZNode": {
+                "nodeIndex": 4,
+                "name": "LA",
+                "coordinates": [
+                    34.110001,
+                    -118.410004
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 6,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                32.790001,
-                -96.769997
-            ],
+            "ANode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                34.110001,
-                -118.410004
-            ]
+            "ZNode": {
+                "nodeIndex": 4,
+                "name": "LA",
+                "coordinates": [
+                    34.110001,
+                    -118.410004
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 12,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                34.110001,
-                -118.410004
-            ],
+            "ANode": {
+                "nodeIndex": 4,
+                "name": "LA",
+                "coordinates": [
+                    34.110001,
+                    -118.410004
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                29.77,
-                -95.389999
-            ]
+            "ZNode": {
+                "nodeIndex": 5,
+                "name": "HOUSTON",
+                "coordinates": [
+                    29.77,
+                    -95.389999
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 7,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                32.790001,
-                -96.769997
-            ],
+            "ANode": {
+                "nodeIndex": 2,
+                "name": "DALLAS",
+                "coordinates": [
+                    32.790001,
+                    -96.769997
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                29.77,
-                -95.389999
-            ]
+            "ZNode": {
+                "nodeIndex": 5,
+                "name": "HOUSTON",
+                "coordinates": [
+                    29.77,
+                    -95.389999
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 10,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                25.780001,
-                -80.209999
-            ],
+            "ANode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                29.77,
-                -95.389999
-            ]
+            "ZNode": {
+                "nodeIndex": 5,
+                "name": "HOUSTON",
+                "coordinates": [
+                    29.77,
+                    -95.389999
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 11,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                25.780001,
-                -80.209999
-            ],
+            "ANode": {
+                "nodeIndex": 3,
+                "name": "MIAMI",
+                "coordinates": [
+                    25.780001,
+                    -80.209999
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                27.959999,
-                -82.480003
-            ]
+            "ZNode": {
+                "nodeIndex": 6,
+                "name": "TAMPA",
+                "coordinates": [
+                    27.959999,
+                    -82.480003
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 13,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                29.77,
-                -95.389999
-            ],
+            "ANode": {
+                "nodeIndex": 5,
+                "name": "HOUSTON",
+                "coordinates": [
+                    29.77,
+                    -95.389999
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                27.959999,
-                -82.480003
-            ]
+            "ZNode": {
+                "nodeIndex": 6,
+                "name": "TAMPA",
+                "coordinates": [
+                    27.959999,
+                    -82.480003
+                ]
+            }
         },
         {
             "status": "Up",
             "index": 14,
             "AZbandwidth": 1000000000,
-            "ANode": [
-                27.959999,
-                -82.480003
-            ],
+            "ANode": {
+                "nodeIndex": 6,
+                "name": "TAMPA",
+                "coordinates": [
+                    27.959999,
+                    -82.480003
+                ]
+            },
             "ZAbandwidth": 1000000000,
-            "ZNode": [
-                40.669998,
-                -73.940002
-            ]
+            "ZNode": {
+                "nodeIndex": 7,
+                "name": "NY",
+                "coordinates": [
+                    40.669998,
+                    -73.940002
+                ]
+            }
         }
     ]
 }
