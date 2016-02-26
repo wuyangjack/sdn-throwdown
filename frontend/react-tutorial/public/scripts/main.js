@@ -29,6 +29,49 @@ var RouterMarker = {
   }
 }
 
+var LinkPath = {
+  new: function(json, map) {
+    return {json: json, map: map};
+  },
+
+  draw: function(self) {
+    var a_node = self.json.ANode.coordinates;
+    var z_node = self.json.ZNode.coordinates;
+
+    var coordinates = [
+      {lat: a_node[0], lng: a_node[1]},
+      {lat: z_node[0], lng: z_node[1]}
+    ];
+
+    var path = new google.maps.Polyline({
+      path: coordinates,
+      geodesic: true,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+
+    path.setMap(self.map);
+
+    self.path = path;
+    return self;
+  },
+
+  delete: function(self) {
+    if (self != null) {
+      self.path.setMap(null);
+    }
+    return self;
+  },
+
+  same: function(self, other) {
+    if (other == null || self == null) {
+      return false;
+    }
+    return JSON.stringify(self.json) === JSON.stringify(other.json);
+  } 
+}
+
 // TODO: visualize links
 
 var NetworkMap = React.createClass({
@@ -37,14 +80,15 @@ var NetworkMap = React.createClass({
       topology: {
           nodes: []
       },
-      routerMarkers: {
-
-      }
+      routerMarkers: {},
+      linkPaths: {}
     };
   },
 
   drawTopology: function() {
     var map = this.state.map;
+
+    // update routers
     var routers = this.state.topology.nodes;
     var routerMarkers = this.state.routerMarkers;
 
@@ -64,6 +108,25 @@ var NetworkMap = React.createClass({
       }
     });
 
+    // update links
+    var links = this.state.topology.links;
+    var linkPaths = this.state.linkPaths;
+
+    _.map(links, function(link) {
+      var name = link.index;
+      var pt_new = LinkPath.new(link, map);
+      var pt_old = linkPaths[name];
+
+      // update marker if necessary
+      if (false == LinkPath.same(pt_new, pt_old)) {
+        console.log("updated link path");
+        pt_old = LinkPath.delete(pt_old);
+        pt_new = LinkPath.draw(pt_new);
+        linkPaths[name] = pt_new;
+      } else {
+        console.log("ingore link path");
+      }
+    });
   },
 
   loadTopologyFromServer: function() {
