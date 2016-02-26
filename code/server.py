@@ -20,7 +20,7 @@ app.add_url_rule('/', 'root', lambda: app.send_static_file('index.html'))
 @app.route('/api/comments', methods=['GET', 'POST'])
 def comments_handler():
 
-    with open('comments.json', 'r') as file:
+    with open('database/comments.json', 'r') as file:
         comments = json.loads(file.read())
 
     if request.method == 'POST':
