@@ -5485,7 +5485,7 @@
     ],
     "links": [
         {
-            "status": "Up",
+            "status": "Down",
             "index": 4,
             "AZbandwidth": 1000000000,
             "ANode": {

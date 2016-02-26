@@ -8,7 +8,7 @@ var RouterMarker = {
     var marker = new google.maps.Marker({
         position: {lat: self.json.coordinates[0], lng: self.json.coordinates[1]},
         map: self.map,
-        icon: image
+        animation: google.maps.Animation.DROP
     });
     self.marker = marker;
     return self;
@@ -43,10 +43,16 @@ var LinkPath = {
       {lat: z_node[0], lng: z_node[1]}
     ];
 
+    if (self.json.status == 'Up') {
+      var color = '#FF0000';
+    } else {
+      var color = '#000000';
+    }
+
     var path = new google.maps.Polyline({
       path: coordinates,
       geodesic: true,
-      strokeColor: '#FF0000',
+      strokeColor: color,
       strokeOpacity: 1.0,
       strokeWeight: 2
     });
