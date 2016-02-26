@@ -18,5 +18,5 @@ response = requests.post (url, data=payload, auth=('group5','Juniper@127834'), v
 json_data = json.loads(response.text)
 authHeader= {"Authorization":"{token_type} {access_token}".format(**json_data)}
 
-r = requests.get('https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1', headers=authHeader, verify=False)
+r = requests.get('https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/links', headers=authHeader, verify=False)
 print json.dumps(r.json(), indent=4, separators=(',', ': '))
