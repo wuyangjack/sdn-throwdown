@@ -201,7 +201,6 @@ def getLinks_2(nodes):
 		links.append(tmpLink)
 	return links
 
-
 def getLSPs(nodes):
 	r = requests.get(
 					'https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps', headers=authHeader, verify=False)
