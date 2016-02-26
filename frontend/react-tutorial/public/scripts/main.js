@@ -15,8 +15,6 @@ var RouterMarker = {
       anchor: new google.maps.Point(10, 10)
     };
 
-    //var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-    //var image = '/router.png';
     var marker = new google.maps.Marker({
         position: {lat: self.json.coordinates[0], lng: self.json.coordinates[1]},
         map: self.map,
@@ -43,49 +41,66 @@ var RouterMarker = {
 }
 
 var LinkPath = {
-  new: function(json, map) {
-    return {json: json, map: map};
+  new: function(json, map, direction) {
+    return {json: json, map: map, direction: direction};
   },
 
+  name: function(self) {
+    return self.json.index + (self.direction ? "AZ" : "ZA");
+  },
+  /*
+  circle: function(p1, p2) {
+    var pm = [(p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2];
+    var distance = Math.sqrt(Math.abs(p1[0] - p2[0])^2 + Math.abs(p1[0] - p2[0])^2);
+    console.log(pm);
+    console.log(distance);
+    return pm;
+  },
+  */
   draw: function(self) {
     var a_node = self.json.ANode.coordinates;
     var z_node = self.json.ZNode.coordinates;
 
-    var coordinates = [
-      {lat: a_node[0], lng: a_node[1]},
-      {lat: z_node[0], lng: z_node[1]}
-    ];
+    var offset = 0;
+    var coordinates;
+    var icons = [];
+    var arrow = {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+    };
+    if (self.direction) {
+      coordinates = [
+        {lat: a_node[0] + offset, lng: a_node[1] + offset},
+        {lat: z_node[0] + offset, lng: z_node[1] + offset}
+      ];
+      icons =[
+        {icon: arrow, offset: '33%'},
+        {icon: arrow, offset: '66%'},
+      ];
+    } else {
+      coordinates = [
+        {lat: z_node[0] - offset, lng: z_node[1] - offset},
+        {lat: a_node[0] - offset, lng: a_node[1] - offset}
+      ];
+      icons =[
+        {icon: arrow, offset: '33%'},
+        {icon: arrow, offset: '66%'},
+      ];
+    }
+
+    //LinkPath.circle(a_node, z_node);
 
     if (self.json.status == 'Up') {
       var color = '#FF0000';
     } else {
       var color = '#000000';
     }
-
-    var arrow = {
-      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
-    };
-
-    // var p1 = {lat: a_node[0], lng: a_node[1]};
-    // var p2 = {lat: z_node[0], lng: z_node[1]};
-    // var coordinates = [p1];
-    // for (var i = 0; i < 10; i++) {
-    //   var x = a_node[0] + (z_node[0] - a_node[0]) * i / 10;
-    //   var y = a_node[1] + (z_node[1] - a_node[1]) * i / 10;
-    //   y = y * (1 + (5 - Math.abs(i - 5)) / 100);
-    //   coordinates.push({lat: x, lng: y});
-    // }
-    // coordinates.push(p2);
-
     var path = new google.maps.Polyline({
       path: coordinates,
+      geodesic: true,
       strokeColor: color,
       strokeOpacity: 1.0,
       strokeWeight: 2,
-      icons: [{
-        icon: arrow,
-        offset: '50%'
-      }],
+      icons: icons
     });
 
     path.setMap(self.map);
@@ -105,7 +120,7 @@ var LinkPath = {
     if (other == null || self == null) {
       return false;
     }
-    return JSON.stringify(self.json) === JSON.stringify(other.json);
+    return JSON.stringify(self.json) == JSON.stringify(other.json) && self.direction == other.direction;
   } 
 }
 
@@ -141,29 +156,50 @@ var NetworkMap = React.createClass({
         rm_new = RouterMarker.draw(rm_new);
         routerMarkers[name] = rm_new;
       } else {
-        console.log("ingore router marker");
+        //console.log("ingore router marker");
       }
     });
 
     // update links
     var links = this.state.topology.links;
     var linkPaths = this.state.linkPaths;
+    var direction = this.state.direction;
 
+    //console.log(linkPaths);
+    _.mapObject(linkPaths, function(linkPath, name) {
+      //console.log(linkPath);
+      LinkPath.delete(linkPath);
+    });
+
+    console.log(direction);
     _.map(links, function(link) {
-      var name = link.index;
-      var pt_new = LinkPath.new(link, map);
-      var pt_old = linkPaths[name];
+      var pt_new = LinkPath.new(link, map, direction);
+      var name = LinkPath.name(pt_new);
+      pt_new = LinkPath.draw(pt_new);
+      linkPaths[name] = pt_new;
+    });
 
-      // update marker if necessary
-      if (false == LinkPath.same(pt_new, pt_old)) {
-        console.log("updated link path");
-        pt_old = LinkPath.delete(pt_old);
-        pt_new = LinkPath.draw(pt_new);
-        linkPaths[name] = pt_new;
-      } else {
-        console.log("ingore link path");
+    this.state.direction = !this.state.direction;
+
+    /*
+    _.map(links, function(link) {
+      for (var i = 0; i < directions.length; i++) {
+        var pt_new = LinkPath.new(link, map, directions[i]);
+        var name = LinkPath.name(pt_new);
+        var pt_old = linkPaths[name];
+
+        // update marker if necessary
+        if (false == LinkPath.same(pt_new, pt_old)) {
+          console.log("updated link path");
+          pt_old = LinkPath.delete(pt_old);
+          pt_new = LinkPath.draw(pt_new);
+          linkPaths[name] = pt_new;
+        } else {
+          //console.log("ingore link path");
+        }
       }
     });
+    */
   },
 
   loadTopologyFromServer: function() {
@@ -185,9 +221,10 @@ var NetworkMap = React.createClass({
     // canvas
     var map = new google.maps.Map(document.getElementById('googleMap'), {
         center: {lat: 37, lng: -100},
-        zoom: 4
+        zoom: 5
     });
     this.state.map = map;
+    this.state.direction = true;
     this.setState(this.state);
   },
 
@@ -212,6 +249,6 @@ var NetworkMap = React.createClass({
 });
 
 ReactDOM.render(
-  <NetworkMap url="/api/topology" pollInterval={2000} />,
+  <NetworkMap url="/api/topology" pollInterval={1000} />,
   document.getElementById('content')
 );
