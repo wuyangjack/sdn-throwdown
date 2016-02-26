@@ -10,6 +10,7 @@
 
 import json
 import os
+import threading
 import time
 from flask import Flask, Response, request
 
@@ -34,13 +35,24 @@ def comments_handler():
 
 @app.route('/api/topology', methods=['GET'])
 def get_topology():
-
     with open('database/topology.json', 'r') as file:
         topology = json.loads(file.read())
 
     return Response(json.dumps(topology), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
 
+'''
+def update_topology(interval):
+    while True:
+        try:
+            print "update topology"
+        except Exception, e:
+            print "error updating topology"
+        time.sleep(interval)
+'''
+
 if __name__ == '__main__':
+    #thread = threading.Thread(target = update_topology, args = (5, ))
+    #thread.start()
     app.run(port=int(os.environ.get("PORT",3000)), debug=True)
 
 

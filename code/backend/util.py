@@ -1,7 +1,8 @@
 import requests
 import redis
 import json
-
+import time
+import datetime
 
 def getAuthHeader():
 	username = 'group5'
@@ -13,8 +14,9 @@ def getAuthHeader():
 		'username': username,
 		'password': password
 	}
+	# {u'access_token': u'TbNd8I6KP7viwqV5YjrSqEROJyJo87jcmm5KVVdy/4Y=', u'token_type': u'Bearer'}
 	response = requests.post("https://10.10.2.25:8443/oauth2/token",
-	                         data=payload, auth=(username, password), verify=False)
+	                       	data=payload, auth=(username, password), verify=False)
 	json_data = json.loads(response.text)
 	authHeader = {
 		"Authorization": "{token_type} {access_token}".format(**json_data)}
@@ -287,15 +289,41 @@ def updateLinkUtility(links, trafficStats):
 							trafficStats[link.ANode["ipAddress"]].inputBPS)) / 2.0)
 
 
-nodes = getNodes()
-links = getLinks(nodes)
-lsps = getLSPs(nodes, links)
-trafficStats = getTrafficStats()
-updateLinkUtility(links, trafficStats)
+while True:
+	try:
+		ts = time.time()
+		st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+		print "update topology @ " + st
+		nodes = getNodes()
+		links = getLinks(nodes)
+		lsps = getLSPs(nodes, links)
+		trafficStats = getTrafficStats()
+		updateLinkUtility(links, trafficStats)
 
-print json.dumps(
-				{'nodes': nodes.values(), 'links': links.values(), 'lsps': lsps},
+		data = {'timestamp': ts, 'nodes': nodes.values(), 'links': links.values(), 'lsps': lsps}
+
+		'''
+		data = json.dumps(
+				data,
 				default=lambda o: o.__dict__,
 				indent=4,
 				separators=(',', ': ')
-)
+		)
+		'''
+		with open('database/topology.json', 'w') as outfile:
+			json.dump(
+				data, 
+				outfile,
+				default=lambda o: o.__dict__,
+				indent=4,
+				separators=(',', ': ')
+			)
+
+	except Exception, e:
+		print "ERROR: cannot update topology: "
+		print str(e)
+	time.sleep(10)
+
+
+
+
