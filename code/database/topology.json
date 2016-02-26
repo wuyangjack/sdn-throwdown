@@ -69,10 +69,8 @@
             "ero": [
                 7,
                 6,
-                3,
                 5,
                 2,
-                4,
                 1
             ],
             "lspIndex": 5,
@@ -86,7 +84,6 @@
             "ero": [
                 7,
                 8,
-                2,
                 1
             ],
             "lspIndex": 6,
@@ -100,10 +97,8 @@
             "ero": [
                 7,
                 6,
-                3,
                 5,
                 2,
-                4,
                 1
             ],
             "lspIndex": 7,
@@ -127,7 +122,7 @@
         {
             "group": 5,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -140,7 +135,7 @@
         {
             "group": 5,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -153,7 +148,7 @@
         {
             "group": 5,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -166,7 +161,7 @@
         {
             "group": 5,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -243,7 +238,7 @@
         {
             "group": 9,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -256,7 +251,7 @@
         {
             "group": 9,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -269,7 +264,7 @@
         {
             "group": 9,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -282,7 +277,7 @@
         {
             "group": 9,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -295,7 +290,7 @@
         {
             "group": 1,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -308,7 +303,7 @@
         {
             "group": 1,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -321,7 +316,7 @@
         {
             "group": 1,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -334,7 +329,7 @@
         {
             "group": 1,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -407,7 +402,7 @@
         {
             "group": 6,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -420,7 +415,7 @@
         {
             "group": 6,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -433,7 +428,7 @@
         {
             "group": 6,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -446,7 +441,7 @@
         {
             "group": 6,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -459,7 +454,7 @@
         {
             "group": 12,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -472,7 +467,7 @@
         {
             "group": 12,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -485,7 +480,7 @@
         {
             "group": 12,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -498,7 +493,7 @@
         {
             "group": 12,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -511,7 +506,7 @@
         {
             "group": 3,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -524,7 +519,7 @@
         {
             "group": 3,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -537,7 +532,7 @@
         {
             "group": 3,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -550,7 +545,7 @@
         {
             "group": 3,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -563,7 +558,7 @@
         {
             "group": 2,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -576,7 +571,7 @@
         {
             "group": 2,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -589,7 +584,7 @@
         {
             "group": 2,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -602,7 +597,7 @@
         {
             "group": 2,
             "fromNodeIndex": 7,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
@@ -615,7 +610,7 @@
         {
             "group": 8,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -659,7 +654,7 @@
         {
             "group": 8,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -680,6 +675,7 @@
             "ero": [
                 1,
                 4,
+                2,
                 5,
                 3,
                 7
@@ -694,7 +690,6 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                2,
                 8,
                 7
             ],
@@ -708,7 +703,6 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                2,
                 4,
                 5,
                 3,
@@ -724,7 +718,6 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                2,
                 4,
                 5,
                 3,
@@ -736,7 +729,7 @@
         {
             "group": 5,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -749,7 +742,7 @@
         {
             "group": 5,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -776,7 +769,7 @@
         {
             "group": 5,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -853,7 +846,7 @@
         {
             "group": 9,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -866,7 +859,7 @@
         {
             "group": 9,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -879,7 +872,7 @@
         {
             "group": 9,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -892,7 +885,7 @@
         {
             "group": 9,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -905,7 +898,7 @@
         {
             "group": 1,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -918,7 +911,7 @@
         {
             "group": 1,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -931,7 +924,7 @@
         {
             "group": 1,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -944,7 +937,7 @@
         {
             "group": 1,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1017,7 +1010,7 @@
         {
             "group": 6,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1030,7 +1023,7 @@
         {
             "group": 6,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1043,7 +1036,7 @@
         {
             "group": 6,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1056,7 +1049,7 @@
         {
             "group": 6,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1069,7 +1062,7 @@
         {
             "group": 12,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1082,7 +1075,7 @@
         {
             "group": 12,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1095,7 +1088,7 @@
         {
             "group": 12,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1108,7 +1101,7 @@
         {
             "group": 12,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1121,7 +1114,7 @@
         {
             "group": 3,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1134,7 +1127,7 @@
         {
             "group": 3,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1147,7 +1140,7 @@
         {
             "group": 3,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1160,7 +1153,7 @@
         {
             "group": 3,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1173,7 +1166,7 @@
         {
             "group": 2,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1186,7 +1179,7 @@
         {
             "group": 2,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1212,7 +1205,7 @@
         {
             "group": 2,
             "fromNodeIndex": 1,
-            "operationalStatus": "Down",
+            "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
@@ -1223,7 +1216,7 @@
             "name": "GROUP_TWO_SF_NY_LSP4"
         }
     ],
-    "timestamp": 1456523462.550301,
+    "timestamp": 1456523689.02624,
     "nodes": [
         {
             "index": 2,
@@ -1302,8 +1295,8 @@
         {
             "status": "Up",
             "index": 4,
-            "AZUtility": 0.872440848,
-            "ZAUtility": 0.37505518,
+            "AZUtility": 0.86935916,
+            "ZAUtility": 0.325100128,
             "AZlspCount": 0,
             "ZAlspCount": 0,
             "AZbandwidth": 1000000000,
@@ -1320,8 +1313,8 @@
         {
             "status": "Up",
             "index": 15,
-            "AZUtility": 0.603053328,
-            "ZAUtility": 0.627651516,
+            "AZUtility": 0.623556684,
+            "ZAUtility": 0.953493776,
             "AZlspCount": 31,
             "ZAlspCount": 30,
             "AZbandwidth": 1000000000,
@@ -1338,9 +1331,9 @@
         {
             "status": "Up",
             "index": 12,
-            "AZUtility": 3.984e-06,
-            "ZAUtility": 0.104459288,
-            "AZlspCount": 8,
+            "AZUtility": 0.026105352,
+            "ZAUtility": 0.100256632,
+            "AZlspCount": 7,
             "ZAlspCount": 10,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1356,10 +1349,10 @@
         {
             "status": "Up",
             "index": 6,
-            "AZUtility": 6.08e-07,
-            "ZAUtility": 0.25153598,
-            "AZlspCount": 9,
-            "ZAlspCount": 4,
+            "AZUtility": 0.868190756,
+            "ZAUtility": 0.0,
+            "AZlspCount": 5,
+            "ZAlspCount": 5,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 2,
@@ -1372,18 +1365,18 @@
             }
         },
         {
-            "status": "Down",
+            "status": "Up",
             "index": 2,
-            "AZUtility": 0,
-            "ZAUtility": 0,
-            "AZlspCount": 29,
-            "ZAlspCount": 28,
-            "AZbandwidth": 0,
+            "AZUtility": 0.309221388,
+            "ZAUtility": 0.911059224,
+            "AZlspCount": 30,
+            "ZAlspCount": 29,
+            "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 1,
                 "ipAddress": "10.210.16.1"
             },
-            "ZAbandwidth": 0,
+            "ZAbandwidth": 1000000000,
             "ZNode": {
                 "nodeIndex": 8,
                 "ipAddress": "10.210.16.2"
@@ -1392,8 +1385,8 @@
         {
             "status": "Up",
             "index": 8,
-            "AZUtility": 0.23497646,
-            "ZAUtility": 0.583636904,
+            "AZUtility": 0.21508118,
+            "ZAUtility": 0.863298576,
             "AZlspCount": 4,
             "ZAlspCount": 4,
             "AZbandwidth": 1000000000,
@@ -1410,10 +1403,10 @@
         {
             "status": "Up",
             "index": 11,
-            "AZUtility": 0.38427044,
-            "ZAUtility": 2.56e-07,
+            "AZUtility": 0.333468876,
+            "ZAUtility": 0.129972672,
             "AZlspCount": 1,
-            "ZAlspCount": 2,
+            "ZAlspCount": 0,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 3,
@@ -1428,10 +1421,10 @@
         {
             "status": "Up",
             "index": 5,
-            "AZUtility": 0.094398232,
-            "ZAUtility": 0.885930316,
-            "AZlspCount": 3,
-            "ZAlspCount": 3,
+            "AZUtility": 1.096e-06,
+            "ZAUtility": 0.85960472,
+            "AZlspCount": 2,
+            "ZAlspCount": 2,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 2,
@@ -1446,10 +1439,10 @@
         {
             "status": "Up",
             "index": 1,
-            "AZUtility": 0.103075092,
-            "ZAUtility": 0.159206712,
-            "AZlspCount": 13,
-            "ZAlspCount": 7,
+            "AZUtility": 0.86221956,
+            "ZAUtility": 0.132863092,
+            "AZlspCount": 10,
+            "ZAlspCount": 8,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 1,
@@ -1464,10 +1457,10 @@
         {
             "status": "Up",
             "index": 3,
-            "AZUtility": 0.259211484,
-            "ZAUtility": 0.051927116,
-            "AZlspCount": 2,
-            "ZAlspCount": 9,
+            "AZUtility": 0.051841568,
+            "ZAUtility": 0.021656392,
+            "AZlspCount": 4,
+            "ZAlspCount": 7,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 1,
@@ -1482,9 +1475,9 @@
         {
             "status": "Up",
             "index": 7,
-            "AZUtility": 0.402158084,
-            "ZAUtility": 0.077291728,
-            "AZlspCount": 5,
+            "AZUtility": 0.37690214,
+            "ZAUtility": 0.064614348,
+            "AZlspCount": 6,
             "ZAlspCount": 4,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1500,10 +1493,10 @@
         {
             "status": "Up",
             "index": 13,
-            "AZUtility": 0.581460024,
-            "ZAUtility": 0.155772544,
+            "AZUtility": 0.581724516,
+            "ZAUtility": 0.103143228,
             "AZlspCount": 9,
-            "ZAlspCount": 7,
+            "ZAlspCount": 9,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 5,
@@ -1518,8 +1511,8 @@
         {
             "status": "Up",
             "index": 9,
-            "AZUtility": 1.632e-06,
-            "ZAUtility": 0.079501316,
+            "AZUtility": 6.28e-07,
+            "ZAUtility": 0.206419556,
             "AZlspCount": 0,
             "ZAlspCount": 2,
             "AZbandwidth": 1000000000,
@@ -1536,8 +1529,8 @@
         {
             "status": "Up",
             "index": 14,
-            "AZUtility": 0.574871352,
-            "ZAUtility": 0.154647736,
+            "AZUtility": 0.574815072,
+            "ZAUtility": 0.154643012,
             "AZlspCount": 10,
             "ZAlspCount": 9,
             "AZbandwidth": 1000000000,
@@ -1554,9 +1547,9 @@
         {
             "status": "Up",
             "index": 10,
-            "AZUtility": 1.776e-06,
-            "ZAUtility": 0.056076504,
-            "AZlspCount": 7,
+            "AZUtility": 0.065337336,
+            "ZAUtility": 0.026102544,
+            "AZlspCount": 5,
             "ZAlspCount": 4,
             "AZbandwidth": 1000000000,
             "ANode": {
