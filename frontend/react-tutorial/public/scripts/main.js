@@ -58,8 +58,8 @@ var LinkPath = {
   },
   */
   draw: function(self) {
-    var a_node = self.json.ANode.coordinates;
-    var z_node = self.json.ZNode.coordinates;
+    var a_node = LinkPath.nodeCoordinates[self.json.ANode.nodeIndex];
+    var z_node = LinkPath.nodeCoordinates[self.json.ZNode.nodeIndex];
 
     var offset = 0;
     var coordinates;
@@ -123,6 +123,48 @@ var LinkPath = {
     return JSON.stringify(self.json) == JSON.stringify(other.json) && self.direction == other.direction;
   } 
 }
+/*
+var QueryForm = React.createClass({
+  getInitialState: function() {
+    return {author: '', text: ''};
+  },
+  handleAuthorChange: function(e) {
+    this.setState({author: e.target.value});
+  },
+  handleTextChange: function(e) {
+    this.setState({text: e.target.value});
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    var author = this.state.author.trim();
+    var text = this.state.text.trim();
+    if (!text || !author) {
+      return;
+    }
+    this.props.onCommentSubmit({author: author, text: text});
+    this.setState({author: '', text: ''});
+  },
+  render: function() {
+    return (
+      <form className="queryForm" onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          placeholder="Your name"
+          value={this.state.author}
+          onChange={this.handleAuthorChange}
+        />
+        <input
+          type="text"
+          placeholder="Say something..."
+          value={this.state.text}
+          onChange={this.handleTextChange}
+        />
+        <input type="submit" value="Post" />
+      </form>
+    );
+  }
+});
+*/
 
 // TODO: visualize links
 
@@ -143,9 +185,12 @@ var NetworkMap = React.createClass({
     // update routers
     var routers = this.state.topology.nodes;
     var routerMarkers = this.state.routerMarkers;
+    var nodeCoordinates = {};
 
     _.map(routers, function(router) {
       var name = router.hostname;
+      nodeCoordinates[router.index] = router.coordinates;
+
       var rm_new = RouterMarker.new(router, map);
       var rm_old = routerMarkers[name];
 
@@ -160,6 +205,9 @@ var NetworkMap = React.createClass({
       }
     });
 
+    // update coordinates
+    LinkPath.nodeCoordinates = nodeCoordinates;
+
     // update links
     var links = this.state.topology.links;
     var linkPaths = this.state.linkPaths;
@@ -171,7 +219,6 @@ var NetworkMap = React.createClass({
       LinkPath.delete(linkPath);
     });
 
-    console.log(direction);
     _.map(links, function(link) {
       var pt_new = LinkPath.new(link, map, direction);
       var name = LinkPath.name(pt_new);
