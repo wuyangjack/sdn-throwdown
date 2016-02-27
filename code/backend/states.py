@@ -5,8 +5,17 @@ import sqlite3
 class NetworkStateService(object):
 
 	Link = "Link";
-	LinkUtilization = "LinkUtilization";
-	Router = "Router";
+	LinkUtilization = "LinkUtilization"
+	LinkStatus = "LinkStatus"
+	LinkLspCount = "LinkLspCount"
+	Router = "Router"
+	Lsp = "Lsp"
+	LspRoute = "LspRoute"
+	LspLatency = "LspLatency"
+	LspStatus = "LspStatus"
+	Interface = "Interface"
+	InterfaceInBps = "InterfaceInBps"
+	InterfaceOutBps = "InterfaceOutBps"
 
 	def create(self, name):
 		print "create table: " + name
