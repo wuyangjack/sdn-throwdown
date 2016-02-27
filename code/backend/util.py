@@ -384,10 +384,10 @@ def getTrafficStats():
 def updateLinkUtility(links, trafficStats):
     for link in links.values():
         link.updateAZUtility(
-            math.max(int(trafficStats[link.ANode["ipAddress"]].outputBPS), int(
+            max(float(trafficStats[link.ANode["ipAddress"]].outputBPS), float(
                 trafficStats[link.ZNode["ipAddress"]].inputBPS)))
         link.updateZAUtility(
-            math.max(int(trafficStats[link.ANode["ipAddress"]].outputBPS), int(
+            max(float(trafficStats[link.ANode["ipAddress"]].outputBPS), float(
                 trafficStats[link.ANode["ipAddress"]].inputBPS)))
         # if link.index == 3:
         #     print link.ZAUtility
