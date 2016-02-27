@@ -698,9 +698,11 @@ var NetworkMap = React.createClass({
   initializeGoogleMap: function() {
     // canvas
     var map = new google.maps.Map(document.getElementById('googleMap'), {
-        center: {lat: 37, lng: -95},
-        zoom: 4
+        center: {lat: 35, lng: -95},
+        zoom: 4,
+        disableDefaultUI: true
     });
+    map.setOptions({draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
     this.state.map = map;
     this.state.direction = true;
     this.setState(this.state);
@@ -718,6 +720,11 @@ var NetworkMap = React.createClass({
   },
 
   render: function() {
+    var scope = {
+         style: {
+             height: 240
+         }
+    };
     this.drawTopology();
 
     return (
@@ -734,12 +741,16 @@ var NetworkMap = React.createClass({
             </div>
             <div className="panel panel-default">
               <div className="panel-body">
-                <ResultTable content={this.state.lspStatistics}/>
+                <div className="pre-scrollable" style={scope.style}>
+                  <ResultTable content={this.state.lspStatistics}/>
+                </div>
               </div>
             </div>
             <div className="panel panel-default">
               <div className="panel-body">
-                <ResultTable content={this.state.linkStatistics}/>
+                <div className="pre-scrollable" style={scope.style}>
+                  <ResultTable content={this.state.linkStatistics}/>
+                </div>
               </div>
             </div>
           </div>
