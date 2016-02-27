@@ -264,7 +264,7 @@ var LinkPath = {
 
 var QueryForm = React.createClass({
   getInitialState: function() {
-    return {name: '', link: '', lsp: ''};
+    return {name: '...', link: '...', lsp: '...'};
   },
   handleNameChange: function(e) {
     this.setState({name: e.target.value});
@@ -284,7 +284,7 @@ var QueryForm = React.createClass({
       return;
     }
     this.props.onQuerySubmit({name: name, link: link, lsp: lsp});
-    this.setState({name: '', link: '', lsp: ''});
+    this.setState({name: '...', link: '...', lsp: '...'});
   },
   render: function() {
     return (
@@ -398,6 +398,7 @@ var NetworkStateService = {
       }.bind(this),
       error: function(xhr, status, err) {
         console.error('api/sql', status, err.toString());
+        callback(object, {});
       }.bind(this)
     });
   },
@@ -465,6 +466,8 @@ var NetworkMap = React.createClass({
     var links = this.state.topology.links;
     var linkPaths = this.state.linkPaths;
     var direction = this.state.direction;
+    var linkFilter = this.state.linkFilter;
+    console.log(linkFilter);
 
     _.mapObject(linkPaths, function(linkPath, name) {
       LinkPath.delete(linkPath);
@@ -473,8 +476,10 @@ var NetworkMap = React.createClass({
     _.map(links, function(link) {
       var pt_new = LinkPath.new(link, map, direction);
       var name = LinkPath.name(pt_new);
-      pt_new = LinkPath.draw(pt_new);
-      linkPaths[name] = pt_new;
+      if (_.indexOf(linkFilter, name) != -1) {
+        pt_new = LinkPath.draw(pt_new);
+        linkPaths[name] = pt_new;
+      }
     });
 
     // update LSPs
@@ -496,7 +501,7 @@ var NetworkMap = React.createClass({
       var lp_new = LspPath.new(lsp, map);
       var name = LspPath.name(lp_new);
       var lp_old = lspPaths[name];
-      if (lspFilter.length == 0 || _.indexOf(lspFilter, name) != -1) {
+      if (_.indexOf(lspFilter, name) != -1) {
         // update marker if necessary
         if (false == LspPath.same(lp_new, lp_old)) {
           console.log("updated lsp path: " + name);

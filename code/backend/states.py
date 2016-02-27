@@ -83,10 +83,11 @@ class NetworkStateService(object):
 	def query(self, query):
 		c = self.connection.cursor();
 		print "executing query: " + query;
+		if (query == "..."):
+			return [];
 		try:
 			jsons = [];
 			rows = c.execute(query);
-			print "hah"
 			for row in rows:
 				json = {}
 				json['name'] = row[0];
