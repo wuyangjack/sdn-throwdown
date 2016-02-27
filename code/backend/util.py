@@ -40,7 +40,7 @@ while True:
         	lsp.log(nss)
 
         for linkName in linkDict:
-        	linkDict[name].log(nss)
+        	linkDict[linkName].log(nss)
 
         for address in trafficStatDict:
         	trafficStatDict[address].log(nss)
