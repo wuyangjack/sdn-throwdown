@@ -2,8 +2,12 @@
   height: 400px;
 }
 
+.table-fixed thead {
+  width: 100%;
+}
+
 .table-fixed tbody {
-  height: 280px;
+  height: 255px;
   overflow-y: auto;
   width: 100%;
 }
@@ -12,9 +16,42 @@
   display: block;
 }
 
+.table-fixed tbody td, .table-fixed thead > tr > th {
+  float: left;
+  border-bottom-width: 0;
+}
+
+.table-fixed-l thead {
+  width: 100%;
+}
+
+.table-fixed-l tbody {
+  height: 110px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-fixed-l tr {
+  width: 100%;
+}
+
+.table-fixed-l thead, .table-fixed-l tbody, .table-fixed-l tr, .table-fixed-l td, .table-fixed-l th {
+  display: block;
+}
+
+.table-fixed-l thead tbody td th tr, .table-fixed-l thead > tr > th {
+  float: left;
+  border-bottom-width: 0;
+}
+
 #editor {
   width: 400px;
-  height: 20px;
+  height:100px;
+}
+
+#link {
+  width: 400px;
+  height:100px;
 }
 /*
 

@@ -68,8 +68,11 @@ var CommentBox = React.createClass({
     return {data: []};
   },
   componentDidMount: function() {
-    var editor = ace.edit("editor");
+    var link = ace.edit("link");
     var SQLScriptMode = ace.require("ace/mode/sql").Mode;
+    link.session.setMode(new SQLScriptMode());
+    link.setTheme("ace/theme/chrome");
+    var editor = ace.edit("editor");
     editor.session.setMode(new SQLScriptMode());
     editor.setTheme("ace/theme/chrome");
     this.loadCommentsFromServer();
@@ -81,7 +84,9 @@ var CommentBox = React.createClass({
         <h1>Comments</h1>
         <CommentList data={this.state.data} />
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+        <div id="link"></div>
         <div id="editor"></div>
+        <pre><code className="sql">select a from b</code></pre>
       </div>
     );
   }
