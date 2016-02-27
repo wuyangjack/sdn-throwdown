@@ -60,7 +60,7 @@ var LspPath = {
   },
 
   name: function(self) {
-    return self.json.lspIndex + self.json.name;
+    return self.json.name;
   },
  
   draw: function(self) {
@@ -191,7 +191,7 @@ var LinkPath = {
         var scale = Math.round((1 - parseFloat(self.json.AZUtility)) * 30);
         var color = colors[scale];
       } else {
-        var color = '#FF0000';
+        var color = '#000000';
       }
       var stroke_weight = parseFloat(self.json.AZlspCount) * 0.2 + 2;
     } else {
@@ -199,11 +199,10 @@ var LinkPath = {
         var scale = Math.round((1 - parseFloat(self.json.ZAUtility)) * 30);
         var color = colors[scale];
       } else {
-        var color = '#FF0000';
+        var color = '#000000';
       }
       var stroke_weight = parseFloat(self.json.ZAlspCount) * 0.2 + 2;
     }
-    console.log(self.direction);
     var opacity = 0.6;
     var arrow = {
       path: self.direction ? google.maps.SymbolPath.FORWARD_CLOSED_ARROW : google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
@@ -321,15 +320,12 @@ var QueryForm = React.createClass({
 
 var QueryList = React.createClass({
   render: function() {
+    var queryExecutionHandler = this.props.onQuerySubmit;
     var queryNodes = this.props.queries.map(function(query) {
       return (
         <tr>
           <td>
-            <Query name={query.name} key={query.id}>
-              {query.link}
-              <br/>
-              {query.lsp}
-            </Query>
+            <Query name={query.name} key={query.id} link={query.link} lsp={query.lsp} onQuerySubmit={queryExecutionHandler}/>
           </td>
         </tr>
       );
@@ -345,15 +341,24 @@ var QueryList = React.createClass({
 });
 
 var Query = React.createClass({
+  handleSubmit: function(e) {
+    e.preventDefault();
+    this.props.onQuerySubmit({link: this.props.link, lsp: this.props.lsp});
+  },
+
   render: function() {
     return (
       <div className="query">
-        <a href="#">
-          <h4 className="queryName">
-            {this.props.name}
-          </h4>
-        </a>
-        {this.props.children}
+        <h4 className="queryName">
+          {this.props.name}
+        </h4>
+        <br/>
+        {this.props.link}
+        <br/>
+        {this.props.lsp}
+        <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleSubmit}>
+          <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
+        </button>
       </div>
     );
   }
@@ -377,6 +382,40 @@ var Query = React.createClass({
 //   }
 // });
 
+var NetworkStateService = {
+  executeSql: function(object, query, callback) {
+    // prevent sql injection
+    console.log("executing sql: " + query)
+    $.ajax({
+      url: 'api/sql',
+      dataType: 'json',
+      data: { 
+        query: query
+      },
+      cache: false,
+      success: function(result) {
+        callback(object, result);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error('api/sql', status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  uniqueState: function (jsons, attribute) {
+    var items = NetworkStateService.filterState(jsons, attribute);
+    return _.uniq(items);
+  },
+
+  groupState: function (jsons, attribute) {
+      return _.groupBy(jsons, function (item) { return item[attribute] });
+  },
+
+  filterState: function (jsons, attribute) {
+    return $.map(jsons, function (json) { return json[attribute]; })
+  },
+}
+
 var NetworkMap = React.createClass({
   getInitialState: function() {
     return {
@@ -386,13 +425,13 @@ var NetworkMap = React.createClass({
       routerMarkers: {},
       linkPaths: {},
       lspPaths: {},
-      queries: []
+      queries: [],
+      lspFilter: [],
+      linkFilter: []
     };
   },
 
   drawTopology: function() {
-    console.log("draw")
-    console.log(this.state);
     var map = this.state.map;
 
     // update routers
@@ -441,30 +480,42 @@ var NetworkMap = React.createClass({
     // update LSPs
     var lsps = this.state.topology.lsps;
     var lspPaths = this.state.lspPaths;
-
+    var lspFilter = this.state.lspFilter;
+    console.log(lspFilter);
+    /*
+    _.map(lspPaths, function(lspPath) {
+      var name = LspPath.name(lspPath);
+      if (_.indexOf(lspFilter, name) == -1) {
+        lspPath = LspPath.delete(lspPath);
+        lspPaths[name] = lspPath;
+        console.log("hide lsp path: " + name);
+      }
+    });
+    */
     _.map(lsps, function(lsp) {
-      if (lsp.name == 'GROUP_FIVE_NY_SF_LSP2') {
-        var lp_new = LspPath.new(lsp, map);
-        var name = LspPath.name(lp_new);
-        var lp_old = lspPaths[name];
-
+      var lp_new = LspPath.new(lsp, map);
+      var name = LspPath.name(lp_new);
+      var lp_old = lspPaths[name];
+      if (lspFilter.length == 0 || _.indexOf(lspFilter, name) != -1) {
         // update marker if necessary
         if (false == LspPath.same(lp_new, lp_old)) {
-          console.log("updated lsp path");
+          console.log("updated lsp path: " + name);
           lp_old = LspPath.delete(lp_old);
           lp_new = LspPath.draw(lp_new);
           lspPaths[name] = lp_new;
         } else {
-          //console.log("ingore lsp path");
+          //console.log("ingore lsp path: " + name);
         }
+      } else {
+        // hide marker
+        //console.log("hide lsp path: " + name)
+        lp_old = LspPath.delete(lp_old);
+        delete lspPaths[name];
       }
     });
-
-    console.log("draw done")
   },
 
   loadTopologyFromServer: function() {
-    console.log("@@@");
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -516,6 +567,20 @@ var NetworkMap = React.createClass({
         this.setState(this.state);
         console.error(this.props.query_url, status, err.toString());
       }.bind(this)
+    });
+  },
+
+  handleQueryExecute: function(query) {
+    NetworkStateService.executeSql(this, query.lsp, function(obj, data) {
+      data = NetworkStateService.uniqueState(data, 'key');
+      obj.state.lspFilter = data;
+      obj.setState(obj.state);
+    });
+
+    NetworkStateService.executeSql(this, query.link, function(obj, data) {
+      data = NetworkStateService.uniqueState(data, 'key');
+      obj.state.linkFilter = data;
+      obj.setState(obj.state);
     });
   },
 
@@ -572,7 +637,7 @@ var NetworkMap = React.createClass({
                 <h3 className="panel-title">Queries History</h3>
               </div>
               <div className="panel-body">
-                <QueryList queries={this.state.queries} />
+                <QueryList queries={this.state.queries} onQuerySubmit={this.handleQueryExecute} />
               </div>
             </div>
             <br/>

@@ -1,8 +1,14 @@
 [
     {
-        "link": "SELECT * FROM Link WHERE time = (SELECT max(time) FROM Link)",
+        "link": "SELECT * FROM Link_",
         "name": "Full Network",
-        "lsp": "SELECT * FROM Lsp WHERE time = (SELECT max(time) FROM Lsp)",
+        "lsp": "SELECT * FROM Lsp_ WHERE key LIKE 'GROUP_FIVE%'",
         "id": 1456532211581
+    },
+    {
+        "link": "SELECT * FROM Link_",
+        "name": "Fresh Group Five Network",
+        "lsp": "SELECT * FROM Lsp_ WHERE key LIKE 'GROUP_FIVE%' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
+        "id": 1456554982736
     }
 ]

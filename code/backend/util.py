@@ -274,6 +274,7 @@ class LSP(object):
 		# log
 		key = self.name
 		timestamp = time.time()
+		nss.save(NetworkStateService.Lsp, key, timestamp, 1)
 		nss.save(NetworkStateService.LspRoute, key, timestamp, self.ero)
 		nss.save(NetworkStateService.LspStatus, key, timestamp, self.operationalStatus)
 		nss.save(NetworkStateService.LspLatency, key, timestamp, self.latency)

@@ -17,10 +17,14 @@ class NetworkStateService(object):
 	InterfaceInBps = "InterfaceInBps"
 	InterfaceOutBps = "InterfaceOutBps"
 
+	def snapshot(self, name):
+		return name + "_"
+
 	def create(self, name):
 		print "create table: " + name
 		c = self.connection.cursor();
 		c.execute("CREATE TABLE " + name + " (name text, key text, time real, value text, PRIMARY KEY(name, key, time))");
+		c.execute("CREATE TABLE " + self.snapshot(name) + " (name text, key text, time real, value text, PRIMARY KEY(name, key))");
 		self.connection.commit()
 		self.tables.append(name)
 
@@ -50,20 +54,25 @@ class NetworkStateService(object):
 		if name not in self.tables:
 			self.create(name);
 			time = time[:-1] + "0";
-			c.execute("INSERT OR REPLACE INTO " + name + " VALUES ('" + name + "','" + key + "','" + time + "','" + value + "')");
+			for table in [name, self.snapshot(name)]:
+				c.execute("INSERT OR REPLACE INTO " + table + " VALUES ('" + name + "','" + key + "','" + time + "','" + value + "')");
 		else :
-			c.execute("SELECT time, value FROM " + name + " WHERE key = '" + key + "' AND time = (SELECT max(time) FROM " + name + ")");
+			for table in [name, self.snapshot(name)]:
+				c.execute("SELECT time, value FROM " + table + " WHERE key = '" + key + "' AND time = (SELECT max(time) FROM " + name + ")");
 			row = c.fetchone();
 			if row is None:
-				c.execute("INSERT OR REPLACE INTO " + name + " VALUES ('" + name + "','" + key + "','" + time + "','" + value + "')");
+				for table in [name, self.snapshot(name)]:
+					c.execute("INSERT OR REPLACE INTO " + table + " VALUES ('" + name + "','" + key + "','" + time + "','" + value + "')");
 			else :
 				if row[0] + 10 <= int(time):
 					sec = row[0] + 10;
 					while sec <= int(time):
 						if sec - row[0] < int(time) - sec:
-							c.execute("INSERT OR REPLACE INTO " + name + " VALUES ('" + name + "','" + key + "','" + str(sec) + "','" + str(row[1]) + "')");
+							for table in [name, self.snapshot(name)]:
+								c.execute("INSERT OR REPLACE INTO " + table + " VALUES ('" + name + "','" + key + "','" + str(sec) + "','" + str(row[1]) + "')");
 						else:
-							c.execute("INSERT OR REPLACE INTO " + name + " VALUES ('" + name + "','" + key + "','" + str(sec) + "','" + value + "')");
+							for table in [name, self.snapshot(name)]:
+								c.execute("INSERT OR REPLACE INTO " + table + " VALUES ('" + name + "','" + key + "','" + str(sec) + "','" + value + "')");
 						sec += 10;
 
 		print "commit to database: %s, %s, %s, %s" % (name, key, time, value)
@@ -77,6 +86,7 @@ class NetworkStateService(object):
 		try:
 			jsons = [];
 			rows = c.execute(query);
+			print "hah"
 			for row in rows:
 				json = {}
 				json['name'] = row[0];
@@ -84,8 +94,10 @@ class NetworkStateService(object):
 				json['time'] = row[2];
 				json['value'] = row[3];
 				jsons.append(json);
+			print "returning: " + str(jsons)
 			return jsons;
 		except Exception, e:
+			raise e
 			return [];
 
 	def clear(self):
