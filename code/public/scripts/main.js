@@ -289,20 +289,31 @@ var QueryForm = React.createClass({
   },
   render: function() {
     return (
-      <form className="queryForm" onSubmit={this.handleSubmit}>
+      <form className="queryForm form-horizontal" onSubmit={this.handleSubmit}>
+        <br/>
         <div className="form-group">
-          <label>Name</label>
-          <input type="text" className="form-control" value={this.state.name} placeholder="Name ..." onChange={this.handleNameChange} />
+          <div className="col-sm-offset-1 col-sm-10 input-group">
+            <span className="input-group-addon">Name</span>
+            <input type="text" className="form-control" value={this.state.name} placeholder="Name ..." onChange={this.handleNameChange} />
+          </div>
         </div>
         <div className="form-group">
-          <label>Link</label>
-          <input type="text" className="form-control" value={this.state.link} placeholder="Link ..." onChange={this.handleLinkChange} />
+          <div className="col-sm-offset-1 col-sm-10 input-group">
+            <span className="input-group-addon">Link</span>
+            <input type="text" className="form-control" value={this.state.link} placeholder="Link ..." onChange={this.handleLinkChange} />
+          </div>
         </div>
         <div className="form-group">
-          <label>LSP</label>
-          <input type="text" className="form-control" value={this.state.lsp} placeholder="LSP ..." onChange={this.handleLSPChange} />
+          <div className="col-sm-offset-1 col-sm-10 input-group">
+            <span className="input-group-addon">LSP</span>
+            <input type="text" className="form-control" value={this.state.lsp} placeholder="LSP ..." onChange={this.handleLSPChange} />
+          </div>
         </div>
-        <button type="submit" value = "Post" className="btn btn-default">Submit</button>
+        <div className="form-group">
+          <div className="col-sm-offset-1 col-sm-10">
+            <button type="submit" value = "Post" className="btn btn-primary">Submit Query</button>
+          </div>
+        </div>
       </form>
     );
   }
@@ -312,17 +323,23 @@ var QueryList = React.createClass({
   render: function() {
     var queryNodes = this.props.queries.map(function(query) {
       return (
-        <Query name={query.name} key={query.id}>
-          {query.link}
-          <br/>
-          {query.lsp}
-        </Query>
+        <tr>
+          <td>
+            <Query name={query.name} key={query.id}>
+              {query.link}
+              <br/>
+              {query.lsp}
+            </Query>
+          </td>
+        </tr>
       );
     });
     return (
-      <div className="querytList">
-        {queryNodes}
-      </div>
+      <table className="querytList table-fixed table table-striped">
+        <tbody>
+          {queryNodes}
+        </tbody>
+      </table>
     );
   }
 });
@@ -331,9 +348,11 @@ var Query = React.createClass({
   render: function() {
     return (
       <div className="query">
-        <h4 className="queryName">
-          {this.props.name}
-        </h4>
+        <a href="#">
+          <h4 className="queryName">
+            {this.props.name}
+          </h4>
+        </a>
         {this.props.children}
       </div>
     );
@@ -503,7 +522,7 @@ var NetworkMap = React.createClass({
   initializeGoogleMap: function() {
     // canvas
     var map = new google.maps.Map(document.getElementById('googleMap'), {
-        center: {lat: 37, lng: -100},
+        center: {lat: 37, lng: -95},
         zoom: 4
     });
     this.state.map = map;
@@ -529,16 +548,34 @@ var NetworkMap = React.createClass({
       <div>
           <div className="col-md-8">
             <div className="networkMap">
-              <div id="googleMap">
+              <br/>
+              <div className="panel panel-default">
+                <div className="panel-body">
+                  <div id="googleMap">
+                </div>
+              </div>
               </div>
             </div>
           </div>
           <div className="col-md-4">
-            <h1>Queries</h1>
-            <QueryList queries={this.state.queries} />
-          </div>
-          <div className="col-md-8">
-            <QueryForm onQuerySubmit={this.handleQuerySubmit} />
+            <br/>
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h3 className="panel-title">New Query</h3>
+              </div>
+              <div className="panel-body">
+                <QueryForm onQuerySubmit={this.handleQuerySubmit} />
+              </div>
+            </div>
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h3 className="panel-title">Queries History</h3>
+              </div>
+              <div className="panel-body">
+                <QueryList queries={this.state.queries} />
+              </div>
+            </div>
+            <br/>
           </div>
       </div>
     );

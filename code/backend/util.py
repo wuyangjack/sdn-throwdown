@@ -50,7 +50,6 @@ def getAuthHeader():
         'username': username,
         'password': password
     }
-    # {u'access_token': u'TbNd8I6KP7viwqV5YjrSqEROJyJo87jcmm5KVVdy/4Y=', u'token_type': u'Bearer'}
     response = requests.post("https://10.10.2.25:8443/oauth2/token",
                              data=payload, auth=(username, password), verify=False)
     json_data = json.loads(response.text)
@@ -155,8 +154,8 @@ routers = [
 ]
 
 # TODO:
-# nss = NetworkStateService("database/example.db");
-# nss.clear();
+nss = NetworkStateService("database/example.db");
+nss.clear();
 
 
 class ItfcTraffic(object):
@@ -171,6 +170,7 @@ class Node(object):
         self.hostname = hostname
         self.ipAddress = ipAddress
         self.coordinates = coordinates
+        nss.save(NetworkStateService.Router, self.hostname, time.time(), 1)
 
 
 class Link(object):
@@ -193,8 +193,18 @@ class Link(object):
         self.AZweight = 0
         self.ZAweight = 0
         self.length = length
-        # TODO:
-        # nss.save(NetworkStateService.Link, self.index, time.time(), 1);
+        # log
+        key = str(self.index) + "AZ"
+        timestamp = time.time()
+        nss.save(NetworkStateService.Link, key, timestamp, 1)
+        nss.save(NetworkStateService.LinkUtilization, key, timestamp, self.AZUtility)
+        nss.save(NetworkStateService.LinkStatus, key, timestamp, self.status)
+        nss.save(NetworkStateService.LinkLspCount, key, timestamp, self.AZlspCount)
+        key = str(self.index) + "ZA"
+        nss.save(NetworkStateService.Link, key, timestamp, 1)
+        nss.save(NetworkStateService.LinkUtilization, key, timestamp, self.ZAUtility)
+        nss.save(NetworkStateService.LinkStatus, key, timestamp, self.status)
+        nss.save(NetworkStateService.LinkLspCount, key, timestamp, self.ZAlspCount)
 
     @staticmethod
     def calculateDistance(node1, node2):
@@ -243,7 +253,7 @@ class Link(object):
 
 
 class LSP(object):
-    def __init__(self, lspIndex, group, name, fromNodeIndex, toNodeIndex, ero, operationalStatus):
+    def __init__(self, lspIndex, group, name, fromNodeIndex, toNodeIndex, ero, operationalStatus, latency):
         self.lspIndex = lspIndex
         self.group = group
         self.name = name
@@ -251,6 +261,13 @@ class LSP(object):
         self.toNodeIndex = toNodeIndex
         self.ero = ero
         self.operationalStatus = operationalStatus
+        self.latency = latency
+        # log
+        key = self.name
+        timestamp = time.time()
+        nss.save(NetworkStateService.LspRoute, key, timestamp, self.ero)
+        nss.save(NetworkStateService.LspStatus, key, timestamp, self.operationalStatus)
+        nss.save(NetworkStateService.LspLatency, key, timestamp, self.latency)
 
 
 def getGroup(name):
@@ -261,12 +278,15 @@ def getGroup(name):
 def getNodes():
     r = requests.get(
         'https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/nodes', headers=authHeader, verify=False)
-    nodes = {}
-    for node in r.json():
-        tmpNode = Node(node["nodeIndex"], node["hostName"], node[
-            "name"], node["topology"]["coordinates"]["coordinates"])
-        nodes[node["name"]] = tmpNode
-    return nodes
+    try:
+        nodes = {}
+        for node in r.json():
+            tmpNode = Node(node["nodeIndex"], node["hostName"], node[
+                "name"], node["topology"]["coordinates"]["coordinates"])
+            nodes[node["name"]] = tmpNode
+        return nodes
+    except Exception, e:
+        raise e
 
 
 def getLinks(nodes):
@@ -313,12 +333,19 @@ def getLSPs(nodes, links):
         toNodeIndex = nodes[lsp["to"]["address"]].index
         ero = []
         ero.append(fromNodeIndex)
+        lspNodes = []
         for node in lsp["liveProperties"]["ero"]:
-            nodeIndex = nodes[itfcToNode[node["address"]]].index
+            lspNode = nodes[itfcToNode[node["address"]]]
+            nodeIndex = lspNode.index
             ero.append(nodeIndex)
+            lspNodes.append(lspNode)
         linkLspCountHelper(ero, links)
+        latency = 0
+        for i in xrange(1, len(lspNodes)):
+            latency += Link.calculateDistance(lspNodes[i - 1], lspNodes[i]) * 6371.393 / 300000.0
+
         tmpLSP = LSP(lsp["lspIndex"], getGroup(lsp["name"]), lsp["name"], fromNodeIndex, toNodeIndex, ero,
-                     lsp["operationalStatus"]);
+                     lsp["operationalStatus"], latency);
         lsps.append(tmpLSP)
     return lsps
 
@@ -337,6 +364,13 @@ def getTrafficStats():
                 trafficStat["stats"][0]["output-bps"][0]["data"]
             )
             trafficStats[address] = itfcTraffic
+            # log
+            key = address
+            timestamp = time.time()
+            nss.save(NetworkStateService.Interface, key, timestamp, 1)
+            nss.save(NetworkStateService.InterfaceInBps, key, timestamp, itfcTraffic.inputBPS)
+            nss.save(NetworkStateService.InterfaceOutBps, key, timestamp, itfcTraffic.outputBPS)
+
     return trafficStats
 
 
@@ -419,8 +453,10 @@ def updateLSP(name, path, links):
 
     new_lsp['plannedProperties'] = {'ero': ero}
 
-    return requests.put('https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps/' + str(new_lsp['lspIndex']),
-                 json=new_lsp, headers=authHeader, verify=False).text
+    return requests.put(
+        'https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps/' + str(new_lsp['lspIndex']),
+        json=new_lsp, headers=authHeader, verify=False).text
+
 
 # nodes = getNodes()
 # links = getLinks(nodes)
@@ -432,38 +468,37 @@ def updateLSP(name, path, links):
 # print path
 # print updateLSP("GROUP_FIVE_SF_NY_LSP1", path, links)
 
-# while True:
-#     try:
-#         ts = time.time()
-#         st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-#         print "update topology @ " + st
-#         nodes = getNodes()
-#         links = getLinks(nodes)
-#         lsps = getLSPs(nodes, links)
-#         trafficStats = getTrafficStats()
-#         updateLinkUtility(links, trafficStats)
-#
-#         data = {'timestamp': ts, 'nodes': nodes.values(), 'links': links.values(), 'lsps': lsps}
-#
-#         '''
-# 		data = json.dumps(
-# 				data,
-# 				default=lambda o: o.__dict__,
-# 				indent=4,
-# 				separators=(',', ': ')
-# 		)
-# 		'''
-#         with open('database/topology.json', 'w') as outfile:
-#             json.dump(
-#                 data,
-#                 outfile,
-#                 default=lambda o: o.__dict__,
-#                 indent=4,
-#                 separators=(',', ': ')
-#             )
-#
-#     except Exception, e:
-#         print "ERROR: cannot update topology: "
-#         print str(e)
-#
-#     time.sleep(10)
+while True:
+    try:
+        ts = time.time()
+        st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+        print "update topology @ " + st
+        nodes = getNodes()
+        links = getLinks(nodes)
+        lsps = getLSPs(nodes, links)
+        trafficStats = getTrafficStats()
+        updateLinkUtility(links, trafficStats)
+
+        data = {'timestamp': ts, 'nodes': nodes.values(), 'links': links.values(), 'lsps': lsps}
+
+        '''
+		data = json.dumps(
+				data,
+				default=lambda o: o.__dict__,
+				indent=4,
+				separators=(',', ': ')
+		)
+		'''
+        with open('database/topology.json', 'w') as outfile:
+            json.dump(
+                data,
+                outfile,
+                default=lambda o: o.__dict__,
+                indent=4,
+                separators=(',', ': ')
+            )
+
+    except Exception, e:
+        print "ERROR: cannot update topology: "
+        print str(e)
+    time.sleep(10)

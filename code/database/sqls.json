@@ -1,26 +1,8 @@
 [
     {
-        "link": "sdf",
-        "name": "asdf",
-        "lsp": "fdsa",
-        "id": 1456529887451
-    },
-    {
-        "link": "sdf",
-        "name": "asf",
-        "lsp": "dsf",
-        "id": 1456531151472
-    },
-    {
-        "link": "fad",
-        "name": "fda",
-        "lsp": "fd",
-        "id": 1456531621566
-    },
-    {
-        "link": "fdsa",
-        "name": "fads",
-        "lsp": "fad",
-        "id": 1456531626634
+        "link": "SELECT * FROM Link WHERE time = (SELECT max(time) FROM Link)",
+        "name": "Full Network",
+        "lsp": "SELECT * FROM Lsp WHERE time = (SELECT max(time) FROM Lsp)",
+        "id": 1456532211581
     }
 ]
