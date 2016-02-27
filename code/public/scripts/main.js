@@ -174,11 +174,14 @@ var LinkPath = {
     var a_node = LinkPath.nodeCoordinates[self.json.ANode.nodeIndex];
     var z_node = LinkPath.nodeCoordinates[self.json.ZNode.nodeIndex];
     // color:
+    /*
     var colors = ['#FF0000','#FF1100','#FF2200','#FF3300','#FF4400','#FF5500','#FF6600',
                   '#FF7700','#FF8800','#FF9900','#FFAA00','#FFBB00','#FFCC00','#FFDD00',
                   '#FFEE00','#FFFF00','#EEFF00','#DDFF00','#CCFF00','#BBFF00','#AAFF00',
                   '#99FF00','#88FF00','#77FF00','#66FF00','#55FF00','#44FF00','#33FF00',
                   '#22FF00','#11FF00','#00FF00'];
+    */
+    var colors = ['#FF0000', '#FF3300','#FF6600','#FF9900','#FFCC00','#FFFF00','#CCFF00','#99FF00','#66FF00','#33FF00','#00FF00'];
 
     var offset = 0;
     var coordinates = [
@@ -188,7 +191,7 @@ var LinkPath = {
 
     if (self.direction) {
       if (self.json.status == 'Up') {
-        var scale = Math.round((1 - parseFloat(self.json.AZUtility)) * 30);
+        var scale = Math.round((1 - parseFloat(self.json.AZUtility)) * 10);
         var color = colors[scale];
       } else {
         var color = '#000000';
@@ -196,7 +199,7 @@ var LinkPath = {
       var stroke_weight = parseFloat(self.json.AZlspCount) * 0.2 + 2;
     } else {
       if (self.json.status == 'Up') {
-        var scale = Math.round((1 - parseFloat(self.json.ZAUtility)) * 30);
+        var scale = Math.round((1 - parseFloat(self.json.ZAUtility)) * 10);
         var color = colors[scale];
       } else {
         var color = '#000000';
@@ -228,21 +231,6 @@ var LinkPath = {
     });
 
     path.setMap(self.map);
-
-    /*
-    var info = new google.maps.InfoWindow({
-      content: "<strong>" + self.json.index + "</strong>",
-      maxWidth: 200
-    });
-
-    path.addListener('mouseover', function() {
-      info.open(self.map, path);
-    });
-
-    path.addListener('mouseout', function() {
-      info.close();
-    });
-    */
     self.path = path;
     return self;
   },
@@ -619,6 +607,9 @@ var NetworkMap = React.createClass({
   },
 
   handleQueryExecute: function(query) {
+    //this.state.lspFilterQuery = query.lsp, 'key';
+    //this.state.linkFilterQuery = NetworkStateService.uniqueState(query.link, 'key');
+
     NetworkStateService.executeSql(this, query.lsp, function(obj, data) {
       data = NetworkStateService.uniqueState(data, 'key');
       obj.state.lspFilter = data;
