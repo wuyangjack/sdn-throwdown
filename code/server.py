@@ -10,8 +10,11 @@
 
 import json
 import os
+import sys
 import threading
 import time
+sys.path.insert(0, 'backend')
+from states import NetworkStateService
 from flask import Flask, Response, request
 
 app = Flask(__name__, static_url_path='', static_folder='public')
@@ -20,7 +23,7 @@ app.add_url_rule('/', 'root', lambda: app.send_static_file('index.html'))
 @app.route('/api/comments', methods=['GET', 'POST'])
 def comments_handler():
 
-    with open('comments.json', 'r') as file:
+    with open('database/comments.json', 'r') as file:
         comments = json.loads(file.read())
 
     if request.method == 'POST':
@@ -33,6 +36,37 @@ def comments_handler():
 
     return Response(json.dumps(comments), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
 
+@app.route('/api/sqls', methods=['GET', 'POST'])
+def sqls_handler():
+
+    with open('database/sqls.json', 'r') as file:
+        sqls = json.loads(file.read())
+
+    if request.method == 'POST':
+        newSql = request.form.to_dict()
+        newSql['id'] = int(time.time() * 1000)
+        sqls.append(newSql)
+
+        with open('database/sqls.json', 'w') as file:
+            file.write(json.dumps(sqls, indent=4, separators=(',', ': ')))
+
+    return Response(json.dumps(sqls), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
+
+
+@app.route('/api/sql', methods=['GET'])
+def sql_handler():
+    query_string = request.args.get('query');
+
+    print "evaluating: " + query_string;
+    nss = NetworkStateService("database/example.db");
+    data = nss.query(query_string);
+    nss.close();
+    #result = {};
+    #result['time'] = 1;
+    
+    return Response(json.dumps(data), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
+
+
 @app.route('/api/topology', methods=['GET'])
 def get_topology():
     with open('database/topology.json', 'r') as file:
@@ -40,19 +74,7 @@ def get_topology():
 
     return Response(json.dumps(topology), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
 
-'''
-def update_topology(interval):
-    while True:
-        try:
-            print "update topology"
-        except Exception, e:
-            print "error updating topology"
-        time.sleep(interval)
-'''
-
 if __name__ == '__main__':
-    #thread = threading.Thread(target = update_topology, args = (5, ))
-    #thread.start()
     app.run(port=int(os.environ.get("PORT",3000)), debug=True)
 
 

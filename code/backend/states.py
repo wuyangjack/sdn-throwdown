@@ -2,16 +2,15 @@ import requests
 import json
 import sqlite3
 
-
-'''
-CREATE TABLE LinkStatus (name text, key text, time real, value real)
-SELECT name FROM sqlite_master WHERE type = 'table'
-'''
 class NetworkStateService(object):
+
+	Link = "Link";
+	LinkUtilization = "LinkUtilization";
+	Router = "Router";
 
 	def create(self, name):
 		c = self.connection.cursor();
-		c.execute("CREATE TABLE " + name + " (name text, key text, time real, value real, PRIMARY KEY(name, key, time))");
+		c.execute("CREATE TABLE " + name + " (name text, key text, time real, value text, PRIMARY KEY(name, key, time))");
 
 	def __init__(self, database):
 		self.connection = sqlite3.connect(database);
@@ -23,7 +22,16 @@ class NetworkStateService(object):
 			print "loading table: " + row[0]
 			self.tables.append(row[0])
 
+	def close(self):
+		self.connection.close()
+
 	def save(self, name, key, time, value):
+		name = str(name);
+		key = str(key);
+		time = int(time);
+		time -= time % 10;
+		time = str(time);
+		value = str(value);
 		c = self.connection.cursor();
 
 		# Create table
@@ -54,9 +62,19 @@ class NetworkStateService(object):
 	def query(self, query):
 		c = self.connection.cursor();
 		print "executing query: " + query;
-		rows = c.execute(query);
-		for row in rows:
-			print row;
+		try:
+			jsons = [];
+			rows = c.execute(query);
+			for row in rows:
+				json = {}
+				json['name'] = row[0];
+				json['key'] = row[1];
+				json['time'] = row[2];
+				json['value'] = row[3];
+				jsons.append(json);
+			return jsons;
+		except Exception, e:
+			return [];
 
 	def clear(self):
 		c = self.connection.cursor();
@@ -65,6 +83,7 @@ class NetworkStateService(object):
 			c.execute("DROP TABLE " + row[0]);
 		self.connection.commit()
 
+'''
 nss = NetworkStateService("database/example.db");
 nss.save("LinkStatus", "10.0.0.1_10.0.0.2", "1456451402", "Up");
 nss.save("LinkUtilization", "10.0.0.1_10.0.0.2", "1456451402", "0.04");
@@ -76,4 +95,5 @@ nss.query("SELECT * FROM LinkUtilization");
 nss.save("LinkUtilization", "10.0.0.1_10.0.0.2", "1456451452", "0.04");
 nss.query("SELECT * FROM LinkUtilization");
 nss.query("SELECT * FROM LinkStatus");
+'''
 #nss.clear();

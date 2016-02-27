@@ -5,6 +5,7 @@ import time
 import math
 import heapq
 import datetime
+from states import NetworkStateService
 
 
 class PathNode(object):
@@ -165,6 +166,9 @@ routers = [
      }
 ]
 
+nss = NetworkStateService("database/example.db");
+nss.clear();
+
 
 class ItfcTraffic(object):
     def __init__(self, inputBPS, outputBPS):
@@ -200,6 +204,7 @@ class Link(object):
         self.AZweight = 0
         self.ZAweight = 0
         self.length = length
+        nss.save(NetworkStateService.Link, self.index, time.time(), 1);
 
     @staticmethod
     def calculateDistance(node1, node2):
