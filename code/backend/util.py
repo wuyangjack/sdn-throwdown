@@ -153,13 +153,18 @@ routers = [
      }
 ]
 
-# TODO:
-nss = NetworkStateService("database/states.db");
-
 class ItfcTraffic(object):
-    def __init__(self, inputBPS, outputBPS):
+    def __init__(self, address, inputBPS, outputBPS):
+    	self.address = address
         self.inputBPS = inputBPS
         self.outputBPS = outputBPS
+
+    def log(self, nss):
+		key = self.address
+		timestamp = time.time()
+		nss.save(NetworkStateService.Interface, key, timestamp, 1)
+		nss.save(NetworkStateService.InterfaceInBps, key, timestamp, self.inputBPS)
+		nss.save(NetworkStateService.InterfaceOutBps, key, timestamp, self.outputBPS)
 
 
 class Node(object):
@@ -169,7 +174,7 @@ class Node(object):
         self.ipAddress = ipAddress
         self.coordinates = coordinates
 
-    def log(self):
+    def log(self, nss):
         nss.save(NetworkStateService.Router, self.hostname, time.time(), 1)
 
 
@@ -194,15 +199,15 @@ class Link(object):
         self.ZAweight = 0
         self.length = length
 
-    def log(self):
+    def log(self, nss):
         # log
-        key = str(self.index) + "AZ"
+        key = str(self.ANode['nodeIndex']) + "_" + str(self.ZNode['nodeIndex'])
         timestamp = time.time()
         nss.save(NetworkStateService.Link, key, timestamp, 1)
         nss.save(NetworkStateService.LinkUtilization, key, timestamp, self.AZUtility)
         nss.save(NetworkStateService.LinkStatus, key, timestamp, self.status)
         nss.save(NetworkStateService.LinkLspCount, key, timestamp, self.AZlspCount)
-        key = str(self.index) + "ZA"
+        key = str(self.ZNode['nodeIndex']) + "_" + str(self.ANode['nodeIndex'])
         nss.save(NetworkStateService.Link, key, timestamp, 1)
         nss.save(NetworkStateService.LinkUtilization, key, timestamp, self.ZAUtility)
         nss.save(NetworkStateService.LinkStatus, key, timestamp, self.status)
@@ -265,7 +270,7 @@ class LSP(object):
         self.operationalStatus = operationalStatus
         self.latency = latency
 
-    def log(self):
+    def log(self, nss):
         # log
         key = self.name
         timestamp = time.time()
@@ -364,28 +369,21 @@ def getTrafficStats():
             address = interface["address"]
             trafficStat = json.loads(r.lrange(hostname + ":" + interfaceName + ":" + "traffic statistics", 0, 0)[0])
             itfcTraffic = ItfcTraffic(
+            	address,
                 trafficStat["stats"][0]["input-bps"][0]["data"],
                 trafficStat["stats"][0]["output-bps"][0]["data"]
             )
             trafficStats[address] = itfcTraffic
-            # log
-            key = address
-            timestamp = time.time()
-            nss.save(NetworkStateService.Interface, key, timestamp, 1)
-            nss.save(NetworkStateService.InterfaceInBps, key, timestamp, itfcTraffic.inputBPS)
-            nss.save(NetworkStateService.InterfaceOutBps, key, timestamp, itfcTraffic.outputBPS)
-
     return trafficStats
-
 
 def updateLinkUtility(links, trafficStats):
     for link in links.values():
         link.updateAZUtility(
-            (int(trafficStats[link.ANode["ipAddress"]].outputBPS) + int(
-                trafficStats[link.ZNode["ipAddress"]].inputBPS)) / 2.0)
+            max(float(trafficStats[link.ANode["ipAddress"]].outputBPS), float(
+                trafficStats[link.ZNode["ipAddress"]].inputBPS)))
         link.updateZAUtility(
-            (int(trafficStats[link.ZNode["ipAddress"]].outputBPS) + int(
-                trafficStats[link.ANode["ipAddress"]].inputBPS)) / 2.0)
+            max(float(trafficStats[link.ZNode["ipAddress"]].outputBPS), float(
+                trafficStats[link.ANode["ipAddress"]].inputBPS)))
 
 
 def generateLSP(graph, sNodeIndex, tNodeIndex, a, b, c):
@@ -472,6 +470,8 @@ def updateLSP(name, path, links):
 # print path
 # print updateLSP("GROUP_FIVE_SF_NY_LSP1", path, links)
 
+nss = NetworkStateService("database/states.db");
+
 while True:
     try:
         ts = time.time()
@@ -484,13 +484,16 @@ while True:
         updateLinkUtility(links, trafficStats)
 
         for name in nodes:
-        	nodes[name].log()
+        	nodes[name].log(nss)
 
         for lsp in lsps:
-        	lsp.log()
+        	lsp.log(nss)
 
         for name in links:
-        	links[name].log()
+        	links[name].log(nss)
+
+        for address in trafficStats:
+        	trafficStats[address].log(nss)
 
         data = {'timestamp': ts, 'nodes': nodes.values(), 'links': links.values(), 'lsps': lsps}
 
