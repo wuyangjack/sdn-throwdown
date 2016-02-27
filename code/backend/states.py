@@ -66,7 +66,7 @@ class NetworkStateService(object):
 							c.execute("INSERT OR REPLACE INTO " + name + " VALUES ('" + name + "','" + key + "','" + str(sec) + "','" + value + "')");
 						sec += 10;
 
-		print "save to database" 
+		print "commit to database: %s, %s, %s, %s" % (name, key, time, value)
 	
 		# Save (commit) the changes
 		self.connection.commit()
