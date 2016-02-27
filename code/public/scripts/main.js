@@ -477,6 +477,16 @@ var NetworkMap = React.createClass({
     };
   },
 
+  drawTables: function() {
+    var linkFilter = this.state.linkFilter;
+    var lspFilter = this.state.lspFilter;
+
+    var linkStatistics = {}
+
+    var lspStatistics = {}
+
+  },
+
   drawTopology: function() {
     var map = this.state.map;
 
