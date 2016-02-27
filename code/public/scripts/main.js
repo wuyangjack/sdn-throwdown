@@ -203,7 +203,7 @@ var LinkPath = {
       }
       var stroke_weight = parseFloat(self.json.ZAlspCount) * 0.2 + 2;
     }
-
+    console.log(self.direction);
     var opacity = 0.6;
     var arrow = {
       path: self.direction ? google.maps.SymbolPath.FORWARD_CLOSED_ARROW : google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
@@ -289,7 +289,7 @@ var QueryForm = React.createClass({
   },
   render: function() {
     return (
-      <form>
+      <form className="queryForm" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label>Name</label>
           <input type="text" className="form-control" value={this.state.name} placeholder="Name ..." onChange={this.handleNameChange} />
@@ -302,23 +302,20 @@ var QueryForm = React.createClass({
           <label>LSP</label>
           <input type="text" className="form-control" value={this.state.lsp} placeholder="LSP ..." onChange={this.handleLSPChange} />
         </div>
-        <button type="submit" className="btn btn-default">Submit</button>
+        <button type="submit" value = "Post" className="btn btn-default">Submit</button>
       </form>
     );
   }
 });
 
-var queries = [
-  {id: 1, name: "Our LSP", query: "This is one query"},
-  {id: 2, name: "Other Query", query: "This is *another* query"}
-];
-
 var QueryList = React.createClass({
   render: function() {
     var queryNodes = this.props.queries.map(function(query) {
       return (
-        <Query author={query.name} key={query.id}>
-          {query.query}
+        <Query name={query.name} key={query.id}>
+          {query.link}
+          <br/>
+          {query.lsp}
         </Query>
       );
     });
@@ -375,6 +372,8 @@ var NetworkMap = React.createClass({
   },
 
   drawTopology: function() {
+    console.log("draw")
+    console.log(this.state);
     var map = this.state.map;
 
     // update routers
@@ -420,8 +419,6 @@ var NetworkMap = React.createClass({
       linkPaths[name] = pt_new;
     });
 
-    this.state.direction = !this.state.direction;
-
     // update LSPs
     var lsps = this.state.topology.lsps;
     var lspPaths = this.state.lspPaths;
@@ -444,15 +441,18 @@ var NetworkMap = React.createClass({
       }
     });
 
+    console.log("draw done")
   },
 
   loadTopologyFromServer: function() {
+    console.log("@@@");
     $.ajax({
       url: this.props.url,
       dataType: 'json',
       cache: false,
       success: function(topology) {
         this.state.topology = topology;
+        this.state.direction = !this.state.direction;
         this.setState(this.state);
       }.bind(this),
       error: function(xhr, status, err) {
@@ -467,7 +467,8 @@ var NetworkMap = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(queries) {
-        this.setState({queries: queries});
+        this.state.queries = queries;
+        this.setState(this.state);
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.query_url, status, err.toString());
@@ -479,17 +480,21 @@ var NetworkMap = React.createClass({
     var query_history = this.state.queries;
     query.id = Date.now();
     var newQueries = query_history.concat([query]);
-    this.setState({queries: newQueries});
+    this.state.queries = newQueries;
+    this.setState(this.state);
+    console.log(query);
     $.ajax({
       url: this.props.query_url,
       dataType: 'json',
       type: 'POST',
-      queries: query,
-      success: function(query) {
-        this.setState({query: query});
+      data: query,
+      success: function(queries) {
+        this.state.queries = queries;
+        this.setState(this.state);
       }.bind(this),
       error: function(xhr, status, err) {
-        this.setState({queries: query_history});
+        this.state.queries = query_history;
+        this.setState(this.state);
         console.error(this.props.query_url, status, err.toString());
       }.bind(this)
     });
