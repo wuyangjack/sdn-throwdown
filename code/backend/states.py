@@ -26,6 +26,12 @@ class NetworkStateService(object):
 		self.connection.close()
 
 	def save(self, name, key, time, value):
+		name = str(name);
+		key = str(key);
+		time = int(time);
+		time -= time % 10;
+		time = str(time);
+		value = str(value);
 		c = self.connection.cursor();
 
 		# Create table

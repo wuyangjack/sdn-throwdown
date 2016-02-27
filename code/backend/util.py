@@ -3,6 +3,7 @@ import redis
 import json
 import time
 import datetime
+from states import NetworkStateService
 
 def getAuthHeader():
 	username = 'group5'
@@ -130,6 +131,8 @@ routers = [
 	 }
 ]
 
+nss = NetworkStateService("database/example.db");
+nss.clear();
 
 class ItfcTraffic(object):
 	def __init__(self, inputBPS, outputBPS):
@@ -160,6 +163,7 @@ class Link(object):
 		self.ZAlspCount = ZAlspCount
 		self.AZUtility = AZUtility
 		self.ZAUtility = ZAUtility
+		nss.save(NetworkStateService.Link, self.index, time.time(), 1);
 
 	def updateAZUtility(self, AZBPS):
 		if self.AZbandwidth == 0:
@@ -288,7 +292,6 @@ def updateLinkUtility(links, trafficStats):
 						(int(trafficStats[link.ZNode["ipAddress"]].outputBPS) + int(
 							trafficStats[link.ANode["ipAddress"]].inputBPS)) / 2.0)
 
-
 while True:
 	try:
 		ts = time.time()
@@ -320,8 +323,10 @@ while True:
 			)
 
 	except Exception, e:
+		raise e
 		print "ERROR: cannot update topology: "
 		print str(e)
+		raise e
 	time.sleep(10)
 
 

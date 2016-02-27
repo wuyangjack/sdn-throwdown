@@ -69,7 +69,6 @@
             "ero": [
                 7,
                 6,
-                3,
                 5,
                 2,
                 1
@@ -98,7 +97,6 @@
             "ero": [
                 7,
                 6,
-                3,
                 5,
                 2,
                 1
@@ -114,7 +112,6 @@
             "ero": [
                 7,
                 6,
-                3,
                 5,
                 2,
                 1
@@ -349,9 +346,10 @@
             "toNodeIndex": 1,
             "ero": [
                 7,
+                6,
                 3,
-                5,
-                4,
+                2,
+                8,
                 1
             ],
             "lspIndex": 25,
@@ -364,8 +362,9 @@
             "toNodeIndex": 1,
             "ero": [
                 7,
+                8,
                 3,
-                5,
+                2,
                 4,
                 1
             ],
@@ -379,7 +378,10 @@
             "toNodeIndex": 1,
             "ero": [
                 7,
+                6,
                 3,
+                8,
+                2,
                 5,
                 4,
                 1
@@ -395,7 +397,7 @@
             "ero": [
                 7,
                 3,
-                5,
+                2,
                 4,
                 1
             ],
@@ -678,8 +680,7 @@
             "ero": [
                 1,
                 4,
-                2,
-                8,
+                5,
                 3,
                 7
             ],
@@ -707,8 +708,7 @@
             "ero": [
                 1,
                 4,
-                2,
-                8,
+                5,
                 3,
                 7
             ],
@@ -723,8 +723,7 @@
             "ero": [
                 1,
                 4,
-                2,
-                8,
+                5,
                 3,
                 7
             ],
@@ -738,7 +737,9 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                2,
+                5,
+                3,
                 7
             ],
             "lspIndex": 53,
@@ -751,7 +752,9 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                2,
+                5,
+                3,
                 7
             ],
             "lspIndex": 54,
@@ -778,7 +781,9 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                2,
+                5,
+                3,
                 7
             ],
             "lspIndex": 56,
@@ -959,6 +964,7 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
+                4,
                 2,
                 5,
                 6,
@@ -975,8 +981,7 @@
             "ero": [
                 1,
                 2,
-                5,
-                6,
+                8,
                 7
             ],
             "lspIndex": 70,
@@ -989,9 +994,12 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
+                4,
                 2,
                 5,
                 6,
+                3,
+                8,
                 7
             ],
             "lspIndex": 71,
@@ -1004,7 +1012,7 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                2,
+                4,
                 5,
                 6,
                 7
@@ -1045,7 +1053,9 @@
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                2,
+                5,
+                3,
                 7
             ],
             "lspIndex": 75,
@@ -1221,7 +1231,7 @@
             "name": "GROUP_TWO_SF_NY_LSP4"
         }
     ],
-    "timestamp": 1456527839.874829,
+    "timestamp": 1456531881.569544,
     "nodes": [
         {
             "index": 2,
@@ -1300,10 +1310,10 @@
         {
             "status": "Up",
             "index": 4,
-            "AZUtility": 0.870186508,
-            "ZAUtility": 0.38435578,
+            "AZUtility": 0.872912812,
+            "ZAUtility": 0.332875716,
             "AZlspCount": 0,
-            "ZAlspCount": 0,
+            "ZAlspCount": 3,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 2,
@@ -1318,10 +1328,10 @@
         {
             "status": "Up",
             "index": 15,
-            "AZUtility": 0.637083648,
-            "ZAUtility": 0.953535744,
-            "AZlspCount": 31,
-            "ZAlspCount": 30,
+            "AZUtility": 0.622051808,
+            "ZAUtility": 0.953578744,
+            "AZlspCount": 32,
+            "ZAlspCount": 28,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 7,
@@ -1336,10 +1346,10 @@
         {
             "status": "Up",
             "index": 12,
-            "AZUtility": 2.808e-06,
-            "ZAUtility": 0.100739284,
-            "AZlspCount": 5,
-            "ZAlspCount": 10,
+            "AZUtility": 3.68e-06,
+            "ZAUtility": 0.07834816,
+            "AZlspCount": 9,
+            "ZAlspCount": 7,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 4,
@@ -1354,10 +1364,10 @@
         {
             "status": "Up",
             "index": 6,
-            "AZUtility": 0.870077924,
-            "ZAUtility": 0.195549244,
-            "AZlspCount": 5,
-            "ZAlspCount": 7,
+            "AZUtility": 0.867627548,
+            "ZAUtility": 0.051913316,
+            "AZlspCount": 7,
+            "ZAlspCount": 6,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 2,
@@ -1372,10 +1382,10 @@
         {
             "status": "Up",
             "index": 2,
-            "AZUtility": 0.206013516,
-            "ZAUtility": 0.91229032,
-            "AZlspCount": 30,
-            "ZAlspCount": 29,
+            "AZUtility": 0.309219068,
+            "ZAUtility": 0.912467244,
+            "AZlspCount": 26,
+            "ZAlspCount": 30,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 1,
@@ -1390,10 +1400,10 @@
         {
             "status": "Up",
             "index": 8,
-            "AZUtility": 0.211400284,
-            "ZAUtility": 0.863362204,
-            "AZlspCount": 4,
-            "ZAlspCount": 4,
+            "AZUtility": 0.231426416,
+            "ZAUtility": 0.863416712,
+            "AZlspCount": 8,
+            "ZAlspCount": 1,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 3,
@@ -1408,8 +1418,8 @@
         {
             "status": "Up",
             "index": 11,
-            "AZUtility": 0.388613408,
-            "ZAUtility": 0.0,
+            "AZUtility": 0.347962536,
+            "ZAUtility": 0.077412752,
             "AZlspCount": 1,
             "ZAlspCount": 3,
             "AZbandwidth": 1000000000,
@@ -1426,10 +1436,10 @@
         {
             "status": "Up",
             "index": 5,
-            "AZUtility": 0.12901096,
-            "ZAUtility": 0.8605818,
-            "AZlspCount": 5,
-            "ZAlspCount": 2,
+            "AZUtility": 0.028702364,
+            "ZAUtility": 0.860269344,
+            "AZlspCount": 4,
+            "ZAlspCount": 3,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 2,
@@ -1444,9 +1454,9 @@
         {
             "status": "Up",
             "index": 1,
-            "AZUtility": 0.86197046,
-            "ZAUtility": 0.103234276,
-            "AZlspCount": 10,
+            "AZUtility": 0.862768704,
+            "ZAUtility": 0.125052464,
+            "AZlspCount": 11,
             "ZAlspCount": 8,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1462,10 +1472,10 @@
         {
             "status": "Up",
             "index": 3,
-            "AZUtility": 0.1562716,
-            "ZAUtility": 0.047224424,
-            "AZlspCount": 4,
-            "ZAlspCount": 7,
+            "AZUtility": 0.05183786,
+            "ZAUtility": 3.92e-07,
+            "AZlspCount": 7,
+            "ZAlspCount": 6,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 1,
@@ -1480,9 +1490,9 @@
         {
             "status": "Up",
             "index": 7,
-            "AZUtility": 0.404989488,
-            "ZAUtility": 0.048396476,
-            "AZlspCount": 5,
+            "AZUtility": 0.38037776,
+            "ZAUtility": 0.062466,
+            "AZlspCount": 8,
             "ZAlspCount": 4,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1498,10 +1508,10 @@
         {
             "status": "Up",
             "index": 13,
-            "AZUtility": 0.582390268,
-            "ZAUtility": 0.15577152,
-            "AZlspCount": 9,
-            "ZAlspCount": 6,
+            "AZUtility": 0.581635872,
+            "ZAUtility": 0.078345592,
+            "AZlspCount": 8,
+            "ZAlspCount": 9,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 5,
@@ -1516,10 +1526,10 @@
         {
             "status": "Up",
             "index": 9,
-            "AZUtility": 1.376e-06,
-            "ZAUtility": 0.103210912,
-            "AZlspCount": 0,
-            "ZAlspCount": 5,
+            "AZUtility": 2.188e-06,
+            "ZAUtility": 0.135070472,
+            "AZlspCount": 2,
+            "ZAlspCount": 3,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 3,
@@ -1534,10 +1544,10 @@
         {
             "status": "Up",
             "index": 14,
-            "AZUtility": 0.575439192,
-            "ZAUtility": 0.154643996,
-            "AZlspCount": 10,
-            "ZAlspCount": 9,
+            "AZUtility": 0.575256796,
+            "ZAUtility": 0.154631964,
+            "AZlspCount": 8,
+            "ZAlspCount": 11,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 6,
@@ -1552,10 +1562,10 @@
         {
             "status": "Up",
             "index": 10,
-            "AZUtility": 0.0,
-            "ZAUtility": 0.02610372,
-            "AZlspCount": 8,
-            "ZAlspCount": 1,
+            "AZUtility": 1.928e-06,
+            "ZAUtility": 0.12954468,
+            "AZlspCount": 1,
+            "ZAlspCount": 8,
             "AZbandwidth": 1000000000,
             "ANode": {
                 "nodeIndex": 3,
