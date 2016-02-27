@@ -203,13 +203,13 @@ class Link(object):
 		self.ZAweight = 0
 		self.length = length
 		# log
-		key = self.index + "AZ"
+		key = str(self.index) + "AZ"
 		timestamp = time.time()
 		nss.save(NetworkStateService.Link, key, timestamp, 1)
 		nss.save(NetworkStateService.LinkUtilization, key, timestamp, self.AZUtility)
 		nss.save(NetworkStateService.LinkStatus, key, timestamp, self.status)
 		nss.save(NetworkStateService.LinkLspCount, key, timestamp, self.AZlspCount)
-		key = self.index + "ZA"
+		key = str(self.index) + "ZA"
 		nss.save(NetworkStateService.Link, key, timestamp, 1)
 		nss.save(NetworkStateService.LinkUtilization, key, timestamp, self.ZAUtility)
 		nss.save(NetworkStateService.LinkStatus, key, timestamp, self.status)
@@ -262,7 +262,7 @@ class Link(object):
 
 
 class LSP(object):
-	def __init__(self, lspIndex, group, name, fromNodeIndex, toNodeIndex, ero, operationalStatus):
+	def __init__(self, lspIndex, group, name, fromNodeIndex, toNodeIndex, ero, operationalStatus, latency):
 		self.lspIndex = lspIndex
 		self.group = group
 		self.name = name
@@ -270,19 +270,13 @@ class LSP(object):
 		self.toNodeIndex = toNodeIndex
 		self.ero = ero
 		self.operationalStatus = operationalStatus
-		self.latency = self.getLatency()
+		self.latency = latency
 		# log
 		key = self.name
 		timestamp = time.time()
 		nss.save(NetworkStateService.LspRoute, key, timestamp, self.ero)
 		nss.save(NetworkStateService.LspStatus, key, timestamp, self.operationalStatus)
 		nss.save(NetworkStateService.LspLatency, key, timestamp, self.latency)
-
-	def getLatency(self):
-		latency = 0
-		for x in xrange(1,self.ero.length()):
-			latency += Link.calculateDistance(self.ero[i - 1], self.ero[i]) * 6371.393 / 300000.0
-		return latency
 
 def getGroup(name):
 	number = name.split("_")[1]
@@ -300,7 +294,6 @@ def getNodes():
 			nodes[node["name"]] = tmpNode
 		return nodes
 	except Exception, e:
-		print r
 		raise e
 
 
@@ -349,12 +342,19 @@ def getLSPs(nodes, links):
 		toNodeIndex = nodes[lsp["to"]["address"]].index
 		ero = []
 		ero.append(fromNodeIndex)
+		lspNodes = []
 		for node in lsp["liveProperties"]["ero"]:
-			nodeIndex = nodes[itfcToNode[node["address"]]].index
+			lspNode = nodes[itfcToNode[node["address"]]]
+			nodeIndex = lspNode.index
 			ero.append(nodeIndex)
+			lspNodes.append(lspNode)
 		linkLspCountHelper(ero, links)
+		latency = 0
+		for i in xrange(1, len(lspNodes)):
+			latency += Link.calculateDistance(lspNodes[i - 1], lspNodes[i]) * 6371.393 / 300000.0
+
 		tmpLSP = LSP(lsp["lspIndex"], getGroup(lsp["name"]), lsp["name"], fromNodeIndex, toNodeIndex, ero,
-					 lsp["operationalStatus"]);
+					 lsp["operationalStatus"], latency);
 		lsps.append(tmpLSP)
 	return lsps
 
@@ -378,6 +378,7 @@ def getTrafficStats():
 			trafficStats[address] = itfcTraffic
 			# log
 			key = address
+			timestamp = time.time()
 			nss.save(NetworkStateService.Interface, key, timestamp, 1)
 			nss.save(NetworkStateService.InterfaceInBps, key, timestamp, itfcTraffic.inputBPS)
 			nss.save(NetworkStateService.InterfaceOutBps, key, timestamp, itfcTraffic.outputBPS)
@@ -439,7 +440,7 @@ def generateLSP(graph, sNodeIndex, tNodeIndex, a, b, c):
 
 
 while True:
-	try:
+	#try:
 		ts = time.time()
 		st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 		print "update topology @ " + st
@@ -468,7 +469,7 @@ while True:
 				separators=(',', ': ')
 			)
 
-	except Exception, e:
-		print "ERROR: cannot update topology: "
-		print str(e)
-	time.sleep(10)
+	#except Exception, e:
+	#	print "ERROR: cannot update topology: "
+	#	print str(e)
+		time.sleep(10)
