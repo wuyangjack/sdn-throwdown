@@ -9,8 +9,11 @@ class NetworkStateService(object):
 	Router = "Router";
 
 	def create(self, name):
+		print "create table: " + name
 		c = self.connection.cursor();
 		c.execute("CREATE TABLE " + name + " (name text, key text, time real, value text, PRIMARY KEY(name, key, time))");
+		self.connection.commit()
+		self.tables.append(name)
 
 	def __init__(self, database):
 		self.connection = sqlite3.connect(database);
@@ -26,6 +29,12 @@ class NetworkStateService(object):
 		self.connection.close()
 
 	def save(self, name, key, time, value):
+		name = str(name);
+		key = str(key);
+		time = int(time);
+		time -= time % 10;
+		time = str(time);
+		value = str(value);
 		c = self.connection.cursor();
 
 		# Create table
@@ -48,7 +57,7 @@ class NetworkStateService(object):
 							c.execute("INSERT OR REPLACE INTO " + name + " VALUES ('" + name + "','" + key + "','" + str(sec) + "','" + value + "')");
 						sec += 10;
 
-		print "save to database"
+		print "save to database" 
 	
 		# Save (commit) the changes
 		self.connection.commit()
@@ -74,20 +83,21 @@ class NetworkStateService(object):
 		c = self.connection.cursor();
 		rows = c.execute("SELECT name FROM sqlite_master WHERE type = 'table'");
 		for row in rows:
+			print "deleting table: " + row[0];
 			c.execute("DROP TABLE " + row[0]);
 		self.connection.commit()
 
 '''
-nss = NetworkStateService("database/example.db");
+nss = NetworkStateService("database/test.db");
 nss.save("LinkStatus", "10.0.0.1_10.0.0.2", "1456451402", "Up");
+print nss.query("SELECT * FROM LinkStatus");
 nss.save("LinkUtilization", "10.0.0.1_10.0.0.2", "1456451402", "0.04");
-nss.query("SELECT * FROM LinkUtilization");
+print nss.query("SELECT * FROM LinkUtilization");
 nss.save("LinkUtilization", "10.0.0.1_10.0.0.2", "1456451409", "0.04");
-nss.query("SELECT * FROM LinkUtilization");
+print nss.query("SELECT * FROM LinkUtilization");
 nss.save("LinkUtilization", "10.0.0.1_10.0.0.2", "1456451412", "0.04");
-nss.query("SELECT * FROM LinkUtilization");
+print nss.query("SELECT * FROM LinkUtilization");
 nss.save("LinkUtilization", "10.0.0.1_10.0.0.2", "1456451452", "0.04");
-nss.query("SELECT * FROM LinkUtilization");
-nss.query("SELECT * FROM LinkStatus");
+print nss.query("SELECT * FROM LinkUtilization");
 '''
 #nss.clear();

@@ -61,7 +61,6 @@ def sql_handler():
     nss = NetworkStateService("database/example.db");
     data = nss.query(query_string);
     nss.close();
-
     #result = {};
     #result['time'] = 1;
     

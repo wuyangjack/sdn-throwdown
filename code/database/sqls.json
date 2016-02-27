@@ -24,9 +24,16 @@
         "id": 1456531626634
     },
     {
+
         "link": "select from afadsgsfga",
         "name": "test",
         "lsp": "sdagafsgafdgfdgsdfg",
         "id": 1456540488666
+    },
+    {
+        "link": "*",
+        "name": "Goupr five lsp",
+        "lsp": "SELECT * From LSP where key LIKE \"GROUP_FIVE\"",
+        "id": 1456532211581
     }
 ]
