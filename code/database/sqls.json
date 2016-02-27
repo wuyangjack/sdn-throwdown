@@ -1,6 +1,6 @@
 [
     {
-        "link": "SELECT * FROM Link_",
+        "link": "SELECT * FROM Link_ WHERE key = '3_8'",
         "name": "Fresh Group Five Network",
         "lsp": "SELECT * FROM Lsp_ WHERE key LIKE 'GROUP_FIVE%' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
         "id": 1456554982736
