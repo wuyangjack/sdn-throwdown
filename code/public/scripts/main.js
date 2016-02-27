@@ -513,10 +513,12 @@ var NetworkMap = React.createClass({
     var routers = this.state.topology.nodes;
     var routerMarkers = this.state.routerMarkers;
     var nodeCoordinates = {};
+    var nodeNames = {};
 
     _.map(routers, function(router) {
       var name = router.hostname;
       nodeCoordinates[router.index] = router.coordinates;
+      nodeNames[router.index] = router.coordinates;
 
       var rm_new = RouterMarker.new(router, map);
       var rm_old = routerMarkers[name];
