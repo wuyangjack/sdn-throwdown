@@ -289,20 +289,31 @@ var QueryForm = React.createClass({
   },
   render: function() {
     return (
-      <form className="queryForm" onSubmit={this.handleSubmit}>
+      <form className="queryForm form-horizontal" onSubmit={this.handleSubmit}>
+        <br/>
         <div className="form-group">
-          <label>Name</label>
-          <input type="text" className="form-control" value={this.state.name} placeholder="Name ..." onChange={this.handleNameChange} />
+          <label className="col-sm-2 control-label">Name</label>
+          <div className="col-sm-10">
+            <input type="text" className="form-control" value={this.state.name} placeholder="Name ..." onChange={this.handleNameChange} />
+          </div>
         </div>
         <div className="form-group">
-          <label>Link</label>
-          <input type="text" className="form-control" value={this.state.link} placeholder="Link ..." onChange={this.handleLinkChange} />
+          <label className="col-sm-2 control-label">Link</label>
+          <div className="col-sm-10">
+            <input type="text" className="form-control" value={this.state.link} placeholder="Link ..." onChange={this.handleLinkChange} />
+          </div>
         </div>
         <div className="form-group">
-          <label>LSP</label>
-          <input type="text" className="form-control" value={this.state.lsp} placeholder="LSP ..." onChange={this.handleLSPChange} />
+          <label className="col-sm-2 control-label">LSP</label>
+          <div className="col-sm-10">
+            <input type="text" className="form-control" value={this.state.lsp} placeholder="LSP ..." onChange={this.handleLSPChange} />
+          </div>
         </div>
-        <button type="submit" value = "Post" className="btn btn-default">Submit</button>
+        <div className="form-group">
+          <div className="col-sm-offset-2 col-sm-10">
+            <button type="submit" value = "Post" className="btn btn-primary">Submit Query</button>
+          </div>
+        </div>
       </form>
     );
   }
@@ -320,7 +331,7 @@ var QueryList = React.createClass({
       );
     });
     return (
-      <div className="querytList">
+      <div className="querytList pre-scrollable">
         {queryNodes}
       </div>
     );
@@ -331,9 +342,11 @@ var Query = React.createClass({
   render: function() {
     return (
       <div className="query">
-        <h4 className="queryName">
-          {this.props.name}
-        </h4>
+        <a href="#">
+          <h4 className="queryName">
+            {this.props.name}
+          </h4>
+        </a>
         {this.props.children}
       </div>
     );
@@ -503,7 +516,7 @@ var NetworkMap = React.createClass({
   initializeGoogleMap: function() {
     // canvas
     var map = new google.maps.Map(document.getElementById('googleMap'), {
-        center: {lat: 37, lng: -100},
+        center: {lat: 37, lng: -95},
         zoom: 4
     });
     this.state.map = map;
@@ -529,16 +542,17 @@ var NetworkMap = React.createClass({
       <div>
           <div className="col-md-8">
             <div className="networkMap">
+              <br/>
               <div id="googleMap">
               </div>
             </div>
           </div>
           <div className="col-md-4">
-            <h1>Queries</h1>
-            <QueryList queries={this.state.queries} />
-          </div>
-          <div className="col-md-8">
+            <h3>New Query</h3>
             <QueryForm onQuerySubmit={this.handleQuerySubmit} />
+            <hr/>
+            <h3>Queries History</h3>
+            <QueryList queries={this.state.queries} />
           </div>
       </div>
     );
