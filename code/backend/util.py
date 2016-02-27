@@ -153,6 +153,7 @@ routers = [
      }
 ]
 
+
 # TODO:
 nss = NetworkStateService("database/example.db");
 nss.clear();
@@ -453,52 +454,57 @@ def updateLSP(name, path, links):
 
     new_lsp['plannedProperties'] = {'ero': ero}
 
-    return requests.put(
-        'https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps/' + str(new_lsp['lspIndex']),
-        json=new_lsp, headers=authHeader, verify=False).text
+    requests.put('https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps/' + str(new_lsp['lspIndex']),
+                 json=new_lsp, headers=authHeader, verify=False)
 
 
-# nodes = getNodes()
-# links = getLinks(nodes)
-# lsps = getLSPs(nodes, links)
-# trafficStats = getTrafficStats()
-# updateLinkUtility(links, trafficStats)
-# graph = Graph(nodes.values(), links.values())
-# path = generateLSP(graph, 1, 7, 1, 0, 0)
-# print path
-# print updateLSP("GROUP_FIVE_SF_NY_LSP1", path, links)
+nodes = getNodes()
+links = getLinks(nodes)
+lsps = getLSPs(nodes, links)
+trafficStats = getTrafficStats()
+updateLinkUtility(links, trafficStats)
+# print json.dumps(
+#     {'nodes': nodes.values(), 'links': links.values(), 'lsps': lsps},
+#     default=lambda o: o.__dict__,
+#     indent=4,
+#     separators=(',', ': ')
+# )
+graph = Graph(nodes.values(), links.values())
+path = generateLSP(graph, 1, 7, 0, 1, 0)
+print path
+print updateLSP("GROUP_FIVE_SF_NY_LSP1", path, links)
 
-while True:
-    try:
-        ts = time.time()
-        st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-        print "update topology @ " + st
-        nodes = getNodes()
-        links = getLinks(nodes)
-        lsps = getLSPs(nodes, links)
-        trafficStats = getTrafficStats()
-        updateLinkUtility(links, trafficStats)
-
-        data = {'timestamp': ts, 'nodes': nodes.values(), 'links': links.values(), 'lsps': lsps}
-
-        '''
-		data = json.dumps(
-				data,
-				default=lambda o: o.__dict__,
-				indent=4,
-				separators=(',', ': ')
-		)
-		'''
-        with open('database/topology.json', 'w') as outfile:
-            json.dump(
-                data,
-                outfile,
-                default=lambda o: o.__dict__,
-                indent=4,
-                separators=(',', ': ')
-            )
-
-    except Exception, e:
-        print "ERROR: cannot update topology: "
-        print str(e)
-    time.sleep(10)
+# while True:
+#     try:
+#         ts = time.time()
+#         st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+#         print "update topology @ " + st
+#         nodes = getNodes()
+#         links = getLinks(nodes)
+#         lsps = getLSPs(nodes, links)
+#         trafficStats = getTrafficStats()
+#         updateLinkUtility(links, trafficStats)
+#
+#         data = {'timestamp': ts, 'nodes': nodes.values(), 'links': links.values(), 'lsps': lsps}
+#
+#         '''
+# 		data = json.dumps(
+# 				data,
+# 				default=lambda o: o.__dict__,
+# 				indent=4,
+# 				separators=(',', ': ')
+# 		)
+# 		'''
+#         with open('database/topology.json', 'w') as outfile:
+#             json.dump(
+#                 data,
+#                 outfile,
+#                 default=lambda o: o.__dict__,
+#                 indent=4,
+#                 separators=(',', ': ')
+#             )
+#
+#     except Exception, e:
+#         print "ERROR: cannot update topology: "
+#         print str(e)
+#     time.sleep(10)
