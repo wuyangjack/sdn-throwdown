@@ -12,7 +12,10 @@
   display: block;
 }
 
-
+#editor {
+  width: 400px;
+  height: 20px;
+}
 /*
 
 body {
