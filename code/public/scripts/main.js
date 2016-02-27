@@ -354,6 +354,18 @@ var Query = React.createClass({
 
 var ResultTable = React.createClass({
   render: function() {
+    var json = [
+      {
+        a: 1,
+        b: 2,
+        c: 3
+      },
+      {
+        a: 4,
+        b: 5,
+        c: 6
+      }
+    ];
     return (
       <table className="resultTable table table-striped">
         <thead>
@@ -416,7 +428,7 @@ var ResultTable = React.createClass({
 var NetworkStateService = {
   executeSql: function(object, query, callback) {
     // prevent sql injection
-    console.log("executing sql: " + query)
+    //console.log("executing sql: " + query)
     $.ajax({
       url: 'api/sql',
       dataType: 'json',
@@ -458,6 +470,8 @@ var NetworkMap = React.createClass({
       linkPaths: {},
       lspPaths: {},
       queries: [],
+      lspFilterQuery: '...',
+      linkFilterQuery: '...',
       lspFilter: [],
       linkFilter: []
     };
@@ -498,7 +512,7 @@ var NetworkMap = React.createClass({
     var linkPaths = this.state.linkPaths;
     var direction = this.state.direction;
     var linkFilter = this.state.linkFilter;
-    console.log(linkFilter);
+    //console.log(linkFilter);
 
     _.mapObject(linkPaths, function(linkPath, name) {
       LinkPath.delete(linkPath);
@@ -517,17 +531,8 @@ var NetworkMap = React.createClass({
     var lsps = this.state.topology.lsps;
     var lspPaths = this.state.lspPaths;
     var lspFilter = this.state.lspFilter;
-    console.log(lspFilter);
-    /*
-    _.map(lspPaths, function(lspPath) {
-      var name = LspPath.name(lspPath);
-      if (_.indexOf(lspFilter, name) == -1) {
-        lspPath = LspPath.delete(lspPath);
-        lspPaths[name] = lspPath;
-        console.log("hide lsp path: " + name);
-      }
-    });
-    */
+    //console.log(lspFilter);
+   
     _.map(lsps, function(lsp) {
       var lp_new = LspPath.new(lsp, map);
       var name = LspPath.name(lp_new);
@@ -582,6 +587,20 @@ var NetworkMap = React.createClass({
     });
   },
 
+  loadFiltersFromServer: function() {
+    NetworkStateService.executeSql(this, this.state.lspFilterQuery, function(obj, data) {
+      data = NetworkStateService.uniqueState(data, 'key');
+      obj.state.lspFilter = data;
+      obj.setState(obj.state);
+    });
+
+    NetworkStateService.executeSql(this, this.state.linkFilterQuery, function(obj, data) {
+      data = NetworkStateService.uniqueState(data, 'key');
+      obj.state.linkFilter = data;
+      obj.setState(obj.state);
+    });
+  },
+
   handleQuerySubmit: function(query) {
     var query_history = this.state.queries;
     query.id = Date.now();
@@ -607,20 +626,10 @@ var NetworkMap = React.createClass({
   },
 
   handleQueryExecute: function(query) {
-    //this.state.lspFilterQuery = query.lsp, 'key';
-    //this.state.linkFilterQuery = NetworkStateService.uniqueState(query.link, 'key');
-
-    NetworkStateService.executeSql(this, query.lsp, function(obj, data) {
-      data = NetworkStateService.uniqueState(data, 'key');
-      obj.state.lspFilter = data;
-      obj.setState(obj.state);
-    });
-
-    NetworkStateService.executeSql(this, query.link, function(obj, data) {
-      data = NetworkStateService.uniqueState(data, 'key');
-      obj.state.linkFilter = data;
-      obj.setState(obj.state);
-    });
+    console.log(query);
+    this.state.lspFilterQuery = query.lsp;
+    this.state.linkFilterQuery = query.link;
+    this.setState(this.state);
   },
 
   initializeGoogleMap: function() {
@@ -636,9 +645,9 @@ var NetworkMap = React.createClass({
 
   componentDidMount: function() {
     this.initializeGoogleMap();
-    this.loadQueriesFromServer();
     setInterval(this.loadQueriesFromServer, this.props.pollInterval);
     setInterval(this.loadTopologyFromServer, this.props.pollInterval);
+    setInterval(this.loadFiltersFromServer, this.props.pollInterval);
   },
 
   shouldComponentUpdate: function(nextProps, nextState) {
