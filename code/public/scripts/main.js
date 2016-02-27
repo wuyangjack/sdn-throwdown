@@ -364,6 +364,49 @@ var Query = React.createClass({
   }
 });
 
+var ResultTable = React.createClass({
+  render: function() {
+    return (
+      <table className="resultTable table table-striped">
+        <thead>
+          <tr>
+            <th className="col-md-4">Firstname</th>
+            <th className="col-md-4">Lastname</th>
+            <th className="col-md-4">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="col-md-4">John</td>
+            <td className="col-md-4">Doe</td>
+            <td className="col-md-4">john@example.com</td>
+          </tr>
+          <tr>
+            <td className="col-md-4">Mary</td>
+            <td className="col-md-4">Moe</td>
+            <td className="col-md-4">mary@example.com</td>
+          </tr>
+          <tr>
+            <td className="col-md-4">July</td>
+            <td className="col-md-4">Dooley</td>
+            <td className="col-md-4">july@example.com</td>
+          </tr>
+          <tr>
+            <td className="col-md-4">July</td>
+            <td className="col-md-4">Dooley</td>
+            <td className="col-md-4">july@example.com</td>
+          </tr>
+          <tr>
+            <td className="col-md-4">July</td>
+            <td className="col-md-4">Dooley</td>
+            <td className="col-md-4">july@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
+});
+
 // var QueryHistory = React.createClass({
 //   rawMarkup: function() {
 //     var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
@@ -624,6 +667,11 @@ var NetworkMap = React.createClass({
                   <div id="googleMap">
                 </div>
               </div>
+              </div>
+            </div>
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <ResultTable />
               </div>
             </div>
           </div>
