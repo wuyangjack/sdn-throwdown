@@ -22,5 +22,11 @@
         "name": "fads",
         "lsp": "fad",
         "id": 1456531626634
+    },
+    {
+        "link": "*",
+        "name": "Goupr five lsp",
+        "lsp": "SELECT * From LSP where key LIKE \"GROUP_FIVE\"",
+        "id": 1456532211581
     }
 ]
