@@ -354,53 +354,36 @@ var Query = React.createClass({
 
 var ResultTable = React.createClass({
   render: function() {
-    var json = [
+    var json = 
       {
-        a: 1,
-        b: 2,
-        c: 3
-      },
-      {
-        a: 4,
-        b: 5,
-        c: 6
+        "a": [1, 4],
+        "b": [2, 3],
+        "c": [3, 6]
+      };
+    var num_col = Object.keys(json).length;
+    var ths = [];
+    for (var i = 0; i < num_col; i++) {
+      ths.push(<th className="col-md-{{12 / num_col}}">{Object.keys(json)[i]}</th>);
+    }
+    var r = Object.keys(json)[0];
+    var num_row = json[r].length;
+    var trs = [];
+    for (var i = 0; i < num_row; i++) {
+      var tds = [];
+      for (var j = 0; j < num_col; j++) {
+        tds.push(<td className="col-md-{{12 / num_col}}">{json[Object.keys(json)[j]][i]}</td>);
       }
-    ];
+      trs.push(<tr>{tds}</tr>);
+    }
     return (
       <table className="resultTable table table-striped">
         <thead>
           <tr>
-            <th className="col-md-4">Firstname</th>
-            <th className="col-md-4">Lastname</th>
-            <th className="col-md-4">Email</th>
+            {ths}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="col-md-4">John</td>
-            <td className="col-md-4">Doe</td>
-            <td className="col-md-4">john@example.com</td>
-          </tr>
-          <tr>
-            <td className="col-md-4">Mary</td>
-            <td className="col-md-4">Moe</td>
-            <td className="col-md-4">mary@example.com</td>
-          </tr>
-          <tr>
-            <td className="col-md-4">July</td>
-            <td className="col-md-4">Dooley</td>
-            <td className="col-md-4">july@example.com</td>
-          </tr>
-          <tr>
-            <td className="col-md-4">July</td>
-            <td className="col-md-4">Dooley</td>
-            <td className="col-md-4">july@example.com</td>
-          </tr>
-          <tr>
-            <td className="col-md-4">July</td>
-            <td className="col-md-4">Dooley</td>
-            <td className="col-md-4">july@example.com</td>
-          </tr>
+          {trs}
         </tbody>
       </table>
     );
