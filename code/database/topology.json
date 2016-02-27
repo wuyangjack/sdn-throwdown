@@ -1,35 +1,20 @@
 {
     "lsps": [
         {
-            "latency": 0.012277490260120674,
+            "latency": 0.014483854215802915,
             "group": 8,
             "fromNodeIndex": 7,
             "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
-                8,
-                2,
-                1
-            ],
-            "lspIndex": 1,
-            "name": "GROUP_EIGHT_NY_SF_LSP1"
-        },
-        {
-            "latency": 0.012830756042251631,
-            "group": 8,
-            "fromNodeIndex": 7,
-            "operationalStatus": "Active",
-            "toNodeIndex": 1,
-            "ero": [
-                7,
-                8,
+                3,
                 2,
                 4,
                 1
             ],
-            "lspIndex": 2,
-            "name": "GROUP_EIGHT_NY_SF_LSP2"
+            "lspIndex": 1,
+            "name": "GROUP_EIGHT_NY_SF_LSP1"
         },
         {
             "latency": 0.013930588433671957,
@@ -43,20 +28,37 @@
                 2,
                 1
             ],
-            "lspIndex": 3,
-            "name": "GROUP_EIGHT_NY_SF_LSP3"
+            "lspIndex": 2,
+            "name": "GROUP_EIGHT_NY_SF_LSP2"
         },
         {
-            "latency": 0.014483854215802915,
+            "latency": 0.015586673025033602,
             "group": 8,
             "fromNodeIndex": 7,
             "operationalStatus": "Active",
             "toNodeIndex": 1,
             "ero": [
                 7,
+                6,
                 3,
                 2,
                 4,
+                1
+            ],
+            "lspIndex": 3,
+            "name": "GROUP_EIGHT_NY_SF_LSP3"
+        },
+        {
+            "latency": 0.015033407242902645,
+            "group": 8,
+            "fromNodeIndex": 7,
+            "operationalStatus": "Active",
+            "toNodeIndex": 1,
+            "ero": [
+                7,
+                6,
+                3,
+                2,
                 1
             ],
             "lspIndex": 4,
@@ -94,7 +96,7 @@
             "name": "GROUP_ELEVEN_NY_SF_LSP2"
         },
         {
-            "latency": 0.013486835206339863,
+            "latency": 0.013432959358913109,
             "group": 11,
             "fromNodeIndex": 7,
             "operationalStatus": "Active",
@@ -103,14 +105,14 @@
                 7,
                 6,
                 5,
-                4,
+                2,
                 1
             ],
             "lspIndex": 7,
             "name": "GROUP_ELEVEN_NY_SF_LSP3"
         },
         {
-            "latency": 0.013486835206339863,
+            "latency": 0.013432959358913109,
             "group": 11,
             "fromNodeIndex": 7,
             "operationalStatus": "Active",
@@ -119,7 +121,7 @@
                 7,
                 6,
                 5,
-                4,
+                2,
                 1
             ],
             "lspIndex": 8,
@@ -656,37 +658,19 @@
             "name": "GROUP_EIGHT_SF_NY_LSP1"
         },
         {
-            "latency": 0.019073494413994734,
+            "latency": 0.011788641063034807,
             "group": 8,
             "fromNodeIndex": 1,
             "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
-                4,
-                5,
+                2,
                 3,
-                6,
                 7
             ],
             "lspIndex": 46,
             "name": "GROUP_EIGHT_SF_NY_LSP2"
-        },
-        {
-            "latency": 0.018436634396935422,
-            "group": 8,
-            "fromNodeIndex": 1,
-            "operationalStatus": "Active",
-            "toNodeIndex": 7,
-            "ero": [
-                1,
-                4,
-                5,
-                3,
-                7
-            ],
-            "lspIndex": 47,
-            "name": "GROUP_EIGHT_SF_NY_LSP3"
         },
         {
             "latency": 0.012425501080094119,
@@ -701,11 +685,27 @@
                 6,
                 7
             ],
+            "lspIndex": 47,
+            "name": "GROUP_EIGHT_SF_NY_LSP3"
+        },
+        {
+            "latency": 0.018436634396935422,
+            "group": 8,
+            "fromNodeIndex": 1,
+            "operationalStatus": "Active",
+            "toNodeIndex": 7,
+            "ero": [
+                1,
+                4,
+                5,
+                3,
+                7
+            ],
             "lspIndex": 48,
             "name": "GROUP_EIGHT_SF_NY_LSP4"
         },
         {
-            "latency": 0.019073494413994734,
+            "latency": 0.022813853274262153,
             "group": 11,
             "fromNodeIndex": 1,
             "operationalStatus": "Active",
@@ -715,7 +715,7 @@
                 4,
                 5,
                 3,
-                6,
+                8,
                 7
             ],
             "lspIndex": 49,
@@ -736,28 +736,34 @@
             "name": "GROUP_ELEVEN_SF_NY_LSP2"
         },
         {
-            "latency": 0.003849146708964657,
+            "latency": 0.023209176120520814,
             "group": 11,
             "fromNodeIndex": 1,
             "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
+                4,
+                2,
                 8,
+                3,
                 7
             ],
             "lspIndex": 51,
             "name": "GROUP_ELEVEN_SF_NY_LSP3"
         },
         {
-            "latency": 0.003849146708964657,
+            "latency": 0.023209176120520814,
             "group": 11,
             "fromNodeIndex": 1,
             "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
+                4,
+                2,
                 8,
+                3,
                 7
             ],
             "lspIndex": 52,
@@ -949,14 +955,16 @@
             "name": "GROUP_ONE_SF_NY_LSP1"
         },
         {
-            "latency": 0.003849146708964657,
+            "latency": 0.012237915615601365,
             "group": 1,
             "fromNodeIndex": 1,
             "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                2,
+                5,
+                3,
                 7
             ],
             "lspIndex": 66,
@@ -1196,14 +1204,15 @@
             "name": "GROUP_THREE_SF_NY_LSP2"
         },
         {
-            "latency": 0.012222976861635985,
+            "latency": 0.018436634396935422,
             "group": 3,
             "fromNodeIndex": 1,
             "operationalStatus": "Active",
             "toNodeIndex": 7,
             "ero": [
                 1,
-                8,
+                4,
+                5,
                 3,
                 7
             ],
@@ -1281,7 +1290,7 @@
             "name": "GROUP_TWO_SF_NY_LSP4"
         }
     ],
-    "timestamp": 1456603949.021796,
+    "timestamp": 1456605299.347344,
     "nodes": [
         {
             "index": 2,
@@ -1360,12 +1369,12 @@
         {
             "status": "Up",
             "index": 3,
-            "AZUtility": 0.296030664,
+            "AZUtility": 0.29510972,
             "ZAweight": 0,
-            "ZAUtility": 0.29760624,
+            "ZAUtility": 0.294066984,
             "AZweight": 0,
-            "AZlspCount": 2,
-            "ZAlspCount": 3,
+            "AZlspCount": 3,
+            "ZAlspCount": 5,
             "length": 0.2797436314035809,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1381,12 +1390,12 @@
         {
             "status": "Up",
             "index": 9,
-            "AZUtility": 0.24260748,
+            "AZUtility": 0.87304424,
             "ZAweight": 0,
-            "ZAUtility": 0.463516744,
+            "ZAUtility": 0.3908112,
             "AZweight": 0,
-            "AZlspCount": 34,
-            "ZAlspCount": 35,
+            "AZlspCount": 32,
+            "ZAlspCount": 33,
             "length": 0.18123886137449016,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1402,12 +1411,12 @@
         {
             "status": "Up",
             "index": 5,
-            "AZUtility": 0.03638648,
+            "AZUtility": 0.006497776,
             "ZAweight": 0,
             "ZAUtility": 0.15669632,
             "AZweight": 0,
             "AZlspCount": 4,
-            "ZAlspCount": 4,
+            "ZAlspCount": 2,
             "length": 0.3484534877195438,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1423,12 +1432,12 @@
         {
             "status": "Up",
             "index": 10,
-            "AZUtility": 0.29209196,
+            "AZUtility": 0.292226376,
             "ZAweight": 0,
-            "ZAUtility": 0.261099072,
+            "ZAUtility": 0.052211456,
             "AZweight": 0,
             "AZlspCount": 3,
-            "ZAlspCount": 1,
+            "ZAlspCount": 3,
             "length": 0.3153835613046438,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1444,11 +1453,11 @@
         {
             "status": "Up",
             "index": 15,
-            "AZUtility": 0.239725984,
+            "AZUtility": 0.30963036,
             "ZAweight": 0,
-            "ZAUtility": 0.339013672,
+            "ZAUtility": 0.968889448,
             "AZweight": 0,
-            "AZlspCount": 36,
+            "AZlspCount": 32,
             "ZAlspCount": 33,
             "length": 0.46950383307483334,
             "AZbandwidth": 1000000000,
@@ -1465,11 +1474,11 @@
         {
             "status": "Up",
             "index": 11,
-            "AZUtility": 0.261099856,
+            "AZUtility": 0.2677588,
             "ZAweight": 0,
-            "ZAUtility": 0.297601088,
+            "ZAUtility": 0.293214136,
             "AZweight": 0,
-            "AZlspCount": 4,
+            "AZlspCount": 8,
             "ZAlspCount": 4,
             "length": 0.2753300108769129,
             "AZbandwidth": 1000000000,
@@ -1486,12 +1495,12 @@
         {
             "status": "Up",
             "index": 7,
-            "AZUtility": 0.296168464,
+            "AZUtility": 0.292486536,
             "ZAweight": 0,
-            "ZAUtility": 0.052235536,
+            "ZAUtility": 0.052228848,
             "AZweight": 0,
-            "AZlspCount": 5,
-            "ZAlspCount": 2,
+            "AZlspCount": 3,
+            "ZAlspCount": 4,
             "length": 0.05192673607941088,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1507,12 +1516,12 @@
         {
             "status": "Up",
             "index": 2,
-            "AZUtility": 0.25801428,
+            "AZUtility": 0.051601472,
             "ZAweight": 0,
-            "ZAUtility": 0.288032088,
+            "ZAUtility": 0.287650072,
             "AZweight": 0,
-            "AZlspCount": 3,
-            "ZAlspCount": 4,
+            "AZlspCount": 5,
+            "ZAlspCount": 2,
             "length": 0.20190673575683848,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1528,12 +1537,12 @@
         {
             "status": "Up",
             "index": 1,
-            "AZUtility": 0.291618928,
+            "AZUtility": 0.287904648,
             "ZAweight": 0,
-            "ZAUtility": 0.150393272,
+            "ZAUtility": 0.154856056,
             "AZweight": 0,
-            "AZlspCount": 3,
-            "ZAlspCount": 4,
+            "AZlspCount": 5,
+            "ZAlspCount": 6,
             "length": 0.37618459812198557,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1549,12 +1558,12 @@
         {
             "status": "Up",
             "index": 4,
-            "AZUtility": 0.261071472,
+            "AZUtility": 0.058702608,
             "ZAweight": 0,
-            "ZAUtility": 0.007903176,
+            "ZAUtility": 0.0,
             "AZweight": 0,
-            "AZlspCount": 5,
-            "ZAlspCount": 7,
+            "AZlspCount": 7,
+            "ZAlspCount": 5,
             "length": 0.08685181325497275,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1572,10 +1581,10 @@
             "index": 12,
             "AZUtility": 0.432380208,
             "ZAweight": 0,
-            "ZAUtility": 0.154847992,
+            "ZAUtility": 0.154847888,
             "AZweight": 0,
-            "AZlspCount": 1,
-            "ZAlspCount": 2,
+            "AZlspCount": 2,
+            "ZAlspCount": 4,
             "length": 0.05658393354195387,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1612,12 +1621,12 @@
         {
             "status": "Up",
             "index": 14,
-            "AZUtility": 6.96e-07,
+            "AZUtility": 3.112e-06,
             "ZAweight": 0,
-            "ZAUtility": 0.235451472,
+            "ZAUtility": 0.258017392,
             "AZweight": 0,
-            "AZlspCount": 1,
-            "ZAlspCount": 2,
+            "AZlspCount": 2,
+            "ZAlspCount": 3,
             "length": 0.3001945343035203,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1633,12 +1642,12 @@
         {
             "status": "Up",
             "index": 8,
-            "AZUtility": 0.2469912,
+            "AZUtility": 0.192051584,
             "ZAweight": 0,
-            "ZAUtility": 0.15484204,
+            "ZAUtility": 0.154835928,
             "AZweight": 0,
-            "AZlspCount": 5,
-            "ZAlspCount": 6,
+            "AZlspCount": 3,
+            "ZAlspCount": 8,
             "length": 0.2533901246304653,
             "AZbandwidth": 1000000000,
             "ANode": {
@@ -1654,12 +1663,12 @@
         {
             "status": "Up",
             "index": 13,
-            "AZUtility": 0.05222304,
+            "AZUtility": 0.052234528,
             "ZAweight": 0,
-            "ZAUtility": 0.261062256,
+            "ZAUtility": 0.006566912,
             "AZweight": 0,
             "AZlspCount": 2,
-            "ZAlspCount": 5,
+            "ZAlspCount": 6,
             "length": 0.24431399893361672,
             "AZbandwidth": 1000000000,
             "ANode": {
