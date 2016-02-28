@@ -262,39 +262,45 @@ var QueryForm = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
     var name = this.state.name.trim();
-    var link = this.state.link.trim();
-    var lsp = this.state.lsp.trim();
+    var link = this.state.link_editor.getValue();
+    var lsp = this.state.lsp_editor.getValue();
     if (!link || !name || !lsp) {
       return;
     }
     this.props.onQuerySubmit({name: name, link: link, lsp: lsp});
     this.setState({name: '...', link: '...', lsp: '...'});
   },
+  componentDidMount: function() {
+    var link_editor = ace.edit("link");
+    var SQLScriptMode = ace.require("ace/mode/sql").Mode;
+    link_editor.session.setMode(new SQLScriptMode());
+    link_editor.setTheme("ace/theme/chrome");
+    var lsp_editor = ace.edit("lsp");
+    lsp_editor.session.setMode(new SQLScriptMode());
+    lsp_editor.setTheme("ace/theme/chrome");
+    this.state.link_editor = link_editor;
+    this.state.lsp_editor = lsp_editor;
+  },
   render: function() {
     return (
-      <form className="queryForm form-horizontal" onSubmit={this.handleSubmit}>
+      <form className="queryForm" onSubmit={this.handleSubmit}>
+        <div className="col-xs-10">
+          <input type="text" className="form-control" value={this.state.name} placeholder="Name" onChange={this.handleNameChange} />
+        </div>
+        <div>
+          <button type="submit" value = "Post" className="btn btn-default" aria-label="Left Align">
+            <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button>
+        </div>
         <br/>
-        <div className="form-group">
-          <div className="col-sm-offset-1 col-sm-10 input-group">
-            <span className="input-group-addon">Name</span>
-            <input type="text" className="form-control" value={this.state.name} placeholder="Name ..." onChange={this.handleNameChange} />
+        <div className="col-xs-12">
+          <div className="panel panel-default">
+            <div id="link">SELECT * FROM Link_</div>
           </div>
         </div>
-        <div className="form-group">
-          <div className="col-sm-offset-1 col-sm-10 input-group">
-            <span className="input-group-addon">Link</span>
-            <input type="text" className="form-control" value={this.state.link} placeholder="Link ..." onChange={this.handleLinkChange} />
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="col-sm-offset-1 col-sm-10 input-group">
-            <span className="input-group-addon">LSP</span>
-            <input type="text" className="form-control" value={this.state.lsp} placeholder="LSP ..." onChange={this.handleLSPChange} />
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="col-sm-offset-1 col-sm-10">
-            <button type="submit" value = "Post" className="btn btn-primary">Submit Query</button>
+        <div className="col-xs-12">
+          <div className="panel panel-default">
+            <div id="lsp">SELECT * FROM Lsp_</div>
           </div>
         </div>
       </form>
@@ -722,10 +728,10 @@ var NetworkMap = React.createClass({
   render: function() {
     var scope = {
       style1: {
-        height: 240
+        height: 140
       },
       style2: {
-        height: 310
+        height: 500
       }
     };
     this.drawTopology();
@@ -744,14 +750,14 @@ var NetworkMap = React.createClass({
             </div>
             <div className="panel panel-default">
               <div className="panel-body">
-                <div className="pre-scrollable" style={scope.style}>
+                <div className="pre-scrollable" style={scope.style1}>
                   <ResultTable content={this.state.lspStatistics}/>
                 </div>
               </div>
             </div>
             <div className="panel panel-default">
               <div className="panel-body">
-                <div className="pre-scrollable" style={scope.style}>
+                <div className="pre-scrollable" style={scope.style1}>
                   <ResultTable content={this.state.linkStatistics}/>
                 </div>
               </div>
@@ -760,9 +766,6 @@ var NetworkMap = React.createClass({
           <div className="col-md-4">
             <br/>
             <div className="panel panel-default">
-              <div className="panel-heading">
-                <h3 className="panel-title">Queries</h3>
-              </div>
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style2}>
                   <QueryForm onQuerySubmit={this.handleQuerySubmit} />

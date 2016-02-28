@@ -2,6 +2,8 @@
   height: 350px;
 }
 
+.input_a { width:100%; }
+
 .table-fixed thead {
   width: 100%;
 }
@@ -44,14 +46,14 @@
   border-bottom-width: 0;
 }
 
-#editor {
-  width: 400px;
-  height:100px;
+#lsp {
+  width: 100%;
+  height:30px;
 }
 
 #link {
-  width: 400px;
-  height:100px;
+  width: 100%;
+  height:30px;
 }
 /*
 
