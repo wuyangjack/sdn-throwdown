@@ -315,7 +315,7 @@ var QueryList = React.createClass({
       );
     });
     return (
-      <table className="querytList table-fixed table table-striped">
+      <table className="querytList table table-striped">
         <tbody>
           {queryNodes}
         </tbody>
@@ -734,9 +734,12 @@ var NetworkMap = React.createClass({
 
   render: function() {
     var scope = {
-         style: {
-             height: 240
-         }
+      style1: {
+        height: 240
+      },
+      style2: {
+        height: 310
+      }
     };
     this.drawTopology();
 
@@ -771,18 +774,13 @@ var NetworkMap = React.createClass({
             <br/>
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h3 className="panel-title">New Query</h3>
+                <h3 className="panel-title">Queries</h3>
               </div>
               <div className="panel-body">
-                <QueryForm onQuerySubmit={this.handleQuerySubmit} />
-              </div>
-            </div>
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h3 className="panel-title">Queries History</h3>
-              </div>
-              <div className="panel-body">
-                <QueryList queries={this.state.queries} onQuerySubmit={this.handleQueryExecute} />
+                <div className="pre-scrollable" style={scope.style2}>
+                  <QueryForm onQuerySubmit={this.handleQuerySubmit} />
+                  <QueryList queries={this.state.queries} onQuerySubmit={this.handleQueryExecute} />
+                </div>
               </div>
             </div>
             <br/>

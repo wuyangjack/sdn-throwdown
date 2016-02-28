@@ -1,6 +1,7 @@
 import json
 import heapq
 import redis
+import pprint
 import requests
 from dict_util import *
 from class_util import *
@@ -150,6 +151,7 @@ def generateLSP(graph, sNodeIndex, tNodeIndex, a, b, c):
     while True:
         if len(heap) == 0:
             return None
+        # heapq.heapify(heap)
         pathNode = heapq.heappop(heap)
         if pathNode.node.index == tNodeIndex:
             path = []
@@ -157,6 +159,7 @@ def generateLSP(graph, sNodeIndex, tNodeIndex, a, b, c):
             while tmpNode is not None:
                 path.insert(0, tmpNode.node.index);
                 tmpNode = tmpNode.parent
+            graph.incrPathUtility(path, 0.1)
             return path
         explored.add(pathNode)
         for link in pathNode.edges:
@@ -182,23 +185,70 @@ def generateLSP(graph, sNodeIndex, tNodeIndex, a, b, c):
                 heapq.heapify(heap)
 
 
-def updateLSP(name, path, links):
+def updateLSPs(linkPathDict, linkDict):
+    if len(linkPathDict) == 0:
+        return
     r = requests.get('https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps/', headers=authHeader,
                      verify=False)
     lsp_list = json.loads(json.dumps(r.json()))
+
+    new_lsps = []
     for lsp in lsp_list:
-        if lsp['name'] == name:
-            break
-    # Fill only the required fields
-    ero = []
-    for i in range(0, len(path) - 1):
-        ero.append({'topoObjectType': 'ipv4', 'address': getZNodeIpAddress(path[i], path[i + 1], links)})
+        if lsp['name'] not in linkPathDict:
+            continue
+        # Fill only the required fields
+        ero = []
+        path = linkPathDict[lsp['name']]
+        for i in range(0, len(path) - 1):
+            ero.append({'topoObjectType': 'ipv4', 'address': getZNodeIpAddress(path[i], path[i + 1], linkDict)})
 
-    new_lsp = {}
-    for key in ('from', 'to', 'name', 'lspIndex', 'pathType'):
-        new_lsp[key] = lsp[key]
+        new_lsp = {}
+        for key in ('from', 'to', 'name', 'lspIndex', 'pathType'):
+            new_lsp[key] = lsp[key]
 
-    new_lsp['plannedProperties'] = {'ero': ero}
+        new_lsp['plannedProperties'] = {'ero': ero}
+        new_lsps.append(new_lsp)
 
-    requests.put('https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps/' + str(new_lsp['lspIndex']),
-                 json=new_lsp, headers=authHeader, verify=False)
+    requests.put('https://10.10.2.25:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps/bulk',
+                 json=new_lsps, headers=authHeader, verify=False)
+
+
+def getBadLSPs(linkDict, LSPs, utilLimit):
+    badLinks = set()
+    for link in linkDict.values():
+        if link.status == "Down":
+            badLinks.add((link.ANode['nodeIndex'], link.ZNode['nodeIndex']))
+            badLinks.add((link.ZNode['nodeIndex'], link.ANode['nodeIndex']))
+        if link.AZUtility > utilLimit:
+            badLinks.add((link.ANode['nodeIndex'], link.ZNode['nodeIndex']))
+        if link.ZAUtility > utilLimit:
+            badLinks.add((link.ZNode['nodeIndex'], link.ANode['nodeIndex']))
+    badLSPs = set()
+    for lsp in LSPs:
+        if lsp.group != 5 or lsp.name in badLSPs:
+            continue
+        for i in range(0, len(lsp.ero) - 1):
+            if (lsp.ero[i], lsp.ero[i + 1]) in badLinks:
+                badLSPs.add(lsp.name)
+                break
+    return badLSPs
+
+
+def generateLSPs(badLinks, graph, a, b, c):
+    linkPathDict = {}
+    for badLink in badLinks:
+        # Assign a, b, c to each LSP?
+        if "SF_NY" in badLink:
+            path = generateLSP(graph, 1, 7, a, b, c)
+        else:
+            path = generateLSP(graph, 7, 1, a, b, c)
+        linkPathDict[badLink] = path
+    return linkPathDict
+
+
+def updateBadLinks(linkDict, graph, LSPs, utilLimit):
+    badLinks = getBadLSPs(linkDict, LSPs, utilLimit)
+    linkPathDict = generateLSPs(badLinks, graph, 0, 1, 1)
+    pp = pprint.PrettyPrinter(indent=4)
+    pp.pprint(linkPathDict)
+    updateLSPs(linkPathDict, linkDict)

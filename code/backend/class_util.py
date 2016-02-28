@@ -1,6 +1,8 @@
+import copy
 import math
 import time
 from states import NetworkStateService
+
 
 class PathNode(object):
     def __init__(self, node, parent=None):
@@ -9,17 +11,17 @@ class PathNode(object):
         self.edges = []
         self.priority = float("inf")
 
-    def __cmp__(self, other):
-        return cmp(self.priority, other.priority)
+    def __lt__(self, other):
+        return self.priority < other.priority
 
 
 class Graph(object):
-    def __init__(self, nodes, links):
+    def __init__(self, nodes, linkDict):
         self.pathNodes = {}
-        self.links = links
+        self.linkDict = copy.deepcopy(linkDict)
         for node in nodes:
             self.pathNodes[node.index] = PathNode(node)
-        for link in links:
+        for link in self.linkDict.values():
             self.pathNodes[link.ANode["nodeIndex"]].edges.append(link)
             self.pathNodes[link.ZNode["nodeIndex"]].edges.append(link)
 
@@ -30,8 +32,20 @@ class Graph(object):
         for pathNode in self.pathNodes.values():
             pathNode.parent = None
             pathNode.priority = float("inf")
-        for link in self.links:
+        for link in self.linkDict.values():
             link.updateWeight(a, b, c)
+
+    def incrLinkUtility(self, ANodeIndex, ZNodeIndex, incrVal):
+        path = str(ANodeIndex) + "-" + str(ZNodeIndex)
+        reversePath = str(ZNodeIndex) + "-" + str(ANodeIndex)
+        if path in self.linkDict:
+            self.linkDict[path].AZUtility += incrVal
+        elif reversePath in self.linkDict:
+            self.linkDict[reversePath].ZAUtility += incrVal
+
+    def incrPathUtility(self, path, incrVal):
+        for i in range(0, len(path) - 1):
+            self.incrLinkUtility(path[i], path[i + 1], incrVal)
 
 
 class ItfcTraffic(object):
@@ -136,8 +150,8 @@ class Link(object):
             self.AZweight = float("inf")
             self.ZAweight = float("inf")
         else:
-            self.AZweight = a * self.AZlspCount + b * self.AZUtility + c * self.length
-            self.ZAweight = a * self.ZAlspCount + b * self.ZAUtility + c * self.length
+            self.AZweight = a * self.AZlspCount + b * (5 * self.AZUtility) ** 2 + c * self.length
+            self.ZAweight = a * self.ZAlspCount + b * (5 * self.AZUtility) ** 2 + c * self.length
 
 
 class LSP(object):
