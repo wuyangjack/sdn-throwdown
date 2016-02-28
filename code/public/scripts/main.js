@@ -263,61 +263,90 @@ var QueryForm = React.createClass({
     e.preventDefault();
     var name = this.state.name.trim();
     var link = this.state.link_editor.getValue();
-    var lsp = this.state.lsp_editor.getValue();
+    var lsp = '...';
+    if (this.props.single != 'true') {
+      lsp = this.state.lsp_editor.getValue();
+    }
     if (!link || !name || !lsp) {
       return;
     }
     this.props.onQuerySubmit({name: name, link: link, lsp: lsp});
     this.setState({name: '...', link: '...', lsp: '...'});
   },
+
   componentDidMount: function() {
     var link_editor = ace.edit("link");
     var SQLScriptMode = ace.require("ace/mode/sql").Mode;
     link_editor.session.setMode(new SQLScriptMode());
     link_editor.setTheme("ace/theme/chrome");
     link_editor.setOptions({ maxLines: Infinity });
-    var lsp_editor = ace.edit("lsp");
-    lsp_editor.session.setMode(new SQLScriptMode());
-    lsp_editor.setTheme("ace/theme/chrome");
-    lsp_editor.setOptions({ maxLines: Infinity });
     this.state.link_editor = link_editor;
-    this.state.lsp_editor = lsp_editor;
+    if (this.props.single != 'true') {
+      var lsp_editor = ace.edit("lsp");
+      lsp_editor.session.setMode(new SQLScriptMode());
+      lsp_editor.setTheme("ace/theme/chrome");
+      lsp_editor.setOptions({ maxLines: Infinity });
+      this.state.lsp_editor = lsp_editor;
+    }
   },
   render: function() {
-    return (
-      <form className="queryForm" onSubmit={this.handleSubmit}>
-        <div className="col-xs-10">
-          <input type="text" className="form-control" value={this.state.name} placeholder="Name" onChange={this.handleNameChange} />
-        </div>
-        <div>
-          <button type="submit" value = "Post" className="btn btn-default" aria-label="Left Align">
-            <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
-          </button>
-        </div>
-        <br/>
-        <div className="col-xs-12">
-          <div className="panel panel-default">
-            <div id="link">SELECT * FROM Link_</div>
+    if (this.props.single != 'true') {
+      return (
+        <form className="queryForm" onSubmit={this.handleSubmit}>
+          <div className="col-xs-10">
+            <input type="text" className="form-control" value={this.state.name} placeholder="Name" onChange={this.handleNameChange} />
           </div>
-        </div>
-        <div className="col-xs-12">
-          <div className="panel panel-default">
-            <div id="lsp">SELECT * FROM Lsp_</div>
+          <div>
+            <button type="submit" value = "Post" className="btn btn-default" aria-label="Left Align">
+              <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
           </div>
-        </div>
-      </form>
-    );
+          <br/>
+          <div className="col-xs-12">
+            <div className="panel panel-default">
+              <div id="link">SELECT * FROM Link_</div>
+            </div>
+          </div>
+          <div className="col-xs-12">
+            <div className="panel panel-default">
+              <div id="lsp">SELECT * FROM Lsp_</div>
+            </div>
+          </div>
+        </form>
+      );    
+    } else {
+      return (
+        <form className="queryForm" onSubmit={this.handleSubmit}>
+          <div className="col-xs-10">
+            <input type="text" className="form-control" value={this.state.name} placeholder="Name" onChange={this.handleNameChange} />
+          </div>
+          <div>
+            <button type="submit" value = "Post" className="btn btn-default" aria-label="Left Align">
+              <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+          </div>
+          <br/>
+          <div className="col-xs-12">
+            <div className="panel panel-default">
+              <div id="link">SELECT * FROM Link_</div>
+            </div>
+          </div>
+        </form>
+      );
+    }
+
   }
 });
 
 var QueryList = React.createClass({
   render: function() {
     var queryExecutionHandler = this.props.onQuerySubmit;
+    var single = this.props.single;
     var queryNodes = this.props.queries.map(function(query) {
       return (
         <tr>
           <td>
-            <Query name={query.name} key={query.id} link={query.link} lsp={query.lsp} onQuerySubmit={queryExecutionHandler}/>
+            <Query name={query.name} key={query.id} link={query.link} lsp={query.lsp} single={single} onQuerySubmit={queryExecutionHandler}/>
           </td>
         </tr>
       );
@@ -332,71 +361,6 @@ var QueryList = React.createClass({
   }
 });
 
-/*
-var GraphQuery = React.createClass({
-  getInitialState: function() {
-    var uuid = Date.now();
-    var linkid = Date.now() + "@";
-    var lspid = Date.now() + "#";
-    return {uuid: uuid, linkid: linkid, lspid: lspid};
-  },
-
-  handleSubmit: function(e) {
-    e.preventDefault();
-    // TODO: update edit
-    this.props.onQuerySubmit({link: this.props.link, lsp: this.props.lsp});
-  },
-
-  componentDidMount: function() {
-    var link_editor = ace.edit(this.state.linkid.toString());
-    var SQLScriptMode = ace.require("ace/mode/sql").Mode;
-    link_editor.session.setMode(new SQLScriptMode());
-    link_editor.setTheme("ace/theme/chrome");
-    link_editor.setOptions({ maxLines: Infinity });
-    var lsp_editor = ace.edit(this.state.lspid.toString());
-    lsp_editor.session.setMode(new SQLScriptMode());
-    lsp_editor.setTheme("ace/theme/chrome");
-    lsp_editor.setOptions({ maxLines: Infinity });
-    this.state.link_editor = link_editor;
-    this.state.lsp_editor = lsp_editor;
-  },
-
-  render: function() {
-    var scope = {
-      width: '100%',
-      height: '30px'
-    }
-    return (
-      <div className="query">
-        <h5 className="queryName">
-          {this.props.name}
-        </h5>
-        <button type="button" className="btn btn-default" aria-label="Left Align" data-toggle="collapse" data-target={"#" + this.state.uuid}>
-          <span className="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-        </button>
-        <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleSubmit}>
-          <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
-        </button>
-        <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleDelete}>
-          <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        </button>
-        <br/>
-        <br/>
-        <div id={this.state.uuid} className="collapse">
-          <div className="panel panel-default">
-            <div id={this.state.linkid.toString()} style={scope}>{this.props.link}</div>
-          </div>
-          <div className="panel panel-default">
-            <div id={this.state.lspid.toString()} style={scope}>{this.props.lsp}</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-});
-*/
-
-
 var Query = React.createClass({
   getInitialState: function() {
     var uuid = Date.now();
@@ -407,8 +371,7 @@ var Query = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    // TODO: update edit
-    this.props.onQuerySubmit({link: this.props.link, lsp: this.props.lsp});
+    this.props.onQuerySubmit({link: this.props.link, lsp: this.props.lsp, single: this.props.single});
   },
 
   componentDidMount: function() {
@@ -417,52 +380,82 @@ var Query = React.createClass({
     link_editor.session.setMode(new SQLScriptMode());
     link_editor.setTheme("ace/theme/chrome");
     link_editor.setOptions({ maxLines: Infinity });
-    var lsp_editor = ace.edit(this.state.lspid.toString());
-    lsp_editor.session.setMode(new SQLScriptMode());
-    lsp_editor.setTheme("ace/theme/chrome");
-    lsp_editor.setOptions({ maxLines: Infinity });
     this.state.link_editor = link_editor;
-    this.state.lsp_editor = lsp_editor;
+    if (this.props.single != 'true') {
+      var lsp_editor = ace.edit(this.state.lspid.toString());
+      lsp_editor.session.setMode(new SQLScriptMode());
+      lsp_editor.setTheme("ace/theme/chrome");
+      lsp_editor.setOptions({ maxLines: Infinity });
+      this.state.lsp_editor = lsp_editor;
+    }
   },
 
   render: function() {
-    var scope = {
+    var scopeLink = {
       width: '100%',
       height: '30px'
     }
-    return (
-      <div className="query">
-        <h5 className="queryName">
-          {this.props.name}
-        </h5>
-        <button type="button" className="btn btn-default" aria-label="Left Align" data-toggle="collapse" data-target={"#" + this.state.uuid}>
-          <span className="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-        </button>
-        <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleSubmit}>
-          <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
-        </button>
-        <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleDelete}>
-          <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        </button>
-        <br/>
-        <br/>
-        <div id={this.state.uuid} className="collapse">
-          <div className="panel panel-default">
-            <div id={this.state.linkid.toString()} style={scope}>{this.props.link}</div>
-          </div>
-          <div className="panel panel-default">
-            <div id={this.state.lspid.toString()} style={scope}>{this.props.lsp}</div>
+    var scopeLsp = {
+      width: '100%',
+      height: '30px'
+    }
+    if (this.props.single != 'true') {
+      return (
+        <div className="query">
+          <h5 className="queryName">
+            {this.props.name}
+          </h5>
+          <button type="button" className="btn btn-default" aria-label="Left Align" data-toggle="collapse" data-target={"#" + this.state.uuid}>
+            <span className="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+          </button>
+          <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleSubmit}>
+            <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
+          </button>
+          <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleDelete}>
+            <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button>
+          <br/>
+          <br/>
+          <div id={this.state.uuid} className="collapse">
+            <div className="panel panel-default">
+              <div id={this.state.linkid.toString()} style={scopeLink}>{this.props.link}</div>
+            </div>
+            <div className="panel panel-default">
+              <div id={this.state.lspid.toString()} style={scopeLsp}>{this.props.lsp}</div>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="query">
+          <h5 className="queryName">
+            {this.props.name}
+          </h5>
+          <button type="button" className="btn btn-default" aria-label="Left Align" data-toggle="collapse" data-target={"#" + this.state.uuid}>
+            <span className="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+          </button>
+          <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleSubmit}>
+            <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
+          </button>
+          <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleDelete}>
+            <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button>
+          <br/>
+          <br/>
+          <div id={this.state.uuid} className="collapse">
+            <div className="panel panel-default">
+              <div id={this.state.linkid.toString()} style={scopeLink}>{this.props.link}</div>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 });
 
 var ResultTable = React.createClass({
   render: function() {
-    
-    console.log(this.props.name);
     var json = this.props.content;
     if (_.isEmpty(json)) {
       return(<div/>);
@@ -908,8 +901,8 @@ var NetworkMap = React.createClass({
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style2}>
-                  <QueryForm onQuerySubmit={this.handleQuerySubmit} />
-                  <QueryList queries={this.state.queries} onQuerySubmit={this.handleQueryExecute} />
+                  <QueryForm single='false' onQuerySubmit={this.handleQuerySubmit} />
+                  <QueryList queries={this.state.queries} single='false' onQuerySubmit={this.handleQueryExecute} />
                 </div>
               </div>
             </div>
@@ -1036,8 +1029,8 @@ var NetworkGraph = React.createClass({
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style2}>
-                  <QueryForm onQuerySubmit={this.handleQuerySubmit} />
-                  <QueryList queries={this.state.queries} onQuerySubmit={this.handleQueryExecute} />
+                  <QueryForm single='true' onQuerySubmit={this.handleQuerySubmit} />
+                  <QueryList queries={this.state.queries} single='true' onQuerySubmit={this.handleQueryExecute} />
                 </div>
               </div>
             </div>
