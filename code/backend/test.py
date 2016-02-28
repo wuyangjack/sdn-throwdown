@@ -24,15 +24,17 @@ Created on Feb 21, 2016
 # print json.dumps(r.json(), indent=4, separators=(',', ': '))
 
 
-# nodeDict = getIpToNodeDict()
-# linkDict = getAZToLinkDict(nodeDict)
-# # if "1-8" in linkDict:
-# #     linkDict["1-8"].status="Down"
-# # else:
-# #     linkDict["8-1"].status="Down"
-# LSPs = getLSPs(nodeDict, linkDict)
-# trafficStatDict = getIpToTrafficStatDict()
-# updateLinkUtility(linkDict, trafficStatDict)
-# graph = Graph(nodeDict.values(), linkDict)
-# updateBadLinks(linkDict, graph, LSPs, 0.5)
+nodeDict = getIpToNodeDict()
+linkDict = getAZToLinkDict(nodeDict)
+# if "1-8" in linkDict:
+#     linkDict["1-8"].status="Down"
+# else:
+#     linkDict["8-1"].status="Down"
+trafficStatDict = getIpToTrafficStatDict()
+updateLinkUtility(linkDict, trafficStatDict)
+LSPs = getLSPs(nodeDict, linkDict)
+updateLSPPingLatency(LSPs)
+
+graph = Graph(nodeDict.values(), linkDict)
+updateBadLinks(linkDict, graph, LSPs)
 

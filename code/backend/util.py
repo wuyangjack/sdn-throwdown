@@ -7,20 +7,9 @@ from function_util import *
 from thread import start_new_thread
 from states import NetworkStateService
 
-# nodeDict = getIpToNodeDict()
-# linkDict = getAZToLinkDict(nodeDict)
-# # if "1-8" in linkDict:
-# #     linkDict["1-8"].status="Down"
-# # else:
-# #     linkDict["8-1"].status="Down"
-# LSPs = getLSPs(nodeDict, linkDict)
-# trafficStatDict = getIpToTrafficStatDict()
-# updateLinkUtility(linkDict, trafficStatDict)
-# graph = Graph(nodeDict.values(), linkDict)
-# updateBadLinks(linkDict, graph, LSPs, 0.5)
-
 lock = threading.Lock()
 nss = NetworkStateService("database/states.db")
+
 
 def updateTopology():
     with lock:
@@ -31,9 +20,10 @@ def updateTopology():
 
             nodeDict = getIpToNodeDict()
             linkDict = getAZToLinkDict(nodeDict)
-            LSPs = getLSPs(nodeDict, linkDict)
             trafficStatDict = getIpToTrafficStatDict()
             updateLinkUtility(linkDict, trafficStatDict)
+            LSPs = getLSPs(nodeDict, linkDict)
+            updateLSPPingLatency(LSPs)
 
             for name in nodeDict:
                 nodeDict[name].log(nss)
@@ -48,7 +38,7 @@ def updateTopology():
                 trafficStatDict[address].log(nss)
 
             graph = Graph(nodeDict.values(), linkDict)
-            updateBadLinks(linkDict, graph, LSPs, 0.6)
+            updateBadLinks(linkDict, graph, LSPs)
 
             data = {'timestamp': ts, 'nodes': nodeDict.values(), 'links': linkDict.values(), 'lsps': LSPs}
 
