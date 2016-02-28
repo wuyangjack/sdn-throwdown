@@ -5,10 +5,12 @@ http://127.0.0.1:3000/api/sql?query="SELECT * FROM LinkLspList_ WHERE value LIKE
 
 
 // Downed links
-SELECT * FROM LinkStatus WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 1800 AND value != 'Up'
+SELECT * FROM LinkStatus WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 7200 AND value != 'Up'
 
 // Hot links
-SELECT * FROM LinkUtilization WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 1800 AND CAST(value AS DECIMAL) > 0.8
+SELECT * FROM LinkUtilization WHERE key in (
+	SELECT key FROM LinkUtilization WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 1800 AND CAST(value AS DECIMAL) > 0.8
+)
 
 // Inflated lsps
 WITH 

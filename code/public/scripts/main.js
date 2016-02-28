@@ -342,11 +342,12 @@ var QueryList = React.createClass({
   render: function() {
     var queryExecutionHandler = this.props.onQuerySubmit;
     var single = this.props.single;
+    var height = this.props.height;
     var queryNodes = this.props.queries.map(function(query) {
       return (
         <tr>
           <td>
-            <Query name={query.name} key={query.id} link={query.link} lsp={query.lsp} single={single} onQuerySubmit={queryExecutionHandler}/>
+            <Query name={query.name} key={query.id} link={query.link} lsp={query.lsp} single={single} height={height} onQuerySubmit={queryExecutionHandler}/>
           </td>
         </tr>
       );
@@ -393,11 +394,11 @@ var Query = React.createClass({
   render: function() {
     var scopeLink = {
       width: '100%',
-      height: '30px'
+      height: this.props.height
     }
     var scopeLsp = {
       width: '100%',
-      height: '30px'
+      height: this.props.height
     }
     if (this.props.single != 'true') {
       return (
@@ -456,7 +457,6 @@ var Query = React.createClass({
 
 var ResultTable = React.createClass({
   render: function() {
-    console.log(ResultTable.nodeNames);
     var json = this.props.content;
     if (_.isEmpty(json)) {
       return(<div/>);
@@ -621,7 +621,6 @@ var NetworkMap = React.createClass({
 
     var linkUtilization = NetworkStateService.cleanState(this.state.linkUtilization, 'key', linkFilter);
     linkStatistics['Utilization'] = NetworkStateService.filterState(linkUtilization, 'value');
-    console.log(this.state.nodeNames);
 
     // TODO: format index into city
     var linkStatus = NetworkStateService.cleanState(this.state.linkStatus, 'key', linkFilter); 
@@ -925,7 +924,7 @@ var NetworkMap = React.createClass({
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style2}>
                   <QueryForm single='false' onQuerySubmit={this.handleQuerySubmit} />
-                  <QueryList queries={this.state.queries} single='false' onQuerySubmit={this.handleQueryExecute} />
+                  <QueryList queries={this.state.queries} single='false' height='30px' onQuerySubmit={this.handleQueryExecute} />
                 </div>
               </div>
             </div>
@@ -954,15 +953,96 @@ var NetworkMap = React.createClass({
   }
 });
 
+var formatTime = function (unix_timestamp) {
+    return new Date(unix_timestamp * 1000).format("UTC:mm/dd HH:MM")
+}
+
+var drawTimeSeries = function (id, labels, values, times, labelTextX, labelTextY, legends) {
+    var chart = c3.generate({
+        bindto: '#' + id,
+        size: {
+        },
+        data: {
+            xs: {},
+            columns: [],
+            type: 'area-spline'
+        },
+        axis: {
+            y: {
+                //label: {
+                //    text: labelTextY,
+                //    position: 'outer-middle'
+                //}
+            },
+            x: {
+                label: {
+                    text: labelTextX,
+                    position: 'outer-middle'
+                },
+                tick: {
+                  format: function function_name(unix_timestamp) {
+                    var date = new Date(unix_timestamp * 1000);
+                    return date.getHours().toString() + ":" + date.getMinutes().toString();
+                  },
+                }
+            }
+        },
+        grid: {
+            x: {
+                show: true
+            },
+            y: {
+                show: true
+            }
+        },
+        legend: {
+            show: true
+        }
+    });
+
+    var xy = {};
+    var datas = [];
+    for (var i = 0; i < labels.length; i++) {
+        var labelX = labels[i] + "X";
+        times[labels[i]].unshift(labelX);
+        values[labels[i]].unshift(labels[i])
+        datas.push(times[labels[i]]);
+        datas.push(values[labels[i]]);
+        xy[labels[i]] = labelX;
+    }
+    console.log(xy);
+    console.log(datas);
+    chart.load({
+        xs: xy,
+        columns: datas,
+    });
+    return chart;
+}
+
 var NetworkGraph = React.createClass({
   getInitialState: function() {
     return {
       queries: [],
+      sqlName: 'Name',
+      sqlQuery: '...',
+      sqlData: [],
     };
   },
 
   drawGraph: function() {
-    console.log("graw gaph");
+    if (_.isEmpty(this.state.sqlData) == false) {
+      var streams = NetworkStateService.groupState(this.state.sqlData, "key");
+      var labels = _.map(streams, function(stream, key) {
+        return key;
+      });
+      var values = _.mapObject(streams, function(stream, key) {
+        return NetworkStateService.filterState(stream, 'value');
+      });
+      var times = _.mapObject(streams, function(stream, key) {
+        return NetworkStateService.filterState(stream, 'time');
+      });
+      drawTimeSeries('graph', labels, values, times, 'Time', 'Utilization', null);
+    }
   },
 
   loadQueriesFromServer: function() {
@@ -979,6 +1059,15 @@ var NetworkGraph = React.createClass({
       error: function(xhr, status, err) {
         console.error(this.props.query_url, status, err.toString());
       }.bind(this)
+    });
+  },
+
+  loadSqlQueryFromServer: function() {
+    NetworkStateService.executeSql(this, this.state.sqlQuery, function(obj, data) {
+      if (obj.isMounted()) {
+        obj.state.sqlData = data;
+        obj.setState(obj.state);
+      }
     });
   },
 
@@ -1007,18 +1096,20 @@ var NetworkGraph = React.createClass({
 
   handleQueryExecute: function(query) {
     console.log(query);
-    this.state.lspFilterQuery = query.lsp;
-    this.state.linkFilterQuery = query.link;
+    this.state.sqlQuery = query.link;
     this.setState(this.state);
   },
 
   componentDidMount: function() {
     this.loadQueriesFromServerInterval = setInterval(this.loadQueriesFromServer, this.props.pollInterval);
+    this.loadSqlQueryFromServerInterval = setInterval(this.loadSqlQueryFromServer, this.props.pollInterval);
   },
 
   componentWillUnmount () {
     this.loadQueriesFromServerInterval && clearInterval(this.loadQueriesFromServerInterval);
     this.loadQueriesFromServerInterval = false;
+    this.loadSqlQueryFromServerInterval && clearInterval(this.loadSqlQueryFromServerInterval);
+    this.loadSqlQueryFromServerInterval = false;
   },
 
   shouldComponentUpdate: function(nextProps, nextState) {
@@ -1053,7 +1144,7 @@ var NetworkGraph = React.createClass({
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style2}>
                   <QueryForm single='true' onQuerySubmit={this.handleQuerySubmit} />
-                  <QueryList queries={this.state.queries} single='true' onQuerySubmit={this.handleQueryExecute} />
+                  <QueryList queries={this.state.queries} single='true' height='30px' onQuerySubmit={this.handleQueryExecute} />
                 </div>
               </div>
             </div>
@@ -1095,7 +1186,7 @@ var NavBar = React.createClass({
 
 var PennApp = React.createClass({
   getInitialState: function() {
-    return {show: 'map'};
+    return {show: 'graph'};
   },
 
   showMap: function(e) {
@@ -1122,7 +1213,7 @@ var PennApp = React.createClass({
       return (
         <div>
           <NavBar active='graph' showGraph={this.showGraph} showMap={this.showMap} />
-          <NetworkGraph query_url="/api/graphs" pollInterval={1000}/>
+          <NetworkGraph query_url="/api/graphs" pollInterval={5000}/>
         </div>
       );
     }
