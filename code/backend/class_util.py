@@ -195,3 +195,8 @@ class LSP(object):
         nss.save(NetworkStateService.LspStatus, key, timestamp, self.operationalStatus)
         nss.save(NetworkStateService.LspLatency, key, timestamp, self.latency)
         nss.save(NetworkStateService.LspLinkList, key, timestamp, "|".join(self.links))
+        nss.save(NetworkStateService.LspFreeUtilization, key, timestamp, self.freeUtility)
+        print self.pingLatency
+        nss.save(NetworkStateService.LspRealLatency, key, timestamp, self.pingLatency['latency'])
+
+

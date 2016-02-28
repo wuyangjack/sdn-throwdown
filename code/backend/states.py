@@ -13,6 +13,8 @@ class NetworkStateService(object):
 	Lsp = "Lsp"
 	LspRoute = "LspRoute"
 	LspLatency = "LspLatency"
+	LspRealLatency = "LspRealLatency"
+	LspFreeUtilization = "LspFreeUtilization"
 	LspStatus = "LspStatus"
 	LspLinkList = "LspLinkList"
 	Interface = "Interface"
