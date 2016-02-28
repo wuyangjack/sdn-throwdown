@@ -461,6 +461,7 @@ var Query = React.createClass({
 
 var ResultTable = React.createClass({
   render: function() {
+    
     console.log(this.props.name);
     var json = this.props.content;
     if (_.isEmpty(json)) {
