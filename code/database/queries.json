@@ -1,0 +1,36 @@
+SELECT link_to_lsp(key) FROM Link_
+SELECT key FROM LinkLspList WHERE value LIKE '%GROUP_FIVE_SF_NY_LSP2%'
+http://127.0.0.1:3000/api/sql?query="SELECT link_to_lsp(key) FROM Link_"
+http://127.0.0.1:3000/api/sql?query="SELECT * FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_SF_NY_LSP2%'"
+
+
+// Downed links
+SELECT * FROM LinkStatus WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 1800 AND value != 'Up'
+
+// Hot links
+SELECT * FROM LinkUtilization WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 1800 AND CAST(value AS DECIMAL) > 0.8
+
+// Inflated lsps
+WITH 
+RecentLspLatency AS (
+	SELECT * FROM LspLatency
+	WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 1800
+),
+MinLspLatency AS (
+	SELECT key, CAST(min(value) AS REAL) AS value FROM RecentLspLatency 
+	GROUP BY key
+),
+LspInflationRatio AS (
+	SELECT RecentLspLatency.key, RecentLspLatency.time, 
+	(CAST(RecentLspLatency.value AS REAL) / MinLspLatency.value) AS value
+	FROM RecentLspLatency JOIN MinLspLatency 
+	ON RecentLspLatency.key = MinLspLatency.key
+),
+LspInflationRatioAverage AS (
+	SELECT key, avg(value) AS value FROM LspInflationRatio 
+	GROUP BY key
+)
+SELECT * FROM RecentLspLatency WHERE key in (
+	SELECT key FROM LspInflationRatioAverage
+	WHERE value > 1.5
+)
