@@ -275,9 +275,11 @@ var QueryForm = React.createClass({
     var SQLScriptMode = ace.require("ace/mode/sql").Mode;
     link_editor.session.setMode(new SQLScriptMode());
     link_editor.setTheme("ace/theme/chrome");
+    link_editor.setOptions({ maxLines: Infinity });
     var lsp_editor = ace.edit("lsp");
     lsp_editor.session.setMode(new SQLScriptMode());
     lsp_editor.setTheme("ace/theme/chrome");
+    lsp_editor.setOptions({ maxLines: Infinity });
     this.state.link_editor = link_editor;
     this.state.lsp_editor = lsp_editor;
   },
@@ -333,20 +335,44 @@ var QueryList = React.createClass({
 var Query = React.createClass({
   getInitialState: function() {
     var uuid = Date.now();
-    return {uuid: uuid};
+    var linkid = Date.now() + "@";
+    var lspid = Date.now() + "#";
+    console.log(uuid);
+    console.log(linkid);
+    console.log(lspid);
+    return {uuid: uuid, linkid: linkid, lspid: lspid};
   },
 
   handleSubmit: function(e) {
     e.preventDefault();
+    // TODO: update edit
     this.props.onQuerySubmit({link: this.props.link, lsp: this.props.lsp});
   },
 
+  componentDidMount: function() {
+    var link_editor = ace.edit(this.state.linkid.toString());
+    var SQLScriptMode = ace.require("ace/mode/sql").Mode;
+    link_editor.session.setMode(new SQLScriptMode());
+    link_editor.setTheme("ace/theme/chrome");
+    link_editor.setOptions({ maxLines: Infinity });
+    var lsp_editor = ace.edit(this.state.lspid.toString());
+    lsp_editor.session.setMode(new SQLScriptMode());
+    lsp_editor.setTheme("ace/theme/chrome");
+    lsp_editor.setOptions({ maxLines: Infinity });
+    this.state.link_editor = link_editor;
+    this.state.lsp_editor = lsp_editor;
+  },
+
   render: function() {
+    var scope = {
+      width: '100%',
+      height: '30px'
+    }
     return (
       <div className="query">
-        <h4 className="queryName">
+        <h5 className="queryName">
           {this.props.name}
-        </h4>
+        </h5>
         <button type="button" className="btn btn-default" aria-label="Left Align" data-toggle="collapse" data-target={"#" + this.state.uuid}>
           <span className="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
         </button>
@@ -356,11 +382,15 @@ var Query = React.createClass({
         <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleDelete}>
           <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </button>
+        <br/>
+        <br/>
         <div id={this.state.uuid} className="collapse">
-          <br/>
-          {this.props.link}
-          <br/>
-          {this.props.lsp}
+          <div className="panel panel-default">
+            <div id={this.state.linkid.toString()} style={scope}>{this.props.link}</div>
+          </div>
+          <div className="panel panel-default">
+            <div id={this.state.lspid.toString()} style={scope}>{this.props.lsp}</div>
+          </div>
         </div>
       </div>
     );
@@ -732,7 +762,8 @@ var NetworkMap = React.createClass({
     var map = new google.maps.Map(document.getElementById('googleMap'), {
         center: {lat: 35, lng: -95},
         zoom: 4,
-        disableDefaultUI: true
+        disableDefaultUI: true,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
     });
     map.setOptions({draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
     this.state.map = map;
@@ -754,7 +785,7 @@ var NetworkMap = React.createClass({
   render: function() {
     var scope = {
       style1: {
-        height: 200
+        height: 240
       },
       style2: {
         height: 500
