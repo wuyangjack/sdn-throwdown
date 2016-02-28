@@ -8,6 +8,8 @@ from dict_util import *
 from class_util import *
 
 LSP_INCR_UTIL_VAL = 0.1
+BAD_LINK_UTIL_VAL = 0.6
+VM_PINGER_PORT_NUMBER = 12345
 
 
 # TODO:
@@ -97,6 +99,7 @@ def linkLspCountHelper(lspName, ero, linkDict):
         if reversePath in linkDict:
             linkDict[reversePath].ZAlspCount += 1
             linkDict[reversePath].ZAlspList.append(lspName)
+
 
 def getLSPs(nodeDict, linkDict):
     r = requests.get(
@@ -262,9 +265,36 @@ def generateLSPs(badLinks, graph, a, b, c):
     return linkPathDict
 
 
-def updateBadLinks(linkDict, graph, LSPs, utilLimit):
+def updateBadLinks(linkDict, graph, LSPs, utilLimit=BAD_LINK_UTIL_VAL):
     badLinks = getBadLSPs(linkDict, LSPs, utilLimit)
     linkPathDict = generateLSPs(badLinks, graph, 0, 1, 1)
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(linkPathDict)
     updateLSPs(linkPathDict, linkDict)
+
+
+# def updateLinkLatency(linkDict):
+#     r = redis.StrictRedis(host='10.10.4.252', port=6379, db=0)
+#     for link in linkDict.values():
+#         AZLantencyData = json.loads(
+#             r.lrange(getRedisLatencyName(link.ANode["nodeIndex"], link.ZNode["nodeIndex"]), 0, 0)[0])
+#         ZALantencyData = json.loads(
+#             r.lrange(getRedisLatencyName(link.ZNode["nodeIndex"], link.ANode["nodeIndex"]), 0, 0)[0])
+#         link.updataLatency(
+#             {"timestamp": AZLantencyData["timestamp"], "rrtAvg": AZLantencyData["rtt-average(ms)"]},
+#             {"timestamp": ZALantencyData["timestamp"], "rrtAvg": ZALantencyData["rtt-average(ms)"]}
+#         )
+
+def updateLSPPingLatency(LSPs):
+    response = requests.get('http://10.10.2.204:' + str(VM_PINGER_PORT_NUMBER))
+    lspToLatenctDict = json.loads(response.text)
+    response = requests.get('http://10.10.2.224:' + str(VM_PINGER_PORT_NUMBER))
+    lspToLatenctDict.update(json.loads(response.text))
+    for lsp in LSPs:
+        if lsp.group != 5:
+            continue
+        name = lsp.name[-10:]
+        lsp.pingLatency = lspToLatenctDict[name]
+        print lsp.pingLatency
+    # print lspToLatenctDict
+
