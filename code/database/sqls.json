@@ -28,5 +28,11 @@
         "name": "Full network",
         "lsp": "SELECT * FROM Lsp_",
         "id": 1456623577556
+    },
+    {
+        "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_NY_SF_LSP1%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
+        "name": "NY_SF_LSP1",
+        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_NY_SF_LSP1' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
+        "id": 1456643254949
     }
 ]

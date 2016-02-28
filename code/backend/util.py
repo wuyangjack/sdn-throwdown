@@ -48,7 +48,7 @@ def updateTopology():
                 trafficStatDict[address].log(nss)
 
             graph = Graph(nodeDict.values(), linkDict)
-            #updateBadLinks(linkDict, graph, LSPs, 0.5)
+            updateBadLinks(linkDict, graph, LSPs, 0.5)
 
             data = {'timestamp': ts, 'nodes': nodeDict.values(), 'links': linkDict.values(), 'lsps': LSPs}
 
