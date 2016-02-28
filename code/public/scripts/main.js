@@ -159,17 +159,13 @@ var LinkPath = {
   },
 
   name: function(self) {
-    return self.json.index + (self.direction ? "AZ" : "ZA");
+    if (self.direction) {
+      return self.json.ANode.nodeIndex + "_" + self.json.ZNode.nodeIndex;
+    } else {
+      return self.json.ZNode.nodeIndex + "_" + self.json.ANode.nodeIndex;
+    }
   },
-  /*
-  circle: function(p1, p2) {
-    var pm = [(p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2];
-    var distance = Math.sqrt(Math.abs(p1[0] - p2[0])^2 + Math.abs(p1[0] - p2[0])^2);
-    console.log(pm);
-    console.log(distance);
-    return pm;
-  },
-  */
+
   draw: function(self) {
     var a_node = LinkPath.nodeCoordinates[self.json.ANode.nodeIndex];
     var z_node = LinkPath.nodeCoordinates[self.json.ZNode.nodeIndex];
@@ -319,7 +315,7 @@ var QueryList = React.createClass({
       );
     });
     return (
-      <table className="querytList table-fixed table table-striped">
+      <table className="querytList table table-striped">
         <tbody>
           {queryNodes}
         </tbody>
@@ -354,56 +350,38 @@ var Query = React.createClass({
 
 var ResultTable = React.createClass({
   render: function() {
-    var json = [
-      {
-        a: 1,
-        b: 2,
-        c: 3
-      },
-      {
-        a: 4,
-        b: 5,
-        c: 6
+    var json = this.props.content;
+    if (_.isEmpty(json)) {
+      return(<div/>);
+    } else {
+      var num_col = Object.keys(json).length;
+      var ths = [];
+      for (var i = 0; i < num_col; i++) {
+        ths.push(<th className="col-md-{{12 / num_col}}">{Object.keys(json)[i]}</th>);
       }
-    ];
-    return (
-      <table className="resultTable table table-striped">
-        <thead>
-          <tr>
-            <th className="col-md-4">Firstname</th>
-            <th className="col-md-4">Lastname</th>
-            <th className="col-md-4">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="col-md-4">John</td>
-            <td className="col-md-4">Doe</td>
-            <td className="col-md-4">john@example.com</td>
-          </tr>
-          <tr>
-            <td className="col-md-4">Mary</td>
-            <td className="col-md-4">Moe</td>
-            <td className="col-md-4">mary@example.com</td>
-          </tr>
-          <tr>
-            <td className="col-md-4">July</td>
-            <td className="col-md-4">Dooley</td>
-            <td className="col-md-4">july@example.com</td>
-          </tr>
-          <tr>
-            <td className="col-md-4">July</td>
-            <td className="col-md-4">Dooley</td>
-            <td className="col-md-4">july@example.com</td>
-          </tr>
-          <tr>
-            <td className="col-md-4">July</td>
-            <td className="col-md-4">Dooley</td>
-            <td className="col-md-4">july@example.com</td>
-          </tr>
-        </tbody>
-      </table>
-    );
+      var r = Object.keys(json)[0];
+      var num_row = json[r].length;
+      var trs = [];
+      for (var i = 0; i < num_row; i++) {
+        var tds = [];
+        for (var j = 0; j < num_col; j++) {
+          tds.push(<td className="col-md-{{12 / num_col}}">{json[Object.keys(json)[j]][i]}</td>);
+        }
+        trs.push(<tr>{tds}</tr>);
+      }
+      return (
+        <table className="resultTable table table-striped">
+          <thead>
+            <tr>
+              {ths}
+            </tr>
+          </thead>
+          <tbody>
+            {trs}
+          </tbody>
+        </table>
+      );
+    }
   }
 });
 
@@ -458,6 +436,14 @@ var NetworkStateService = {
   filterState: function (jsons, attribute) {
     return $.map(jsons, function (json) { return json[attribute]; })
   },
+
+  cleanState: function (jsons, attribute, filter) {
+    return $.map(jsons, function (json) { 
+      if (_.indexOf(filter, json[attribute]) != -1) {
+        return json;
+      }
+    })
+  },
 }
 
 var NetworkMap = React.createClass({
@@ -473,8 +459,51 @@ var NetworkMap = React.createClass({
       lspFilterQuery: '...',
       linkFilterQuery: '...',
       lspFilter: [],
-      linkFilter: []
+      linkFilter: [],
+      linkUtilization: {},
+      linkStatus: {},
+      linkLspCount: {},
+      linkStatistics: {},
+      lspRoute: {},
+      lspStatus: {},
+      lspLatency: {},
+      lspStatistics: {},
     };
+  },
+
+  drawTables: function() {
+    var linkFilter = this.state.linkFilter;
+    var lspFilter = this.state.lspFilter;
+
+    var linkStatistics = {};
+    linkStatistics['Name'] = linkFilter;
+
+    var linkUtilization = NetworkStateService.cleanState(this.state.linkUtilization, 'key', linkFilter); 
+    linkStatistics['Utilization'] = NetworkStateService.filterState(linkUtilization, 'value');
+
+    var linkStatus = NetworkStateService.cleanState(this.state.linkStatus, 'key', linkFilter); 
+    linkStatistics['Status'] = NetworkStateService.filterState(linkStatus, 'value');
+
+    var linkLspCount = NetworkStateService.cleanState(this.state.linkLspCount, 'key', linkFilter); 
+    linkStatistics['LSP Count'] = NetworkStateService.filterState(linkLspCount, 'value');
+
+    this.state.linkStatistics = linkStatistics;
+
+    var lspStatistics = {};
+    lspStatistics['Name'] = lspFilter;
+
+    var lspRoute = NetworkStateService.cleanState(this.state.lspRoute, 'key', lspFilter); 
+    lspStatistics['Route'] = NetworkStateService.filterState(lspRoute, 'value');
+
+    var lspStatus = NetworkStateService.cleanState(this.state.lspStatus, 'key', lspFilter); 
+    lspStatistics['Status'] = NetworkStateService.filterState(lspStatus, 'value');
+
+    var lspLatency = NetworkStateService.cleanState(this.state.lspLatency, 'key', lspFilter); 
+    lspStatistics['Geographic Latency'] = NetworkStateService.filterState(lspLatency, 'value');
+
+    this.state.lspStatistics = lspStatistics;
+
+    this.setState(this.state);
   },
 
   drawTopology: function() {
@@ -484,17 +513,19 @@ var NetworkMap = React.createClass({
     var routers = this.state.topology.nodes;
     var routerMarkers = this.state.routerMarkers;
     var nodeCoordinates = {};
+    var nodeNames = {};
 
     _.map(routers, function(router) {
       var name = router.hostname;
       nodeCoordinates[router.index] = router.coordinates;
+      nodeNames[router.index] = router.coordinates;
 
       var rm_new = RouterMarker.new(router, map);
       var rm_old = routerMarkers[name];
 
       // update marker if necessary
       if (false == RouterMarker.same(rm_new, rm_old)) {
-        console.log("updated router marker");
+        //console.log("updated router marker");
         rm_old = RouterMarker.delete(rm_old);
         rm_new = RouterMarker.draw(rm_new);
         routerMarkers[name] = rm_new;
@@ -540,7 +571,7 @@ var NetworkMap = React.createClass({
       if (_.indexOf(lspFilter, name) != -1) {
         // update marker if necessary
         if (false == LspPath.same(lp_new, lp_old)) {
-          console.log("updated lsp path: " + name);
+          //console.log("updated lsp path: " + name);
           lp_old = LspPath.delete(lp_old);
           lp_new = LspPath.draw(lp_new);
           lspPaths[name] = lp_new;
@@ -599,6 +630,38 @@ var NetworkMap = React.createClass({
       obj.state.linkFilter = data;
       obj.setState(obj.state);
     });
+
+    NetworkStateService.executeSql(this, "SELECT * FROM LinkUtilization_", function(obj, data) {
+      obj.state.linkUtilization = data;
+      obj.setState(obj.state);
+    });
+
+    NetworkStateService.executeSql(this, "SELECT * FROM LinkStatus_", function(obj, data) {
+      obj.state.linkStatus = data;
+      obj.setState(obj.state);
+    });
+
+    NetworkStateService.executeSql(this, "SELECT * FROM LinkLspCount_", function(obj, data) {
+      obj.state.linkLspCount = data;
+      obj.setState(obj.state);
+    });
+
+    NetworkStateService.executeSql(this, "SELECT * FROM LspRoute_", function(obj, data) {
+      obj.state.lspRoute = data;
+      obj.setState(obj.state);
+    });
+
+    NetworkStateService.executeSql(this, "SELECT * FROM LspStatus_", function(obj, data) {
+      obj.state.lspStatus = data;
+      obj.setState(obj.state);
+    });
+
+    NetworkStateService.executeSql(this, "SELECT * FROM LspLatency_", function(obj, data) {
+      obj.state.lspLatency = data;
+      obj.setState(obj.state);
+    });
+
+    this.drawTables();
   },
 
   handleQuerySubmit: function(query) {
@@ -635,9 +698,11 @@ var NetworkMap = React.createClass({
   initializeGoogleMap: function() {
     // canvas
     var map = new google.maps.Map(document.getElementById('googleMap'), {
-        center: {lat: 37, lng: -95},
-        zoom: 4
+        center: {lat: 35, lng: -95},
+        zoom: 4,
+        disableDefaultUI: true
     });
+    map.setOptions({draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
     this.state.map = map;
     this.state.direction = true;
     this.setState(this.state);
@@ -655,6 +720,14 @@ var NetworkMap = React.createClass({
   },
 
   render: function() {
+    var scope = {
+      style1: {
+        height: 240
+      },
+      style2: {
+        height: 310
+      }
+    };
     this.drawTopology();
 
     return (
@@ -671,7 +744,16 @@ var NetworkMap = React.createClass({
             </div>
             <div className="panel panel-default">
               <div className="panel-body">
-                <ResultTable />
+                <div className="pre-scrollable" style={scope.style}>
+                  <ResultTable content={this.state.lspStatistics}/>
+                </div>
+              </div>
+            </div>
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <div className="pre-scrollable" style={scope.style}>
+                  <ResultTable content={this.state.linkStatistics}/>
+                </div>
               </div>
             </div>
           </div>
@@ -679,18 +761,13 @@ var NetworkMap = React.createClass({
             <br/>
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h3 className="panel-title">New Query</h3>
+                <h3 className="panel-title">Queries</h3>
               </div>
               <div className="panel-body">
-                <QueryForm onQuerySubmit={this.handleQuerySubmit} />
-              </div>
-            </div>
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h3 className="panel-title">Queries History</h3>
-              </div>
-              <div className="panel-body">
-                <QueryList queries={this.state.queries} onQuerySubmit={this.handleQueryExecute} />
+                <div className="pre-scrollable" style={scope.style2}>
+                  <QueryForm onQuerySubmit={this.handleQuerySubmit} />
+                  <QueryList queries={this.state.queries} onQuerySubmit={this.handleQueryExecute} />
+                </div>
               </div>
             </div>
             <br/>

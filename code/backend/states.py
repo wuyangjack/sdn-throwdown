@@ -95,7 +95,7 @@ class NetworkStateService(object):
 				json['time'] = row[2];
 				json['value'] = row[3];
 				jsons.append(json);
-			print "returning: " + str(jsons)
+			#print "returning: " + str(jsons)
 			return jsons;
 		except Exception, e:
 			raise e

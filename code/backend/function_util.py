@@ -105,6 +105,7 @@ def getLSPs(nodeDict, linkDict):
         latency = 0
         for i in xrange(1, len(lspNodes)):
             latency += Link.calculateDistance(lspNodes[i - 1], lspNodes[i]) * 6371.393 / 300000.0
+        latency = int(1000 * latency)
 
         tmpLSP = LSP(lsp["lspIndex"], getGroup(lsp["name"]), lsp["name"], fromNodeIndex, toNodeIndex, ero,
                      lsp["operationalStatus"], latency);
