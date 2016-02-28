@@ -337,9 +337,6 @@ var Query = React.createClass({
     var uuid = Date.now();
     var linkid = Date.now() + "@";
     var lspid = Date.now() + "#";
-    console.log(uuid);
-    console.log(linkid);
-    console.log(lspid);
     return {uuid: uuid, linkid: linkid, lspid: lspid};
   },
 
@@ -560,7 +557,7 @@ var NetworkMap = React.createClass({
     lspStatistics['Status'] = NetworkStateService.filterState(lspStatus, 'value');
 
     var lspLatency = NetworkStateService.cleanState(this.state.lspLatency, 'key', lspFilter); 
-    lspStatistics['Geographic Latency'] = NetworkStateService.filterState(lspLatency, 'value');
+    lspStatistics['Geo Latency'] = NetworkStateService.filterState(lspLatency, 'value');
 
     this.state.lspStatistics = lspStatistics;
 
