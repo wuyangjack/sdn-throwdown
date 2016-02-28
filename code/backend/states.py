@@ -2,8 +2,10 @@ import requests
 import json
 import sqlite3
 
-class NetworkStateService(object):
+def link_to_lsp(link):
+    return md5.md5(t).hexdigest()
 
+class NetworkStateService(object):
 	Link = "Link";
 	LinkUtilization = "LinkUtilization"
 	LinkStatus = "LinkStatus"
@@ -30,6 +32,8 @@ class NetworkStateService(object):
 
 	def __init__(self, database):
 		self.connection = sqlite3.connect(database, check_same_thread=False);
+		print "adding UDFs"
+		self.connection.create_function("link_to_lsp", 1, link_to_lsp)
 		print "loading database"
 		c = self.connection.cursor();
 		rows = c.execute("SELECT name FROM sqlite_master WHERE type = 'table'");

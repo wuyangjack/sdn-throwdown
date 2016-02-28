@@ -764,24 +764,13 @@ var NetworkMap = React.createClass({
               </div>
               </div>
             </div>
-            <div className="panel panel-default">
-              <div className="panel-body">
-                <div className="pre-scrollable" style={scope.style1}>
-                  <ResultTable content={this.state.lspStatistics}/>
-                </div>
-              </div>
-            </div>
-            <div className="panel panel-default">
-              <div className="panel-body">
-                <div className="pre-scrollable" style={scope.style1}>
-                  <ResultTable content={this.state.linkStatistics}/>
-                </div>
-              </div>
-            </div>
           </div>
           <div className="col-md-4">
             <br/>
             <div className="panel panel-default">
+              <div className="panel-heading">
+                <h3 className="panel-title">Queries</h3>
+              </div>
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style2}>
                   <QueryForm onQuerySubmit={this.handleQuerySubmit} />
@@ -790,6 +779,24 @@ var NetworkMap = React.createClass({
               </div>
             </div>
             <br/>
+          </div>
+          <div className="col-md-6">
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <div className="pre-scrollable" style={scope.style1}>
+                  <ResultTable content={this.state.lspStatistics}/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <div className="pre-scrollable" style={scope.style1}>
+                  <ResultTable content={this.state.linkStatistics}/>
+                </div>
+              </div>
+            </div>
           </div>
       </div>
     );
