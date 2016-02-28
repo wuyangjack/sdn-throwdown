@@ -6,7 +6,7 @@
         "id": 1456554982736
     },
     {
-        "link": "SELECT * FROM Link_",
+        "link": "SELECT * FROM Link_ WHERE link_to_lsp(key) == 'GROUP_FIVE_SF_NY_LSP1'",
         "name": "SF_NY_LSP1",
         "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_SF_NY_LSP1' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
         "id": 1456555913794
