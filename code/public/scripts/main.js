@@ -349,6 +349,9 @@ var Query = React.createClass({
         <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleSubmit}>
           <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
         </button>
+        <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleDelete}>
+          <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
       </div>
     );
   }
