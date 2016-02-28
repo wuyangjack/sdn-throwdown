@@ -26,10 +26,10 @@ Created on Feb 21, 2016
 
 # nodeDict = getIpToNodeDict()
 # linkDict = getAZToLinkDict(nodeDict)
-# if "1-8" in linkDict:
-#     linkDict["1-8"].status="Down"
-# else:
-#     linkDict["8-1"].status="Down"
+# # if "1-8" in linkDict:
+# #     linkDict["1-8"].status="Down"
+# # else:
+# #     linkDict["8-1"].status="Down"
 # LSPs = getLSPs(nodeDict, linkDict)
 # trafficStatDict = getIpToTrafficStatDict()
 # updateLinkUtility(linkDict, trafficStatDict)

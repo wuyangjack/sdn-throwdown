@@ -7,6 +7,8 @@ import requests
 from dict_util import *
 from class_util import *
 
+LSP_INCR_UTIL_VAL = 0.1
+
 
 # TODO:
 # key = "1-8"
@@ -173,7 +175,7 @@ def generateLSP(graph, sNodeIndex, tNodeIndex, a, b, c):
             while tmpNode is not None:
                 path.insert(0, tmpNode.node.index);
                 tmpNode = tmpNode.parent
-            graph.incrPathUtility(path, 0.1)
+            graph.incrPathUtility(path, LSP_INCR_UTIL_VAL)
             return path
         explored.add(pathNode)
         for link in pathNode.edges:

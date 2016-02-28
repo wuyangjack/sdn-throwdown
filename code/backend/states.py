@@ -84,21 +84,29 @@ class NetworkStateService(object):
 		# Save (commit) the changes
 		self.connection.commit()
 
-	def query(self, query):
+	def query(self, query_string, query_type):
 		c = self.connection.cursor();
-		print "executing query: " + query;
-		if (query == "..."):
+		print "executing query with type %s: %s" % (query_type, query_string)
+		if (query_string == "..."):
 			return [];
 		try:
 			jsons = [];
-			rows = c.execute(query);
-			for row in rows:
-				json = {}
-				json['name'] = row[0];
-				json['key'] = row[1];
-				json['time'] = row[2];
-				json['value'] = row[3];
-				jsons.append(json);
+			rows = c.execute(query_string);
+			if (query_type == 'stream'):
+				for row in rows:
+					json = {}
+					json['name'] = row[0];
+					json['key'] = row[1];
+					json['time'] = row[2];
+					json['value'] = row[3];
+					jsons.append(json);			
+			else:
+				for row in rows:
+					json = {}
+					for key in range(0,len(row)):
+						json['key' + str(key)] = row[key];
+						jsons.append(json);
+					jsons.append(json);	
 			#print "returning: " + str(jsons)
 			return jsons;
 		except Exception, e:

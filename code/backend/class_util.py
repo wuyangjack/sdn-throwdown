@@ -40,8 +40,12 @@ class Graph(object):
         reversePath = str(ZNodeIndex) + "-" + str(ANodeIndex)
         if path in self.linkDict:
             self.linkDict[path].AZUtility += incrVal
+            # print path + ": " + str(self.linkDict[path].AZUtility)
+            # print self.linkDict[path].AZweight
         elif reversePath in self.linkDict:
             self.linkDict[reversePath].ZAUtility += incrVal
+            # print reversePath + ": " + str(self.linkDict[reversePath].ZAUtility)
+            # print self.linkDict[reversePath].ZAweight
 
     def incrPathUtility(self, path, incrVal):
         for i in range(0, len(path) - 1):
@@ -154,9 +158,10 @@ class Link(object):
             self.AZweight = float("inf")
             self.ZAweight = float("inf")
         else:
-            self.AZweight = a * self.AZlspCount + b * (5 * self.AZUtility) ** 2 + c * self.length
-            self.ZAweight = a * self.ZAlspCount + b * (5 * self.AZUtility) ** 2 + c * self.length
-
+            self.AZweight = a * self.AZlspCount + b * (100 * self.AZUtility) + c * self.length
+            self.ZAweight = a * self.ZAlspCount + b * (100 * self.ZAUtility) + c * self.length
+            # print str(self.ANode["nodeIndex"]) + "-" + str(self.ZNode["nodeIndex"]) + ": " + str(str(self.AZweight))
+            # print str(self.ZNode["nodeIndex"]) + "-" + str(self.ANode["nodeIndex"]) + ": " + str(str(self.ZAweight))
 
 class LSP(object):
     def __init__(self, lspIndex, group, name, fromNodeIndex, toNodeIndex, ero, operationalStatus, latency, links):

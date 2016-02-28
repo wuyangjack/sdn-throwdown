@@ -460,7 +460,8 @@ var NetworkStateService = {
       url: 'api/sql',
       dataType: 'json',
       data: { 
-        query: query
+        query: query,
+        type: 'stream'
       },
       cache: false,
       success: function(result) {

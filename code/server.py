@@ -56,10 +56,11 @@ def sqls_handler():
 @app.route('/api/sql', methods=['GET'])
 def sql_handler():
     query_string = request.args.get('query');
+    query_type = request.args.get('type');
 
     print "evaluating: " + query_string;
     nss = NetworkStateService("database/states.db");
-    data = nss.query(query_string);
+    data = nss.query(query_string, query_type);
     nss.close();
     #result = {};
     #result['time'] = 1;
