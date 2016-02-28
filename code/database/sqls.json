@@ -60,7 +60,7 @@
         "id": 1456556561708
     },
     {
-        "link": "SELECT * FROM LinkUtilization_ WHERE CAST(value AS DECIMAL) > 0.8",
+        "link": "SELECT * FROM LinkUtilization_ WHERE CAST(value AS DECIMAL) > 0.7",
         "name": "Hot Links",
         "lsp": "...",
         "id": 1456556846456
