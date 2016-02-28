@@ -444,6 +444,13 @@ var NetworkStateService = {
       }
     })
   },
+
+  formatState: function (jsons, attribute, formatter) {
+    return $.map(jsons, function (json) { 
+      json[attribute] = formatter(json[attribute]);
+      return json;
+    })
+  },
 }
 
 var NetworkMap = React.createClass({
@@ -478,9 +485,13 @@ var NetworkMap = React.createClass({
     var linkStatistics = {};
     linkStatistics['Name'] = linkFilter;
 
-    var linkUtilization = NetworkStateService.cleanState(this.state.linkUtilization, 'key', linkFilter); 
+    var linkUtilization = NetworkStateService.cleanState(this.state.linkUtilization, 'key', linkFilter);
+    linkUtilization = NetworkStateService.formatState(linkUtilization, 'value', function(data) {
+      return data * 100 + "%";
+    });
     linkStatistics['Utilization'] = NetworkStateService.filterState(linkUtilization, 'value');
 
+    // TODO: format index into city
     var linkStatus = NetworkStateService.cleanState(this.state.linkStatus, 'key', linkFilter); 
     linkStatistics['Status'] = NetworkStateService.filterState(linkStatus, 'value');
 
@@ -537,6 +548,8 @@ var NetworkMap = React.createClass({
     // update coordinates
     LinkPath.nodeCoordinates = nodeCoordinates;
     LspPath.nodeCoordinates = nodeCoordinates;
+    LinkPath.nodeNames = nodeNames;
+    LspPath.nodeNames = nodeNames;
 
     // update links
     var links = this.state.topology.links;
