@@ -456,6 +456,7 @@ var Query = React.createClass({
 
 var ResultTable = React.createClass({
   render: function() {
+    console.log(ResultTable.nodeNames);
     var json = this.props.content;
     if (_.isEmpty(json)) {
       return(<div/>);
@@ -620,16 +621,13 @@ var NetworkMap = React.createClass({
 
     var linkUtilization = NetworkStateService.cleanState(this.state.linkUtilization, 'key', linkFilter);
     linkStatistics['Utilization'] = NetworkStateService.filterState(linkUtilization, 'value');
-    //this.state.linkStatisticsFormatters['Utilization'] = formatUtilization;
-    /*
-    linkUtilization = NetworkStateService.formatState(linkUtilization, 'value', function(data) {
-      return data * 100 + "%";
-    });
-    */
+    console.log(this.state.nodeNames);
 
     // TODO: format index into city
     var linkStatus = NetworkStateService.cleanState(this.state.linkStatus, 'key', linkFilter); 
     linkStatistics['Status'] = NetworkStateService.filterState(linkStatus, 'value');
+
+
 
     var linkLspCount = NetworkStateService.cleanState(this.state.linkLspCount, 'key', linkFilter); 
     linkStatistics['LSP Count'] = NetworkStateService.filterState(linkLspCount, 'value');
@@ -665,7 +663,7 @@ var NetworkMap = React.createClass({
     _.map(routers, function(router) {
       var name = router.hostname;
       nodeCoordinates[router.index] = router.coordinates;
-      nodeNames[router.index] = router.coordinates;
+      nodeNames[router.index] = router.hostname;
 
       var rm_new = RouterMarker.new(router, map);
       var rm_old = routerMarkers[name];
@@ -686,6 +684,7 @@ var NetworkMap = React.createClass({
     LspPath.nodeCoordinates = nodeCoordinates;
     LinkPath.nodeNames = nodeNames;
     LspPath.nodeNames = nodeNames;
+    ResultTable.nodeNames = nodeNames;
 
     // update links
     var links = this.state.topology.links;
