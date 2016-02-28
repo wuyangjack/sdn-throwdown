@@ -53,6 +53,23 @@ def sqls_handler():
     return Response(json.dumps(sqls), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
 
 
+@app.route('/api/graphs', methods=['GET', 'POST'])
+def graphs_handler():
+
+    with open('database/graphs.json', 'r') as file:
+        graphs = json.loads(file.read())
+
+    if request.method == 'POST':
+        newGraph = request.form.to_dict()
+        newGraph['id'] = int(time.time() * 1000)
+        graphs.append(newGraph)
+
+        with open('database/graphs.json', 'w') as file:
+            file.write(json.dumps(graphs, indent=4, separators=(',', ': ')))
+
+    return Response(json.dumps(graphs), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
+
+
 @app.route('/api/sql', methods=['GET'])
 def sql_handler():
     query_string = request.args.get('query');

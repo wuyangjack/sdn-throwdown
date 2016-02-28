@@ -1,4 +1,21 @@
-get js off the cloud
+
 fix edit and delete
+add ping latency and lsp utilization to nss
+coloring LSP based on utilization
+sort table
+
+Qingxiao: 
 make table beautiful
-record demos
+	format text
+
+get js off the cloud
+
+demo:
+	Network analytics: topology
+	Network analytics: graph (multiple)
+	VLC transitioning during fiber cut
+	TE algorithm
+	Ondemand network
+
+
+
