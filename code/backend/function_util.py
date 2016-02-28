@@ -307,6 +307,6 @@ def updateLSPPingLatency(LSPs):
         if lsp.group != 5:
             continue
         name = lsp.name[-10:]
-        lsp.pingLatency = lspToLatenctDict[name]
+        lsp.pingLatency = lspToLatenctDict[name]['latency']
         # print lsp.pingLatency
         # print lspToLatenctDict
