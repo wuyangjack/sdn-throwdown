@@ -798,7 +798,6 @@ var NetworkMap = React.createClass({
       <div>
           <div className="col-md-8">
             <div className="networkMap">
-              <br/>
               <div className="panel panel-default">
                 <div className="panel-body">
                   <div id="googleMap">
@@ -808,7 +807,6 @@ var NetworkMap = React.createClass({
             </div>
           </div>
           <div className="col-md-4">
-            <br/>
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style2}>
