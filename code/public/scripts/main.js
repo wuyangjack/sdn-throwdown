@@ -332,6 +332,71 @@ var QueryList = React.createClass({
   }
 });
 
+/*
+var GraphQuery = React.createClass({
+  getInitialState: function() {
+    var uuid = Date.now();
+    var linkid = Date.now() + "@";
+    var lspid = Date.now() + "#";
+    return {uuid: uuid, linkid: linkid, lspid: lspid};
+  },
+
+  handleSubmit: function(e) {
+    e.preventDefault();
+    // TODO: update edit
+    this.props.onQuerySubmit({link: this.props.link, lsp: this.props.lsp});
+  },
+
+  componentDidMount: function() {
+    var link_editor = ace.edit(this.state.linkid.toString());
+    var SQLScriptMode = ace.require("ace/mode/sql").Mode;
+    link_editor.session.setMode(new SQLScriptMode());
+    link_editor.setTheme("ace/theme/chrome");
+    link_editor.setOptions({ maxLines: Infinity });
+    var lsp_editor = ace.edit(this.state.lspid.toString());
+    lsp_editor.session.setMode(new SQLScriptMode());
+    lsp_editor.setTheme("ace/theme/chrome");
+    lsp_editor.setOptions({ maxLines: Infinity });
+    this.state.link_editor = link_editor;
+    this.state.lsp_editor = lsp_editor;
+  },
+
+  render: function() {
+    var scope = {
+      width: '100%',
+      height: '30px'
+    }
+    return (
+      <div className="query">
+        <h5 className="queryName">
+          {this.props.name}
+        </h5>
+        <button type="button" className="btn btn-default" aria-label="Left Align" data-toggle="collapse" data-target={"#" + this.state.uuid}>
+          <span className="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+        </button>
+        <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleSubmit}>
+          <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
+        </button>
+        <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleDelete}>
+          <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
+        <br/>
+        <br/>
+        <div id={this.state.uuid} className="collapse">
+          <div className="panel panel-default">
+            <div id={this.state.linkid.toString()} style={scope}>{this.props.link}</div>
+          </div>
+          <div className="panel panel-default">
+            <div id={this.state.lspid.toString()} style={scope}>{this.props.lsp}</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+});
+*/
+
+
 var Query = React.createClass({
   getInitialState: function() {
     var uuid = Date.now();
@@ -557,7 +622,7 @@ var NetworkMap = React.createClass({
     lspStatistics['Status'] = NetworkStateService.filterState(lspStatus, 'value');
 
     var lspLatency = NetworkStateService.cleanState(this.state.lspLatency, 'key', lspFilter); 
-    lspStatistics['Geographic Latency'] = NetworkStateService.filterState(lspLatency, 'value');
+    lspStatistics['Geo Latency'] = NetworkStateService.filterState(lspLatency, 'value');
 
     this.state.lspStatistics = lspStatistics;
 
@@ -866,6 +931,116 @@ var NetworkMap = React.createClass({
   }
 });
 
+var NetworkGraph = React.createClass({
+  getInitialState: function() {
+    return {
+      queries: [],
+    };
+  },
+
+  drawGraph: function() {
+    console.log("graw gaph");
+  },
+
+  loadQueriesFromServer: function() {
+    $.ajax({
+      url: this.props.query_url,
+      dataType: 'json',
+      cache: false,
+      success: function(queries) {
+        if (this.isMounted()) {
+          this.state.queries = queries;
+          this.setState(this.state);
+        }
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.query_url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  handleQuerySubmit: function(query) {
+    var query_history = this.state.queries;
+    query.id = Date.now();
+    var newQueries = query_history.concat([query]);
+    this.state.queries = newQueries;
+    this.setState(this.state);
+    $.ajax({
+      url: this.props.query_url,
+      dataType: 'json',
+      type: 'POST',
+      data: query,
+      success: function(queries) {
+        this.state.queries = queries;
+        this.setState(this.state);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        this.state.queries = query_history;
+        this.setState(this.state);
+        console.error(this.props.query_url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  handleQueryExecute: function(query) {
+    console.log(query);
+    this.state.lspFilterQuery = query.lsp;
+    this.state.linkFilterQuery = query.link;
+    this.setState(this.state);
+  },
+
+  componentDidMount: function() {
+    this.loadQueriesFromServerInterval = setInterval(this.loadQueriesFromServer, this.props.pollInterval);
+  },
+
+  componentWillUnmount () {
+    this.loadQueriesFromServerInterval && clearInterval(this.loadQueriesFromServerInterval);
+    this.loadQueriesFromServerInterval = false;
+  },
+
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return true;
+  },
+
+  render: function() {
+    var scope = {
+      style1: {
+        height: 240
+      },
+      style2: {
+        height: 500
+      }
+    };
+    this.drawGraph();
+
+    return (
+      <div>
+          <div className="col-md-8">
+            <div className="networkGraph">
+              <div className="panel panel-default">
+                <div className="panel-body">
+                  <div id="graph">
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <div className="pre-scrollable" style={scope.style2}>
+                  <QueryForm onQuerySubmit={this.handleQuerySubmit} />
+                  <QueryList queries={this.state.queries} onQuerySubmit={this.handleQueryExecute} />
+                </div>
+              </div>
+            </div>
+            <br/>
+          </div>
+      </div>
+    );
+  }
+});
+
 var NavBar = React.createClass({
   render: function() {
     var mapClass = "";
@@ -924,6 +1099,7 @@ var PennApp = React.createClass({
       return (
         <div>
           <NavBar active='graph' showGraph={this.showGraph} showMap={this.showMap} />
+          <NetworkGraph query_url="/api/graphs" pollInterval={1000}/>
         </div>
       );
     }
