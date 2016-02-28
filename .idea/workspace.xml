@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="61c36157-8997-47d9-9faf-d30b235457db" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/backend/states.py" afterPath="$PROJECT_DIR$/code/backend/states.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/backend/util.py" afterPath="$PROJECT_DIR$/code/backend/util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/database/topology.json" afterPath="$PROJECT_DIR$/code/database/topology.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/server.py" afterPath="$PROJECT_DIR$/code/server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/.gitignore" afterPath="$PROJECT_DIR$/code/.gitignore" />
     </list>
     <ignored path="sdn-throwdown.iws" />
     <ignored path=".idea/workspace.xml" />
