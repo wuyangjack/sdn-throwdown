@@ -58,7 +58,7 @@ def sql_handler():
     query_string = request.args.get('query');
 
     print "evaluating: " + query_string;
-    nss = NetworkStateService("database/yc.db");
+    nss = NetworkStateService("database/states.db");
     data = nss.query(query_string);
     nss.close();
     #result = {};

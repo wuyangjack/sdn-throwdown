@@ -3,7 +3,7 @@ import json
 import sqlite3
 
 def link_to_lsp(link):
-    return md5.md5(t).hexdigest()
+    return '3_8'
 
 class NetworkStateService(object):
 	Link = "Link";

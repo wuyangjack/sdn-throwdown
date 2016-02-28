@@ -19,8 +19,7 @@ from states import NetworkStateService
 # updateBadLinks(linkDict, graph, LSPs, 0.5)
 
 lock = threading.Lock()
-nss = NetworkStateService("database/yc.db")
-
+nss = NetworkStateService("database/states.db")
 
 def updateTopology():
     with lock:
