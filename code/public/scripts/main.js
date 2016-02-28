@@ -653,9 +653,11 @@ var NetworkMap = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(topology) {
-        this.state.topology = topology;
-        this.state.direction = !this.state.direction;
-        this.setState(this.state);
+        if (this.isMounted()) {
+          this.state.topology = topology;
+          this.state.direction = !this.state.direction;
+          this.setState(this.state);
+        }
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, "loading topology failure: " + err.toString());
@@ -669,8 +671,10 @@ var NetworkMap = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(queries) {
-        this.state.queries = queries;
-        this.setState(this.state);
+        if (this.isMounted()) {
+          this.state.queries = queries;
+          this.setState(this.state);
+        }
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.query_url, status, err.toString());
@@ -680,45 +684,61 @@ var NetworkMap = React.createClass({
 
   loadFiltersFromServer: function() {
     NetworkStateService.executeSql(this, this.state.lspFilterQuery, function(obj, data) {
-      data = NetworkStateService.uniqueState(data, 'key');
-      obj.state.lspFilter = data;
-      obj.setState(obj.state);
+      if (obj.isMounted()) {
+        data = NetworkStateService.uniqueState(data, 'key');
+        obj.state.lspFilter = data;
+        obj.setState(obj.state);
+      }
     });
 
     NetworkStateService.executeSql(this, this.state.linkFilterQuery, function(obj, data) {
-      data = NetworkStateService.uniqueState(data, 'key');
-      obj.state.linkFilter = data;
-      obj.setState(obj.state);
+      if (obj.isMounted()) {
+        data = NetworkStateService.uniqueState(data, 'key');
+        obj.state.linkFilter = data;
+        obj.setState(obj.state);
+      }
     });
 
     NetworkStateService.executeSql(this, "SELECT * FROM LinkUtilization_", function(obj, data) {
-      obj.state.linkUtilization = data;
-      obj.setState(obj.state);
+      if (obj.isMounted()) {
+        obj.state.linkUtilization = data;
+        obj.setState(obj.state);
+      }
     });
 
     NetworkStateService.executeSql(this, "SELECT * FROM LinkStatus_", function(obj, data) {
-      obj.state.linkStatus = data;
-      obj.setState(obj.state);
+      if (obj.isMounted()) {
+        obj.state.linkStatus = data;
+        obj.setState(obj.state);
+      }
     });
 
     NetworkStateService.executeSql(this, "SELECT * FROM LinkLspCount_", function(obj, data) {
-      obj.state.linkLspCount = data;
-      obj.setState(obj.state);
+      if (obj.isMounted()) {
+        obj.state.linkLspCount = data;
+        obj.setState(obj.state);
+      }
     });
 
     NetworkStateService.executeSql(this, "SELECT * FROM LspRoute_", function(obj, data) {
-      obj.state.lspRoute = data;
-      obj.setState(obj.state);
+      if (obj.isMounted()) {
+        obj.state.lspRoute = data;
+        obj.setState(obj.state);
+      }
     });
 
     NetworkStateService.executeSql(this, "SELECT * FROM LspStatus_", function(obj, data) {
-      obj.state.lspStatus = data;
-      obj.setState(obj.state);
+      if (obj.isMounted()) {
+        obj.state.lspStatus = data;
+        obj.setState(obj.state);
+      }
     });
 
     NetworkStateService.executeSql(this, "SELECT * FROM LspLatency_", function(obj, data) {
-      obj.state.lspLatency = data;
-      obj.setState(obj.state);
+      if (obj.isMounted()) {
+        obj.state.lspLatency = data;
+        obj.setState(obj.state);
+      }
     });
 
     this.drawTables();
@@ -771,9 +791,18 @@ var NetworkMap = React.createClass({
 
   componentDidMount: function() {
     this.initializeGoogleMap();
-    setInterval(this.loadQueriesFromServer, this.props.pollInterval);
-    setInterval(this.loadTopologyFromServer, this.props.pollInterval);
-    setInterval(this.loadFiltersFromServer, this.props.pollInterval);
+    this.loadQueriesFromServerInterval = setInterval(this.loadQueriesFromServer, this.props.pollInterval);
+    this.loadTopologyFromServerInterval = setInterval(this.loadTopologyFromServer, this.props.pollInterval);
+    this.loadFiltersFromServerInterval = setInterval(this.loadFiltersFromServer, this.props.pollInterval);
+  },
+
+  componentWillUnmount () {
+    this.loadQueriesFromServerInterval && clearInterval(this.loadQueriesFromServerInterval);
+    this.loadQueriesFromServerInterval = false;
+    this.loadTopologyFromServerInterval && clearInterval(this.loadTopologyFromServerInterval);
+    this.loadTopologyFromServerInterval = false;
+    this.loadFiltersFromServerInterval && clearInterval(this.loadFiltersFromServerInterval);
+    this.loadFiltersFromServerInterval = false;   
   },
 
   shouldComponentUpdate: function(nextProps, nextState) {
@@ -837,7 +866,72 @@ var NetworkMap = React.createClass({
   }
 });
 
+var NavBar = React.createClass({
+  render: function() {
+    var mapClass = "";
+    var graphClass = "";
+    if (this.props.active == 'map') {
+      mapClass = "active";
+    } else {
+      graphClass = "active";
+    }
+    return (
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <a className="navbar-brand" href="">
+              <img alt="Brand" src="images/penn_logo_noname.png" height="120%" />
+            </a>
+          </div>
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul className="nav navbar-nav">
+              <li className={mapClass}><a href="" onClick={this.props.showMap}>Map</a></li>
+              <li className={graphClass}><a href="" onClick={this.props.showGraph}>Graph</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    );
+  }
+});
+
+var PennApp = React.createClass({
+  getInitialState: function() {
+    return {show: 'map'};
+  },
+
+  showMap: function(e) {
+    e.preventDefault();
+    this.state.show = 'map';
+    this.setState(this.state);
+  },
+
+  showGraph: function(e) {
+    e.preventDefault();
+    this.state.show = 'graph';
+    this.setState(this.state);
+  },
+
+  render: function() {
+    if (this.state.show == 'map') {
+      return (
+        <div>
+          <NavBar active='map' showGraph={this.showGraph} showMap={this.showMap} />
+          <NetworkMap url="/api/topology" query_url="/api/sqls" pollInterval={1000}/>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <NavBar active='graph' showGraph={this.showGraph} showMap={this.showMap} />
+        </div>
+      );
+    }
+  }
+});
+
 ReactDOM.render(
-  <NetworkMap url="/api/topology" query_url="/api/sqls" pollInterval={1000}/>,
+  <PennApp/>,
   document.getElementById('content')
 );
+

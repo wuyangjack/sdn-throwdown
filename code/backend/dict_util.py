@@ -34,6 +34,8 @@ itfcToNode = {
     '10.210.26.2': '10.210.10.115',
 }
 
+nodeIndexToCityName = ["", "san francisco", "dallas", "miami", "los angeles", "houston", "tempe", "new york", "chicago"]
+
 routers = [
     {'name': 'chicago', 'router_id': '10.210.10.124', 'interfaces': [
         {'name': 'ge-1/0/1', 'address': '10.210.16.2'},
@@ -95,3 +97,7 @@ routers = [
 def getGroup(name):
     number = name.split("_")[1]
     return numbers[number]
+
+
+def getRedisLatencyName(ANodeIndex, ZNodeIndex):
+    return nodeIndexToCityName[ANodeIndex] + ":" + nodeIndexToCityName[ZNodeIndex] + ":latency"
