@@ -456,7 +456,6 @@ var Query = React.createClass({
 
 var ResultTable = React.createClass({
   render: function() {
-    console.log(ResultTable.nodeNames);
     var json = this.props.content;
     if (_.isEmpty(json)) {
       return(<div/>);
@@ -494,8 +493,33 @@ var ResultTable = React.createClass({
             } else {
               tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);
             }
-          } else {
+          } else if (Object.keys(json)[j] == "Link") {
+            var from = formatted.substring(0, 1);
+            var to = formatted.substring(2, 3);
+            var abb_from = ResultTable.nodeNames[from].substring(0, 3);
+            var abb_to = ResultTable.nodeNames[to].substring(0, 3);
+            if (ResultTable.nodeNames[from] == "TAMPA") {
+              abb_from = "TPA";
+            }
+            if (ResultTable.nodeNames[to] == "TAMPA") {
+              abb_to = "TPA";
+            }
+            formatted = abb_from + "-" + abb_to;
             tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);
+          } else if (Object.keys(json)[j] == "Route") {
+            formatted = formatted.substring(1,formatted.length - 1);
+            var nodes = formatted.split(", ");
+            formatted = ResultTable.nodeNames[nodes[0]].substring(0, 3);
+            for (var k = 1; k < nodes.length; k++) {
+              if (ResultTable.nodeNames[nodes[k]] == "TAMPA") {
+                formatted = formatted + "-" + "TPA";
+              } else {
+                formatted = formatted + "-" + ResultTable.nodeNames[nodes[k]].substring(0, 3);
+              }
+            }
+            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);            
+          } else {
+            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                        
           }
         }
         trs.push(<tr>{tds}</tr>);
@@ -621,7 +645,7 @@ var NetworkMap = React.createClass({
 
     var linkUtilization = NetworkStateService.cleanState(this.state.linkUtilization, 'key', linkFilter);
     linkStatistics['Utilization'] = NetworkStateService.filterState(linkUtilization, 'value');
-    console.log(this.state.nodeNames);
+    // console.log(this.state.nodeNames);
 
     // TODO: format index into city
     var linkStatus = NetworkStateService.cleanState(this.state.linkStatus, 'key', linkFilter); 
@@ -644,7 +668,7 @@ var NetworkMap = React.createClass({
     lspStatistics['Status'] = NetworkStateService.filterState(lspStatus, 'value');
 
     var lspLatency = NetworkStateService.cleanState(this.state.lspLatency, 'key', lspFilter); 
-    lspStatistics['Geo Latency'] = NetworkStateService.filterState(lspLatency, 'value');
+    lspStatistics['Latency'] = NetworkStateService.filterState(lspLatency, 'value');
 
     this.state.lspStatistics = lspStatistics;
 
