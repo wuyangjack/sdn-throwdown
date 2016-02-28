@@ -1,28 +1,27 @@
+import redis
 import datetime
+import threading
 from function_util import *
 from states import NetworkStateService
 
 # nodeDict = getIpToNodeDict()
 # linkDict = getAZToLinkDict(nodeDict)
+# # if "1-8" in linkDict:
+# #     linkDict["1-8"].status="Down"
+# # else:
+# #     linkDict["8-1"].status="Down"
 # LSPs = getLSPs(nodeDict, linkDict)
 # trafficStatDict = getIpToTrafficStatDict()
 # updateLinkUtility(linkDict, trafficStatDict)
-# data = {'nodes': nodes.values(), 'links': links.values(), 'lsps': lsps}
-# print json.dumps(
-#     data,
-#     default=lambda o: o.__dict__,
-#     indent=4,
-#     separators=(',', ': ')
-# )
-# graph = Graph(nodes.values(), links.values())
-# path = generateLSP(graph, 7, 1, 0, 1, 0)
-# path = [7, 3, 2, 1]
-# print path
-# print updateLSP("GROUP_FIVE_SF_NY_LSP1", path, links)
+# graph = Graph(nodeDict.values(), linkDict)
+# updateBadLinks(linkDict, graph, LSPs, 0.5)
+
+lock = threading.Lock()
 nss = NetworkStateService("database/states.db");
 
-while True:
-    try:
+
+def updateTopology():
+    with lock:
         ts = time.time()
         st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
         print "update topology @ " + st
@@ -34,27 +33,30 @@ while True:
         updateLinkUtility(linkDict, trafficStatDict)
 
         for name in nodeDict:
-        	nodeDict[name].log(nss)
+            nodeDict[name].log(nss)
 
         for lsp in LSPs:
-        	lsp.log(nss)
+            lsp.log(nss)
 
         for linkName in linkDict:
-        	linkDict[name].log(nss)
+            linkDict[linkName].log(nss)
 
         for address in trafficStatDict:
-        	trafficStatDict[address].log(nss)
+            trafficStatDict[address].log(nss)
+
+        graph = Graph(nodeDict.values(), linkDict)
+        updateBadLinks(linkDict, graph, LSPs, 0.4)
 
         data = {'timestamp': ts, 'nodes': nodeDict.values(), 'links': linkDict.values(), 'lsps': LSPs}
 
         '''
-		data = json.dumps(
-				data,
-				default=lambda o: o.__dict__,
-				indent=4,
-				separators=(',', ': ')
-		)
-		'''
+        data = json.dumps(
+                data,
+                default=lambda o: o.__dict__,
+                indent=4,
+                separators=(',', ': ')
+        )
+        '''
         with open('database/topology.json', 'w') as outfile:
             json.dump(
                 data,
@@ -64,6 +66,26 @@ while True:
                 separators=(',', ': ')
             )
 
+
+def listenLinkEvent():
+    r = redis.StrictRedis(host='10.10.4.252', port=6379, db=0)
+    pubsub = r.pubsub()
+    pubsub.subscribe('link_event')
+
+    for _ in pubsub.listen():
+        print "LINK EVENT!!!"
+        try:
+            updateTopology()
+        except Exception, e:
+            print "ERROR: cannot update topology: "
+            print str(e)
+
+
+threading.Thread(listenLinkEvent()).start()
+
+while True:
+    try:
+        updateTopology()
     except Exception, e:
         print "ERROR: cannot update topology: "
         print str(e)
