@@ -769,8 +769,9 @@ var NetworkMap = React.createClass({
                 <h3 className="panel-title">Queries</h3>
               </div>
               <div className="panel-body">
-                <div className="pre-scrollable" style={scope.style1}>
-                  <ResultTable content={this.state.lspStatistics}/>
+                <div className="pre-scrollable" style={scope.style2}>
+                  <QueryForm onQuerySubmit={this.handleQuerySubmit} />
+                  <QueryList queries={this.state.queries} onQuerySubmit={this.handleQueryExecute} />
                 </div>
               </div>
             </div>
@@ -780,7 +781,7 @@ var NetworkMap = React.createClass({
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style1}>
-                  <ResultTable content={this.state.linkStatistics}/>
+                  <ResultTable content={this.state.lspStatistics}/>
                 </div>
               </div>
             </div>
@@ -788,7 +789,7 @@ var NetworkMap = React.createClass({
           <div className="col-md-6">
             <div className="panel panel-default">
               <div className="panel-body">
-                <div className="pre-scrollable" style={scope.style}>
+                <div className="pre-scrollable" style={scope.style1}>
                   <ResultTable content={this.state.linkStatistics}/>
                 </div>
               </div>
