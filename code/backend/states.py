@@ -13,11 +13,14 @@ class NetworkStateService(object):
 	Lsp = "Lsp"
 	LspRoute = "LspRoute"
 	LspLatency = "LspLatency"
+	LspRealLatency = "LspRealLatency"
+	LspFreeUtilization = "LspFreeUtilization"
 	LspStatus = "LspStatus"
 	LspLinkList = "LspLinkList"
 	Interface = "Interface"
 	InterfaceInBps = "InterfaceInBps"
 	InterfaceOutBps = "InterfaceOutBps"
+	Topology = "Topology"
 
 	def snapshot(self, name):
 		return name + "_"
@@ -79,7 +82,8 @@ class NetworkStateService(object):
 								c.execute("INSERT OR REPLACE INTO " + table + " VALUES ('" + name + "','" + key + "','" + str(sec) + "','" + value + "')");
 						sec += 10;
 
-		print "commit to database: %s, %s, %s, %s" % (name, key, time, value)
+		if (name != self.Topology):
+			print "commit to database: %s, %s, %s, %s" % (name, key, time, value)
 
 		# Save (commit) the changes
 		self.connection.commit()

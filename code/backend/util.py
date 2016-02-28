@@ -38,18 +38,18 @@ def updateTopology():
                 trafficStatDict[address].log(nss)
 
             graph = Graph(nodeDict.values(), linkDict)
-            updateBadLinks(linkDict, graph, LSPs)
+            #updateBadLinks(linkDict, graph, LSPs)
 
             data = {'timestamp': ts, 'nodes': nodeDict.values(), 'links': linkDict.values(), 'lsps': LSPs}
 
-            '''
-            data = json.dumps(
+            jsonString = json.dumps(
                     data,
                     default=lambda o: o.__dict__,
                     indent=4,
                     separators=(',', ': ')
             )
-            '''
+            nss.save(NetworkStateService.Topology, "wan", time.time(), jsonString);
+
             with open('database/topology.json', 'w') as outfile:
                 json.dump(
                     data,
