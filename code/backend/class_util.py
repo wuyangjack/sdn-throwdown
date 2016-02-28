@@ -166,14 +166,14 @@ class Link(object):
             # print str(self.ANode["nodeIndex"]) + "-" + str(self.ZNode["nodeIndex"]) + ": " + str(str(self.AZweight))
             # print str(self.ZNode["nodeIndex"]) + "-" + str(self.ANode["nodeIndex"]) + ": " + str(str(self.ZAweight))
 
-    # def updataLatency(self, AZLatency, ZALatency):
-    #     self.AZLatency = AZLatency
-    #     self.ZALatency = ZALatency
+            # def updataLatency(self, AZLatency, ZALatency):
+            #     self.AZLatency = AZLatency
+            #     self.ZALatency = ZALatency
 
 
 class LSP(object):
     def __init__(self, lspIndex, group, name, fromNodeIndex, toNodeIndex, ero, operationalStatus, latency, links,
-                 pingLatency=9999):
+                 pingLatency=9999, freeUtility=0):
         self.lspIndex = lspIndex
         self.group = group
         self.name = name
@@ -184,6 +184,7 @@ class LSP(object):
         self.latency = latency
         self.links = links
         self.pingLatency = pingLatency
+        self.freeUtility = freeUtility
 
     def log(self, nss):
         # log
