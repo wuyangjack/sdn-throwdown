@@ -60,6 +60,11 @@
   width: 100%;
   height:30px;
 }
+
+.danger-value {
+  color: #FF0000;
+}
+
 /*
 
 body {
