@@ -48,7 +48,7 @@ def updateTopology():
                 trafficStatDict[address].log(nss)
 
             graph = Graph(nodeDict.values(), linkDict)
-            updateBadLinks(linkDict, graph, LSPs, 0.4)
+            updateBadLinks(linkDict, graph, LSPs, 0.5)
 
             data = {'timestamp': ts, 'nodes': nodeDict.values(), 'links': linkDict.values(), 'lsps': LSPs}
 
@@ -87,4 +87,4 @@ def listenLinkEvent():
 start_new_thread(listenLinkEvent, ())
 while True:
     updateTopology()
-    time.sleep(10)
+    time.sleep(1)

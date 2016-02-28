@@ -1,11 +1,15 @@
 import json
 import heapq
 import redis
+import random
 import pprint
 import requests
 from dict_util import *
 from class_util import *
 
+
+# TODO:
+# key = "1-8"
 
 def getAuthHeader():
     username = 'group5'
@@ -73,6 +77,11 @@ def getAZToLinkDict(nodeDict):
                 link["operationalStatus"], length=length
             )
         azToLinkDict[str(ANode["nodeIndex"]) + "-" + str(ZNode["nodeIndex"])] = tmpLink
+
+    # global key
+    # if random.random() < 0.1:
+    #     key = random.choice(azToLinkDict.keys())
+    # azToLinkDict[key].status = "Down"
     return azToLinkDict
 
 
