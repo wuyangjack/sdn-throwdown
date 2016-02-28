@@ -461,10 +461,7 @@ var Query = React.createClass({
 
 var ResultTable = React.createClass({
   render: function() {
-    if (this.props.format) {
-      var formatter = NetworkStateService.formatUtilization;
-      console.log(formatter(0.99));
-    }
+    console.log(this.props.name);
     var json = this.props.content;
     if (_.isEmpty(json)) {
       return(<div/>);
@@ -567,12 +564,7 @@ var NetworkStateService = {
       return json;
     })
   },
-
-  formatUtilization: function(data) {
-      return data * 100 + "%";
-  },
 }
-
 
 var NetworkMap = React.createClass({
   getInitialState: function() {
@@ -592,11 +584,12 @@ var NetworkMap = React.createClass({
       linkStatus: {},
       linkLspCount: {},
       linkStatistics: {},
-      linkStatisticsFormatters: {},
+      //linkStatisticsFormatters: {},
       lspRoute: {},
       lspStatus: {},
       lspLatency: {},
       lspStatistics: {},
+      //lspStatisticsFormatters: {},
     };
   },
 
@@ -608,13 +601,13 @@ var NetworkMap = React.createClass({
     linkStatistics['Link'] = linkFilter;
 
     var linkUtilization = NetworkStateService.cleanState(this.state.linkUtilization, 'key', linkFilter);
-    this.state.linkStatisticsFormatters['Utilization'] = NetworkStateService.formatUtilization;
+    linkStatistics['Utilization'] = NetworkStateService.filterState(linkUtilization, 'value');
+    //this.state.linkStatisticsFormatters['Utilization'] = formatUtilization;
     /*
     linkUtilization = NetworkStateService.formatState(linkUtilization, 'value', function(data) {
       return data * 100 + "%";
     });
     */
-    linkStatistics['Utilization'] = NetworkStateService.filterState(linkUtilization, 'value');
 
     // TODO: format index into city
     var linkStatus = NetworkStateService.cleanState(this.state.linkStatus, 'key', linkFilter); 
@@ -925,7 +918,7 @@ var NetworkMap = React.createClass({
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style1}>
-                  <ResultTable content={this.state.lspStatistics}/>
+                  <ResultTable name="lspStatistics" content={this.state.lspStatistics}/>
                 </div>
               </div>
             </div>
@@ -934,7 +927,7 @@ var NetworkMap = React.createClass({
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style1}>
-                  <ResultTable format={this.state.linkStatisticsFormatters} content={this.state.linkStatistics}/>
+                  <ResultTable name="linkStatistics" content={this.state.linkStatistics}/>
                 </div>
               </div>
             </div>
