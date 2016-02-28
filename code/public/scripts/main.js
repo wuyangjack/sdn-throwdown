@@ -331,6 +331,11 @@ var QueryList = React.createClass({
 });
 
 var Query = React.createClass({
+  getInitialState: function() {
+    var uuid = Date.now();
+    return {uuid: uuid};
+  },
+
   handleSubmit: function(e) {
     e.preventDefault();
     this.props.onQuerySubmit({link: this.props.link, lsp: this.props.lsp});
@@ -342,16 +347,21 @@ var Query = React.createClass({
         <h4 className="queryName">
           {this.props.name}
         </h4>
-        <br/>
-        {this.props.link}
-        <br/>
-        {this.props.lsp}
+        <button type="button" className="btn btn-default" aria-label="Left Align" data-toggle="collapse" data-target={"#" + this.state.uuid}>
+          <span className="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+        </button>
         <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleSubmit}>
           <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
         </button>
         <button type="button" className="btn btn-default" aria-label="Left Align" onClick={this.handleDelete}>
           <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </button>
+        <div id={this.state.uuid} className="collapse">
+          <br/>
+          {this.props.link}
+          <br/>
+          {this.props.lsp}
+        </div>
       </div>
     );
   }
