@@ -120,14 +120,23 @@ def getLSPs(nodeDict, linkDict):
         linkLspCountHelper(lsp["name"], ero, linkDict)
         latency = 0
         links = []
+        utility = 0
         for i in range(1, len(lspNodes)):
             latency += Link.calculateDistance(lspNodes[i - 1], lspNodes[i]) * 6371.393 / 300000.0
             link = str(lspNodes[i - 1].index) + "_" + str(lspNodes[i].index)
             links.append(link)
+            path = str(ero[i - 1]) + "-" + str(ero[i])
+            reversePath = str(ero[i]) + "-" + str(ero[i - 1])
+            if path in linkDict:
+                utility = max(linkDict[path].AZUtility, utility)
+            else:
+                utility = max(linkDict[reversePath].ZAUtility, utility)
+        freeUtility = 1 - utility
         latency = int(1000 * latency)
 
         tmpLSP = LSP(lsp["lspIndex"], getGroup(lsp["name"]), lsp["name"], fromNodeIndex, toNodeIndex, ero,
-                     lsp["operationalStatus"], latency, links);
+                     lsp["operationalStatus"], latency, links, freeUtility=freeUtility);
+        # print tmpLSP.name + ": " + str(tmpLSP.freeUtility)
         LSPs.append(tmpLSP)
     return LSPs
 
@@ -238,13 +247,17 @@ def getBadLSPs(linkDict, LSPs, utilLimit):
         if link.status == "Down":
             badLinks.add((link.ANode['nodeIndex'], link.ZNode['nodeIndex']))
             badLinks.add((link.ZNode['nodeIndex'], link.ANode['nodeIndex']))
-        if link.AZUtility > utilLimit:
-            badLinks.add((link.ANode['nodeIndex'], link.ZNode['nodeIndex']))
-        if link.ZAUtility > utilLimit:
-            badLinks.add((link.ZNode['nodeIndex'], link.ANode['nodeIndex']))
+            # if link.AZUtility > utilLimit:
+            #     badLinks.add((link.ANode['nodeIndex'], link.ZNode['nodeIndex']))
+            # if link.ZAUtility > utilLimit:
+            #     badLinks.add((link.ZNode['nodeIndex'], link.ANode['nodeIndex']))
     badLSPs = set()
     for lsp in LSPs:
-        if lsp.group != 5 or lsp.name in badLSPs:
+        # if lsp.group != 5 or lsp.name in badLSPs:
+        if lsp.group != 5:
+            continue
+        if lsp.freeUtility < 1 - utilLimit:
+            badLSPs.add(lsp.name)
             continue
         for i in range(0, len(lsp.ero) - 1):
             if (lsp.ero[i], lsp.ero[i + 1]) in badLinks:
@@ -295,6 +308,5 @@ def updateLSPPingLatency(LSPs):
             continue
         name = lsp.name[-10:]
         lsp.pingLatency = lspToLatenctDict[name]
-        print lsp.pingLatency
-    # print lspToLatenctDict
-
+        # print lsp.pingLatency
+        # print lspToLatenctDict
