@@ -1,7 +1,9 @@
+import sys
 import redis
 import datetime
 import threading
 from function_util import *
+from thread import start_new_thread
 from states import NetworkStateService
 
 # nodeDict = getIpToNodeDict()
@@ -17,54 +19,58 @@ from states import NetworkStateService
 # updateBadLinks(linkDict, graph, LSPs, 0.5)
 
 lock = threading.Lock()
-nss = NetworkStateService("database/states.db");
+nss = NetworkStateService("database/yc.db")
 
 
 def updateTopology():
     with lock:
-        ts = time.time()
-        st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-        print "update topology @ " + st
+        try:
+            ts = time.time()
+            st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+            print "update topology @ " + st
 
-        nodeDict = getIpToNodeDict()
-        linkDict = getAZToLinkDict(nodeDict)
-        LSPs = getLSPs(nodeDict, linkDict)
-        trafficStatDict = getIpToTrafficStatDict()
-        updateLinkUtility(linkDict, trafficStatDict)
+            nodeDict = getIpToNodeDict()
+            linkDict = getAZToLinkDict(nodeDict)
+            LSPs = getLSPs(nodeDict, linkDict)
+            trafficStatDict = getIpToTrafficStatDict()
+            updateLinkUtility(linkDict, trafficStatDict)
 
-        for name in nodeDict:
-            nodeDict[name].log(nss)
+            for name in nodeDict:
+                nodeDict[name].log(nss)
 
-        for lsp in LSPs:
-            lsp.log(nss)
+            for lsp in LSPs:
+                lsp.log(nss)
 
-        for linkName in linkDict:
-            linkDict[linkName].log(nss)
+            for linkName in linkDict:
+                linkDict[linkName].log(nss)
 
-        for address in trafficStatDict:
-            trafficStatDict[address].log(nss)
+            for address in trafficStatDict:
+                trafficStatDict[address].log(nss)
 
-        graph = Graph(nodeDict.values(), linkDict)
-        updateBadLinks(linkDict, graph, LSPs, 0.4)
+            graph = Graph(nodeDict.values(), linkDict)
+            updateBadLinks(linkDict, graph, LSPs, 0.5)
 
-        data = {'timestamp': ts, 'nodes': nodeDict.values(), 'links': linkDict.values(), 'lsps': LSPs}
+            data = {'timestamp': ts, 'nodes': nodeDict.values(), 'links': linkDict.values(), 'lsps': LSPs}
 
-        '''
-        data = json.dumps(
-                data,
-                default=lambda o: o.__dict__,
-                indent=4,
-                separators=(',', ': ')
-        )
-        '''
-        with open('database/topology.json', 'w') as outfile:
-            json.dump(
-                data,
-                outfile,
-                default=lambda o: o.__dict__,
-                indent=4,
-                separators=(',', ': ')
+            '''
+            data = json.dumps(
+                    data,
+                    default=lambda o: o.__dict__,
+                    indent=4,
+                    separators=(',', ': ')
             )
+            '''
+            with open('database/topology.json', 'w') as outfile:
+                json.dump(
+                    data,
+                    outfile,
+                    default=lambda o: o.__dict__,
+                    indent=4,
+                    separators=(',', ': ')
+                )
+        except Exception, e:
+            sys.stderr.write("ERROR: cannot update topology: ")
+            sys.stderr.write(str(e))
 
 
 def listenLinkEvent():
@@ -73,20 +79,12 @@ def listenLinkEvent():
     pubsub.subscribe('link_event')
 
     for _ in pubsub.listen():
-        print "LINK EVENT!!!"
-        try:
-            updateTopology()
-        except Exception, e:
-            print "ERROR: cannot update topology: "
-            print str(e)
-
-
-threading.Thread(listenLinkEvent()).start()
-
-while True:
-    try:
+        print "LINK EVENT NEW"
         updateTopology()
-    except Exception, e:
-        print "ERROR: cannot update topology: "
-        print str(e)
-    time.sleep(10)
+        print "LINK EVENT FINISH"
+
+
+start_new_thread(listenLinkEvent, ())
+while True:
+    updateTopology()
+    time.sleep(1)

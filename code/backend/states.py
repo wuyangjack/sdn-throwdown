@@ -29,7 +29,7 @@ class NetworkStateService(object):
 		self.tables.append(name)
 
 	def __init__(self, database):
-		self.connection = sqlite3.connect(database);
+		self.connection = sqlite3.connect(database, check_same_thread=False);
 		print "loading database"
 		c = self.connection.cursor();
 		rows = c.execute("SELECT name FROM sqlite_master WHERE type = 'table'");
@@ -76,7 +76,7 @@ class NetworkStateService(object):
 						sec += 10;
 
 		print "commit to database: %s, %s, %s, %s" % (name, key, time, value)
-	
+
 		# Save (commit) the changes
 		self.connection.commit()
 
