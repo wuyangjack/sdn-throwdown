@@ -2,6 +2,7 @@ import sys
 import redis
 import datetime
 import threading
+import traceback
 from function_util import *
 from thread import start_new_thread
 from states import NetworkStateService
@@ -68,6 +69,7 @@ def updateTopology():
                     separators=(',', ': ')
                 )
         except Exception, e:
+            traceback.print_exc()
             sys.stderr.write("ERROR: cannot update topology: ")
             sys.stderr.write(str(e))
 

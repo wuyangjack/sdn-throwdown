@@ -85,15 +85,16 @@ def getAZToLinkDict(nodeDict):
     return azToLinkDict
 
 
-def linkLspCountHelper(ero, linkDict):
+def linkLspCountHelper(lspName, ero, linkDict):
     for i in range(0, len(ero) - 1):
         path = str(ero[i]) + "-" + str(ero[i + 1])
         reversePath = str(ero[i + 1]) + "-" + str(ero[i])
         if path in linkDict:
             linkDict[path].AZlspCount += 1
+            linkDict[path].AZlspList.append(lspName)
         if reversePath in linkDict:
             linkDict[reversePath].ZAlspCount += 1
-
+            linkDict[reversePath].ZAlspList.append(lspName)
 
 def getLSPs(nodeDict, linkDict):
     r = requests.get(
@@ -105,19 +106,23 @@ def getLSPs(nodeDict, linkDict):
         ero = []
         ero.append(fromNodeIndex)
         lspNodes = []
+        lspNodes.append(nodeDict[lsp["from"]["address"]])
         for node in lsp["liveProperties"]["ero"]:
             lspNode = nodeDict[itfcToNode[node["address"]]]
             nodeIndex = lspNode.index
             ero.append(nodeIndex)
             lspNodes.append(lspNode)
-        linkLspCountHelper(ero, linkDict)
+        linkLspCountHelper(lsp["name"], ero, linkDict)
         latency = 0
-        for i in xrange(1, len(lspNodes)):
+        links = []
+        for i in range(1, len(lspNodes)):
             latency += Link.calculateDistance(lspNodes[i - 1], lspNodes[i]) * 6371.393 / 300000.0
+            link = str(lspNodes[i - 1].index) + "_" + str(lspNodes[i].index)
+            links.append(link)
         latency = int(1000 * latency)
 
         tmpLSP = LSP(lsp["lspIndex"], getGroup(lsp["name"]), lsp["name"], fromNodeIndex, toNodeIndex, ero,
-                     lsp["operationalStatus"], latency);
+                     lsp["operationalStatus"], latency, links);
         LSPs.append(tmpLSP)
     return LSPs
 
