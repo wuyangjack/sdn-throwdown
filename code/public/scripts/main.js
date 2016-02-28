@@ -461,7 +461,6 @@ var Query = React.createClass({
 
 var ResultTable = React.createClass({
   render: function() {
-    
     console.log(this.props.name);
     var json = this.props.content;
     if (_.isEmpty(json)) {
@@ -478,7 +477,31 @@ var ResultTable = React.createClass({
       for (var i = 0; i < num_row; i++) {
         var tds = [];
         for (var j = 0; j < num_col; j++) {
-          tds.push(<td className="col-md-{{12 / num_col}}">{json[Object.keys(json)[j]][i]}</td>);
+          var formatted = json[Object.keys(json)[j]][i];
+          if (Object.keys(json)[j] == "Utilization") {
+            formatted = Math.round(formatted * 100);
+            if (formatted >= 70) {
+              tds.push(<td className="col-md-{{12 / num_col}} danger-value"><strong>{formatted + "%"}</strong></td>);
+            } else {
+              tds.push(<td className="col-md-{{12 / num_col}}">{formatted + "%"}</td>);
+            }
+          } else if (Object.keys(json)[j] == "Status") {
+            if (this.props.name == "linkStatistics" && formatted == "Down") {
+              tds.push(<td className="col-md-{{12 / num_col}} danger-value"><strong>{formatted}</strong></td>);
+            } else if (this.props.name == "lspStatistics" && formatted != "Active") {
+              tds.push(<td className="col-md-{{12 / num_col}} danger-value"><strong>{formatted}</strong></td>);              
+            } else {
+              tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);
+            }
+          } else if (Object.keys(json)[j] == "LSP Count") {
+            if (formatted >= 20) {
+              tds.push(<td className="col-md-{{12 / num_col}} danger-value"><strong>{formatted}</strong></td>);
+            } else {
+              tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);
+            }
+          } else {
+            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);
+          }
         }
         trs.push(<tr>{tds}</tr>);
       }
