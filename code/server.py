@@ -58,12 +58,12 @@ def sql_handler():
     query_string = request.args.get('query');
 
     print "evaluating: " + query_string;
-    nss = NetworkStateService("database/states.db");
+    nss = NetworkStateService("database/yc.db");
     data = nss.query(query_string);
     nss.close();
     #result = {};
     #result['time'] = 1;
-    
+
     return Response(json.dumps(data), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
 
 
