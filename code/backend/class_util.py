@@ -93,6 +93,8 @@ class Link(object):
         self.AZweight = 0
         self.ZAweight = 0
         self.length = length
+        self.ZAlspList = []
+        self.AZlspList = []
 
     def log(self, nss):
         # log
@@ -102,11 +104,13 @@ class Link(object):
         nss.save(NetworkStateService.LinkUtilization, key, timestamp, round(self.AZUtility, 2))
         nss.save(NetworkStateService.LinkStatus, key, timestamp, self.status)
         nss.save(NetworkStateService.LinkLspCount, key, timestamp, self.AZlspCount)
+        nss.save(NetworkStateService.LinkLspList, key, timestamp, "|".join(self.AZlspList))
         key = str(self.ZNode['nodeIndex']) + "_" + str(self.ANode['nodeIndex'])
         nss.save(NetworkStateService.Link, key, timestamp, 1)
-        nss.save(NetworkStateService.LinkUtilization, key, timestamp, round(self.AZUtility, 2))
+        nss.save(NetworkStateService.LinkUtilization, key, timestamp, round(self.ZAUtility, 2))
         nss.save(NetworkStateService.LinkStatus, key, timestamp, self.status)
         nss.save(NetworkStateService.LinkLspCount, key, timestamp, self.ZAlspCount)
+        nss.save(NetworkStateService.LinkLspList, key, timestamp, "|".join(self.ZAlspList))
 
     @staticmethod
     def calculateDistance(node1, node2):
@@ -155,7 +159,7 @@ class Link(object):
 
 
 class LSP(object):
-    def __init__(self, lspIndex, group, name, fromNodeIndex, toNodeIndex, ero, operationalStatus, latency):
+    def __init__(self, lspIndex, group, name, fromNodeIndex, toNodeIndex, ero, operationalStatus, latency, links):
         self.lspIndex = lspIndex
         self.group = group
         self.name = name
@@ -164,6 +168,7 @@ class LSP(object):
         self.ero = ero
         self.operationalStatus = operationalStatus
         self.latency = latency
+        self.links = links
 
     def log(self, nss):
         # log
@@ -173,3 +178,4 @@ class LSP(object):
         nss.save(NetworkStateService.LspRoute, key, timestamp, self.ero)
         nss.save(NetworkStateService.LspStatus, key, timestamp, self.operationalStatus)
         nss.save(NetworkStateService.LspLatency, key, timestamp, self.latency)
+        nss.save(NetworkStateService.LspLinkList, key, timestamp, "|".join(self.links))

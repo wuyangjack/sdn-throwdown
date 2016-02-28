@@ -1,20 +1,20 @@
 import requests
 import json
 import sqlite3
-
-def link_to_lsp(link):
-    return '3_8'
+import traceback
 
 class NetworkStateService(object):
 	Link = "Link";
 	LinkUtilization = "LinkUtilization"
 	LinkStatus = "LinkStatus"
 	LinkLspCount = "LinkLspCount"
+	LinkLspList = "LinkLspList"
 	Router = "Router"
 	Lsp = "Lsp"
 	LspRoute = "LspRoute"
 	LspLatency = "LspLatency"
 	LspStatus = "LspStatus"
+	LspLinkList = "LspLinkList"
 	Interface = "Interface"
 	InterfaceInBps = "InterfaceInBps"
 	InterfaceOutBps = "InterfaceOutBps"
@@ -33,7 +33,7 @@ class NetworkStateService(object):
 	def __init__(self, database):
 		self.connection = sqlite3.connect(database, check_same_thread=False);
 		print "adding UDFs"
-		self.connection.create_function("link_to_lsp", 1, link_to_lsp)
+		#self.connection.create_function("link_to_lsp", 1, link_to_lsp)
 		print "loading database"
 		c = self.connection.cursor();
 		rows = c.execute("SELECT name FROM sqlite_master WHERE type = 'table'");
@@ -102,6 +102,7 @@ class NetworkStateService(object):
 			#print "returning: " + str(jsons)
 			return jsons;
 		except Exception, e:
+			traceback.print_exc()
 			raise e
 			return [];
 
@@ -113,8 +114,13 @@ class NetworkStateService(object):
 			c.execute("DROP TABLE " + row[0]);
 		self.connection.commit()
 
+
 '''
-nss = NetworkStateService("database/test.db");
+nss = NetworkStateService("database/states.db");
+print nss.query("SELECT link_to_lsp(1), link_to_lsp(1), link_to_lsp(1), link_to_lsp(1) FROM Link_");
+'''
+
+'''
 nss.save("LinkStatus", "10.0.0.1_10.0.0.2", "1456451402", "Up");
 print nss.query("SELECT * FROM LinkStatus");
 nss.save("LinkUtilization", "10.0.0.1_10.0.0.2", "1456451402", "0.04");
