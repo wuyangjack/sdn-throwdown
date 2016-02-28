@@ -744,7 +744,7 @@ var NetworkMap = React.createClass({
   render: function() {
     var scope = {
       style1: {
-        height: 140
+        height: 200
       },
       style2: {
         height: 500
@@ -768,9 +768,6 @@ var NetworkMap = React.createClass({
           <div className="col-md-4">
             <br/>
             <div className="panel panel-default">
-              <div className="panel-heading">
-                <h3 className="panel-title">Queries</h3>
-              </div>
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style2}>
                   <QueryForm onQuerySubmit={this.handleQuerySubmit} />
