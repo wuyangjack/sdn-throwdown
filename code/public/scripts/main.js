@@ -532,7 +532,7 @@ var NetworkMap = React.createClass({
     var lspFilter = this.state.lspFilter;
 
     var linkStatistics = {};
-    linkStatistics['Name'] = linkFilter;
+    linkStatistics['Link'] = linkFilter;
 
     var linkUtilization = NetworkStateService.cleanState(this.state.linkUtilization, 'key', linkFilter);
     linkUtilization = NetworkStateService.formatState(linkUtilization, 'value', function(data) {
@@ -550,7 +550,7 @@ var NetworkMap = React.createClass({
     this.state.linkStatistics = linkStatistics;
 
     var lspStatistics = {};
-    lspStatistics['Name'] = lspFilter;
+    lspStatistics['LSP'] = lspFilter;
 
     var lspRoute = NetworkStateService.cleanState(this.state.lspRoute, 'key', lspFilter); 
     lspStatistics['Route'] = NetworkStateService.filterState(lspRoute, 'value');
