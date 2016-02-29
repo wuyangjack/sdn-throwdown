@@ -519,8 +519,18 @@ var ResultTable = React.createClass({
               }
             }
             tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);            
-          } else {
+          } else if (Object.keys(json)[j] == "Geo Latency (ms)") {
+            if (formatted == "9999") {
+              formatted = "NaN";
+            } else {
+              formatted = Math.round(formatted*100)/100;
+            }
             tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                        
+          } else if (Object.keys(json)[j] == "Real Latency (ms)") {
+            formatted = Math.round(formatted*100)/100;
+            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                                    
+          } else {
+            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                                                
           }
         }
         trs.push(<tr>{tds}</tr>);
