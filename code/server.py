@@ -93,7 +93,7 @@ def get_topology():
     return Response(json.dumps(topology), mimetype='application/json', headers={'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
 
 if __name__ == '__main__':
-    app.run(port=int(os.environ.get("PORT",3000)), debug=True)
+    app.run(host= '0.0.0.0', port=int(os.environ.get("PORT",3000)), debug=True)
 
 
 
