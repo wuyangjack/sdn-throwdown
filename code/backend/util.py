@@ -26,6 +26,20 @@ def updateTopology():
             updateLSPPingLatency(LSPs)
             getUtilityAverage(linkDict, nss)
 
+            graph = Graph(nodeDict.values(), linkDict)
+            updateBadLinks(linkDict, graph, LSPs)
+
+            data = {'timestamp': ts, 'nodes': nodeDict.values(), 'links': linkDict.values(), 'lsps': LSPs}
+
+            with open('database/topology.json', 'w') as outfile:
+                json.dump(
+                    data,
+                    outfile,
+                    default=lambda o: o.__dict__,
+                    indent=4,
+                    separators=(',', ': ')
+                )
+
             for name in nodeDict:
                 nodeDict[name].log(nss)
 
@@ -38,11 +52,6 @@ def updateTopology():
             for address in trafficStatDict:
                 trafficStatDict[address].log(nss)
 
-            graph = Graph(nodeDict.values(), linkDict)
-            updateBadLinks(linkDict, graph, LSPs)
-
-            data = {'timestamp': ts, 'nodes': nodeDict.values(), 'links': linkDict.values(), 'lsps': LSPs}
-
             jsonString = json.dumps(
                     data,
                     default=lambda o: o.__dict__,
@@ -50,15 +59,6 @@ def updateTopology():
                     separators=(',', ': ')
             )
             nss.save(NetworkStateService.Topology, "wan", time.time(), jsonString);
-
-            with open('database/topology.json', 'w') as outfile:
-                json.dump(
-                    data,
-                    outfile,
-                    default=lambda o: o.__dict__,
-                    indent=4,
-                    separators=(',', ': ')
-                )
         except Exception, e:
             traceback.print_exc()
             sys.stderr.write("ERROR: cannot update topology: ")
@@ -79,4 +79,4 @@ def listenLinkEvent():
 start_new_thread(listenLinkEvent, ())
 while True:
     updateTopology()
-    time.sleep(5)
+    #time.sleep(5)

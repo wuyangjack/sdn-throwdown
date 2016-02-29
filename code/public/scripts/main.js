@@ -695,7 +695,7 @@ var NetworkMap = React.createClass({
     var lspFreeUtilization = NetworkStateService.cleanState(this.state.lspFreeUtilization, 'key', lspFilter); 
     lspStatistics['Free'] = NetworkStateService.filterState(lspFreeUtilization, 'value');
 
-    var lspRoute = NetworkStateService.cleanState(this.state.lspRoute, 'key', lspFilter); 
+    var lspRoute = NetworkStateService.cleanState(this.state.lspRoute, 'key', lspFilter);
     lspStatistics['Route'] = NetworkStateService.filterState(lspRoute, 'value');
 
     this.state.lspStatistics = lspStatistics;
@@ -1102,7 +1102,7 @@ var NetworkGraph = React.createClass({
       var len = Object.keys(this.state.sqlData).length;
       for (var i = 0; i < len; i++) {
         var ln = this.state.sqlData[i].key;
-        if (ln.length == 3) {
+        if (ln.length == 3 && ln != 'wan') {
           var from = ln.substring(0, 1);
           var to = ln.substring(2, 3);
           var abb_from = ResultTable.nodeNames[from].substring(0, 3);

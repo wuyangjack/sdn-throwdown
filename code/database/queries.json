@@ -40,9 +40,27 @@ SELECT * FROM RecentLspLatency WHERE key in (
 // Lsps on hot links
 SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_NY_SF_LSP1%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60
 
-SELECT * FROM Lsp_ WHERE 
+With 
+HotLinks_ AS (
+	SELECT key FROM LinkUtilization_ WHERE CAST(value AS DECIMAL) > 0.7
+)
+SELECT * FROM Lsp_ WHERE key in (
+	SELECT LspLinkList_.key  FROM LspLinkList_, HotLinks_ 
+	WHERE instr(LspLinkList_.value, HotLinks_.key) != 0
+)
+
+WHERE LspLinkList_.value LIKE '%'HotLinks_.key
+
+VictimLsps_ AS (
+	SELECT * FROM LspLinkList_, HotLinks_ 
+	WHERE LspLinkList_.value LIKE HotLinks_.key
+),
+
 
 // Lsp data
+SELECT * FROM UtilizationSum_
+http://127.0.0.1:3000/api/sql?type=stream&query=SELECT%20*%20FROM%20UtilizationSum_%0A
+
 SELECT * FROM LspFreeUtilization_ WHERE key LIKE '%GROUP_FIVE%'
 http://127.0.0.1:3000/api/sql?type=stream&query=SELECT%20*%20FROM%20LspFreeUtilization_%20WHERE%20key%20LIKE%20%27%25GROUP_FIVE%25%27%20%0A
 

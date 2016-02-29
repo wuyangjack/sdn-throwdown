@@ -34,5 +34,17 @@
         "name": "Empty network",
         "lsp": "...",
         "id": 1456720136051
+    },
+    {
+        "link": "SELECT * FROM Link_",
+        "name": "Victim LSPs",
+        "lsp": "With\n Hotlinks_ AS (\n    SELECT key FROM \n    LinkUtilization_ WHERE CAST(value AS DECIMAL) > 0.7\n )\n SELECT * FROM Lsp_ WHERE key in (\n    SELECT LspLinkList_.key FROM \n    LspLinkList_, HotLinks_ WHERE instr(LspLinkList_.value, HotLinks_.key) != 0\n )",
+        "id": 1456722491414
+    },
+    {
+        "link": "SELECT * FROM Link_",
+        "name": "NY_SF_LSP1 with full network",
+        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_NY_SF_LSP1' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
+        "id": 1456729771161
     }
 ]

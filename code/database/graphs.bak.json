@@ -1,6 +1,18 @@
 [
     {
-        "link": "SELECT * FROM LinkUtilization WHERE key in (\n\tSELECT key FROM LinkUtilization \n\tWHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 600 \n\tAND CAST(value AS DECIMAL) > 0.7\n) AND CAST(time AS INTEGER) > strftime('%s', 'now') - 600",
+        "link": "SELECT * FROM LinkUtilization WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 600 AND CAST(value AS DECIMAL) > 0.4",
+        "name": "Hot links",
+        "lsp": "...",
+        "id": 1456555913794
+    },
+    {
+        "link": "SELECT * FROM Link_",
+        "name": "TEST",
+        "lsp": "...",
+        "id": 1456697901151
+    },
+    {
+        "link": "SELECT * FROM LinkUtilization WHERE key in (\n\tSELECT key FROM LinkUtilization \n\tWHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 600 \n\tAND CAST(value AS DECIMAL) > 0.5\n) AND CAST(time AS INTEGER) > strftime('%s', 'now') - 600",
         "name": "Hot links (full)",
         "lsp": "...",
         "id": 1456702390347
@@ -16,11 +28,5 @@
         "name": "LSP inflation",
         "lsp": "...",
         "id": 1456702943295
-    },
-    {
-        "link": "SELECT * FROM UtilizationSum",
-        "name": "Overall network utilization",
-        "lsp": "...",
-        "id": 1456747879588
     }
 ]
