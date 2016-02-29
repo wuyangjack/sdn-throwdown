@@ -248,7 +248,7 @@ var LinkPath = {
 
 var QueryForm = React.createClass({
   getInitialState: function() {
-    return {name: '...', link: '...', lsp: '...'};
+    return {name: '', link: '...', lsp: '...'};
   },
   handleNameChange: function(e) {
     this.setState({name: e.target.value});
@@ -294,7 +294,7 @@ var QueryForm = React.createClass({
       return (
         <form className="queryForm" onSubmit={this.handleSubmit}>
           <div className="col-xs-10">
-            <input type="text" className="form-control" value={this.state.name} placeholder="Name" onChange={this.handleNameChange} />
+            <input type="text" className="form-control" value={this.state.name} placeholder="New Query" onChange={this.handleNameChange} />
           </div>
           <div>
             <button type="submit" value = "Post" className="btn btn-default" aria-label="Left Align">
@@ -318,7 +318,7 @@ var QueryForm = React.createClass({
       return (
         <form className="queryForm" onSubmit={this.handleSubmit}>
           <div className="col-xs-10">
-            <input type="text" className="form-control" value={this.state.name} placeholder="Name" onChange={this.handleNameChange} />
+            <input type="text" className="form-control" value={this.state.name} placeholder="New Query" onChange={this.handleNameChange} />
           </div>
           <div>
             <button type="submit" value = "Post" className="btn btn-default" aria-label="Left Align">
