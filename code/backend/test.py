@@ -34,7 +34,8 @@ trafficStatDict = getIpToTrafficStatDict()
 updateLinkUtility(linkDict, trafficStatDict)
 LSPs = getLSPs(nodeDict, linkDict)
 updateLSPPingLatency(LSPs)
+#
+# graph = Graph(nodeDict.values(), linkDict)
+# updateBadLinks(linkDict, graph, LSPs)
 
-graph = Graph(nodeDict.values(), linkDict)
-updateBadLinks(linkDict, graph, LSPs)
-
+print getUtilityAverage(linkDict)

@@ -263,6 +263,9 @@ def getBadLSPs(linkDict, LSPs, utilLimit):
             if (lsp.ero[i], lsp.ero[i + 1]) in badLinks:
                 badLSPs.add(lsp.name)
                 break
+    # TODO:
+    # if "GROUP_FIVE_NY_SF_LSP1" in badLSPs:
+    #     badLSPs.remove("GROUP_FIVE_NY_SF_LSP1")
     return badLSPs
 
 
@@ -310,3 +313,8 @@ def updateLSPPingLatency(LSPs):
         lsp.pingLatency = lspToLatenctDict[name]['latency']
         # print lsp.pingLatency
         # print lspToLatenctDict
+
+
+def getUtilityAverage(linkDict):
+    utilSum = sum([(link.AZUtility + link.ZAUtility) for link in linkDict.values()])
+    return utilSum / (len(linkDict) * 2)

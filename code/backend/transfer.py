@@ -47,7 +47,7 @@ def getLSPInfoDict():
         LSPInfoDict[item["key"]].update({"LspRealLatency": float(item["value"])})
 
     for item in LSPInfoDict.values():
-        item["priority"] = item["LspFreeUtilization"] ** 2 * 300 / item["LspRealLatency"]
+        item["priority"] = item["LspFreeUtilization"] ** 5 * 300 / item["LspRealLatency"]
 
     NYtoSFsum = sum([val["priority"] for key, val in LSPInfoDict.items() if "NY_SF" in key])
     SFtoNYsum = sum([val["priority"] for key, val in LSPInfoDict.items() if "SF_NY" in key])
@@ -95,19 +95,21 @@ def exeCmd(cmd, stderr=STDOUT):
 
 
 def transferFiles(fileList, ipAddress, remoteDir):
+    print ipAddress + " FILES: " + " ".join(file for file in fileList)
     p = Popen(["scp"] + fileList + [ipAddress + ":" + remoteDir])
     p.wait()
 
 
 LSPInfoDict = getLSPInfoDict()
-if mode == "NORMAL":
+if mode == "OPTIMAL":
     LSPweight = genrateWeightToLSPList(LSPInfoDict, direction)
-elif mode == "OPTIMAL":
+elif mode == "NORMAL":
     LSPweight = [[0.25, "192.168.1.2"], [0.5, "192.168.2.2"], [0.75, "192.168.3.2"], [1, "192.168.4.2"]]
 fileSendLists = getFileSendList(LSPweight, localDir)
 # print LSPweight
-# pp = pprint.PrettyPrinter(indent=4)
-# pp.pprint(LSPInfoDict)
+
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(LSPInfoDict)
 for i in range(0, 4):
     print LSPweight[i][1] + ": FILES to SEND: " + str(len(fileSendLists[i]))
 
