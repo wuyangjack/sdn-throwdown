@@ -29,6 +29,7 @@ ipAddress = sys.argv[1]
 direction = sys.argv[2]
 localDir = sys.argv[3]
 remoteDir = sys.argv[4]
+mode = sys.argv[5]
 
 freeUtilUrl = GET_FREE_UTILITY_URL_FORMAT.format(ipAddress=ipAddress)
 latencyUrl = GET_REAL_LATENCY_URL_FORMAT.format(ipAddress=ipAddress)
@@ -46,7 +47,7 @@ def getLSPInfoDict():
         LSPInfoDict[item["key"]].update({"LspRealLatency": float(item["value"])})
 
     for item in LSPInfoDict.values():
-        item["priority"] = item["LspFreeUtilization"] * 300 / item["LspRealLatency"]
+        item["priority"] = item["LspFreeUtilization"] ** 2 * 300 / item["LspRealLatency"]
 
     NYtoSFsum = sum([val["priority"] for key, val in LSPInfoDict.items() if "NY_SF" in key])
     SFtoNYsum = sum([val["priority"] for key, val in LSPInfoDict.items() if "SF_NY" in key])
@@ -99,8 +100,10 @@ def transferFiles(fileList, ipAddress, remoteDir):
 
 
 LSPInfoDict = getLSPInfoDict()
-LSPweight = genrateWeightToLSPList(LSPInfoDict, direction)
-# LSPweight = [[1, "192.168.1.2"], [1, "192.168.2.2"], [1, "192.168.3.2"], [1, "192.168.4.2"]]
+if mode == "NORMAL":
+    LSPweight = genrateWeightToLSPList(LSPInfoDict, direction)
+elif mode == "OPTIMAL":
+    LSPweight = [[0.25, "192.168.1.2"], [0.5, "192.168.2.2"], [0.75, "192.168.3.2"], [1, "192.168.4.2"]]
 fileSendLists = getFileSendList(LSPweight, localDir)
 # print LSPweight
 # pp = pprint.PrettyPrinter(indent=4)
