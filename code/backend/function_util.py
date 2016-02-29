@@ -12,8 +12,8 @@ BAD_LINK_UTIL_VAL = 0.6
 VM_PINGER_PORT_NUMBER = 12345
 
 # TODO:
-key1 = "1-8"
-key2 = "1-8"
+# key1 = "1-8"
+# key2 = "1-8"
 
 def getAuthHeader():
     username = 'group5'
@@ -83,12 +83,12 @@ def getAZToLinkDict(nodeDict):
         azToLinkDict[str(ANode["nodeIndex"]) + "-" + str(ZNode["nodeIndex"])] = tmpLink
 
     #TODO:
-    global key1, key2
-    if random.random() < 0.5:
-        key1 = random.choice(azToLinkDict.keys())
-        key2 = random.choice(azToLinkDict.keys())
-    azToLinkDict[key1].status = "Down"
-    azToLinkDict[key2].status = "Down"
+    # global key1, key2
+    # if random.random() < 0.5:
+    #     key1 = random.choice(azToLinkDict.keys())
+    #     key2 = random.choice(azToLinkDict.keys())
+    # azToLinkDict[key1].status = "Down"
+    # azToLinkDict[key2].status = "Down"
 
     return azToLinkDict
 
