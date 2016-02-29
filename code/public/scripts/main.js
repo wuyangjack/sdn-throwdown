@@ -632,6 +632,8 @@ var NetworkMap = React.createClass({
       lspRoute: {},
       lspStatus: {},
       lspLatency: {},
+      lspRealLatency: {},
+      lspFreeUtilization: {},
       lspStatistics: {},
       //lspStatisticsFormatters: {},
     };
@@ -661,14 +663,20 @@ var NetworkMap = React.createClass({
     var lspStatistics = {};
     lspStatistics['LSP'] = lspFilter;
 
-    var lspRoute = NetworkStateService.cleanState(this.state.lspRoute, 'key', lspFilter); 
-    lspStatistics['Route'] = NetworkStateService.filterState(lspRoute, 'value');
-
     var lspStatus = NetworkStateService.cleanState(this.state.lspStatus, 'key', lspFilter); 
     lspStatistics['Status'] = NetworkStateService.filterState(lspStatus, 'value');
 
     var lspLatency = NetworkStateService.cleanState(this.state.lspLatency, 'key', lspFilter); 
-    lspStatistics['Latency'] = NetworkStateService.filterState(lspLatency, 'value');
+    lspStatistics['Geo Latency (ms)'] = NetworkStateService.filterState(lspLatency, 'value');
+
+    var lspRealLatency = NetworkStateService.cleanState(this.state.lspRealLatency, 'key', lspFilter); 
+    lspStatistics['Real Latency (ms)'] = NetworkStateService.filterState(lspRealLatency, 'value');
+
+    var lspFreeUtilization = NetworkStateService.cleanState(this.state.lspFreeUtilization, 'key', lspFilter); 
+    lspStatistics['Free (Gbps)'] = NetworkStateService.filterState(lspFreeUtilization, 'value');
+
+    var lspRoute = NetworkStateService.cleanState(this.state.lspRoute, 'key', lspFilter); 
+    lspStatistics['Route'] = NetworkStateService.filterState(lspRoute, 'value');
 
     this.state.lspStatistics = lspStatistics;
 
@@ -853,6 +861,20 @@ var NetworkMap = React.createClass({
       }
     });
 
+    NetworkStateService.executeSql(this, "SELECT * FROM LspRealLatency_", function(obj, data) {
+      if (obj.isMounted()) {
+        obj.state.lspRealLatency = data;
+        obj.setState(obj.state);
+      }
+    });
+
+    NetworkStateService.executeSql(this, "SELECT * FROM LspFreeUtilization_", function(obj, data) {
+      if (obj.isMounted()) {
+        obj.state.lspFreeUtilization = data;
+        obj.setState(obj.state);
+      }
+    });
+
     this.drawTables();
   },
 
@@ -955,7 +977,7 @@ var NetworkMap = React.createClass({
             </div>
             <br/>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-8">
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style1}>
@@ -964,7 +986,7 @@ var NetworkMap = React.createClass({
               </div>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-4">
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="pre-scrollable" style={scope.style1}>
@@ -1211,7 +1233,7 @@ var NavBar = React.createClass({
 
 var PennApp = React.createClass({
   getInitialState: function() {
-    return {show: 'graph'};
+    return {show: 'map'};
   },
 
   showMap: function(e) {
