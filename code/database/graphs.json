@@ -1,0 +1,32 @@
+[
+    {
+        "link": "SELECT * FROM LinkUtilization WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 600 AND CAST(value AS DECIMAL) > 0.4",
+        "name": "Hot links",
+        "lsp": "...",
+        "id": 1456555913794
+    },
+    {
+        "link": "SELECT * FROM Link_",
+        "name": "TEST",
+        "lsp": "...",
+        "id": 1456697901151
+    },
+    {
+        "link": "SELECT * FROM LinkUtilization WHERE key in (\n\tSELECT key FROM LinkUtilization \n\tWHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 600 \n\tAND CAST(value AS DECIMAL) > 0.5\n) AND CAST(time AS INTEGER) > strftime('%s', 'now') - 600",
+        "name": "Hot links (full)",
+        "lsp": "...",
+        "id": 1456702390347
+    },
+    {
+        "link": "SELECT * FROM LinkStatus \nWHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 7200 \nAND value != 'Up'",
+        "name": "Link down history",
+        "lsp": "...",
+        "id": 1456702856737
+    },
+    {
+        "link": "WITH \nRecentLspLatency AS (\n\tSELECT * FROM LspLatency\n\tWHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 1800\n),\nMinLspLatency AS (\n\tSELECT key, CAST(min(value) AS REAL) AS value FROM RecentLspLatency \n\tGROUP BY key\n),\nLspInflationRatio AS (\n\tSELECT RecentLspLatency.key, RecentLspLatency.time, \n\t(CAST(RecentLspLatency.value AS REAL) / MinLspLatency.value) AS value\n\tFROM RecentLspLatency JOIN MinLspLatency \n\tON RecentLspLatency.key = MinLspLatency.key\n),\nLspInflationRatioAverage AS (\n\tSELECT key, avg(value) AS value FROM LspInflationRatio \n\tGROUP BY key\n)\nSELECT * FROM RecentLspLatency WHERE key in (\n\tSELECT key FROM LspInflationRatioAverage\n\tWHERE value > 1.5\n)",
+        "name": "LSP inflation",
+        "lsp": "...",
+        "id": 1456702943295
+    }
+]
