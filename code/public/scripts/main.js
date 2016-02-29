@@ -248,7 +248,7 @@ var LinkPath = {
 
 var QueryForm = React.createClass({
   getInitialState: function() {
-    return {name: '...', link: '...', lsp: '...'};
+    return {name: '', link: '...', lsp: '...'};
   },
   handleNameChange: function(e) {
     this.setState({name: e.target.value});
@@ -294,7 +294,7 @@ var QueryForm = React.createClass({
       return (
         <form className="queryForm" onSubmit={this.handleSubmit}>
           <div className="col-xs-10">
-            <input type="text" className="form-control" value={this.state.name} placeholder="Name" onChange={this.handleNameChange} />
+            <input type="text" className="form-control" value={this.state.name} placeholder="New Query" onChange={this.handleNameChange} />
           </div>
           <div>
             <button type="submit" value = "Post" className="btn btn-default" aria-label="Left Align">
@@ -318,7 +318,7 @@ var QueryForm = React.createClass({
       return (
         <form className="queryForm" onSubmit={this.handleSubmit}>
           <div className="col-xs-10">
-            <input type="text" className="form-control" value={this.state.name} placeholder="Name" onChange={this.handleNameChange} />
+            <input type="text" className="form-control" value={this.state.name} placeholder="New Query" onChange={this.handleNameChange} />
           </div>
           <div>
             <button type="submit" value = "Post" className="btn btn-default" aria-label="Left Align">
@@ -519,8 +519,28 @@ var ResultTable = React.createClass({
               }
             }
             tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);            
+          } else if (Object.keys(json)[j] == "Real Latency") {
+            if (formatted == "99999" || formatted == "9999") {
+              tds.push(<td className="col-md-{{12 / num_col}}">NaN</td>);                        
+            } else {
+              formatted = Math.round(formatted*100)/100;
+              if (formatted >= 300) {
+                tds.push(<td className="col-md-{{12 / num_col}} danger-value"><strong>{formatted + " ms"}</strong></td>);
+              } else {
+                tds.push(<td className="col-md-{{12 / num_col}}">{formatted + " ms"}</td>);
+              }
+            }
+          } else if (Object.keys(json)[j] == "Free") {
+            formatted = Math.round(formatted*100)/100;
+            if (formatted <= 0.3) {
+              tds.push(<td className="col-md-{{12 / num_col}} danger-value"><strong>{formatted + " Gbps"}</strong></td>);                                    
+            } else {
+              tds.push(<td className="col-md-{{12 / num_col}}">{formatted + " Gbps"}</td>);              
+            }
+          } else if (Object.keys(json)[j] == "Geo Latency") {
+            tds.push(<td className="col-md-{{12 / num_col}}">{formatted + " ms"}</td>);                                                
           } else {
-            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                        
+            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                                                            
           }
         }
         trs.push(<tr>{tds}</tr>);
@@ -667,13 +687,13 @@ var NetworkMap = React.createClass({
     lspStatistics['Status'] = NetworkStateService.filterState(lspStatus, 'value');
 
     var lspLatency = NetworkStateService.cleanState(this.state.lspLatency, 'key', lspFilter); 
-    lspStatistics['Geo Latency (ms)'] = NetworkStateService.filterState(lspLatency, 'value');
+    lspStatistics['Geo Latency'] = NetworkStateService.filterState(lspLatency, 'value');
 
     var lspRealLatency = NetworkStateService.cleanState(this.state.lspRealLatency, 'key', lspFilter); 
-    lspStatistics['Real Latency (ms)'] = NetworkStateService.filterState(lspRealLatency, 'value');
+    lspStatistics['Real Latency'] = NetworkStateService.filterState(lspRealLatency, 'value');
 
     var lspFreeUtilization = NetworkStateService.cleanState(this.state.lspFreeUtilization, 'key', lspFilter); 
-    lspStatistics['Free (Gbps)'] = NetworkStateService.filterState(lspFreeUtilization, 'value');
+    lspStatistics['Free'] = NetworkStateService.filterState(lspFreeUtilization, 'value');
 
     var lspRoute = NetworkStateService.cleanState(this.state.lspRoute, 'key', lspFilter); 
     lspStatistics['Route'] = NetworkStateService.filterState(lspRoute, 'value');
@@ -717,6 +737,7 @@ var NetworkMap = React.createClass({
     LinkPath.nodeNames = nodeNames;
     LspPath.nodeNames = nodeNames;
     ResultTable.nodeNames = nodeNames;
+    NetworkGraph.nodeNames = nodeNames;
 
     // update links
     var links = this.state.topology.links;
@@ -1057,8 +1078,6 @@ var drawTimeSeries = function (id, labels, values, times, labelTextX, labelTextY
         datas.push(values[labels[i]]);
         xy[labels[i]] = labelX;
     }
-    console.log(xy);
-    console.log(datas);
     chart.load({
         xs: xy,
         columns: datas,
@@ -1078,6 +1097,8 @@ var NetworkGraph = React.createClass({
 
   drawGraph: function() {
     if (_.isEmpty(this.state.sqlData) == false) {
+      // Replace all link keys with their respective link names in this json: sqlData
+      // the index to name is available in NetworkGraph.nodeNames
       var streams = NetworkStateService.groupState(this.state.sqlData, "key");
       var labels = _.map(streams, function(stream, key) {
         return key;

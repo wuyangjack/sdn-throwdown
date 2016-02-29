@@ -1,81 +1,32 @@
 [
     {
-        "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_SF_NY_LSP1%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "name": "SF_NY_LSP1",
-        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_SF_NY_LSP1' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 1456555913794
+        "link": "SELECT * FROM Link_",
+        "name": "Full network",
+        "lsp": "SELECT * FROM Lsp_",
+        "id": 1
     },
-    {
-        "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_SF_NY_LSP2%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "name": "SF_NY_LSP2",
-        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_SF_NY_LSP2' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 1456555913795
-    },
-    {
-        "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_SF_NY_LSP3%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "name": "SF_NY_LSP3",
-        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_SF_NY_LSP3' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 1456555913796
-    },
-    {
-        "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_SF_NY_LSP4%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "name": "SF_NY_LSP4",
-        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_SF_NY_LSP4' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 1456555913797
-    },
-    {
-        "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_NY_SF_LSP1%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "name": "NY_SF_LSP1",
-        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_NY_SF_LSP1' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 1456555913798
-    },
-    {
-        "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_NY_SF_LSP2%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "name": "NY_SF_LSP2",
-        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_NY_SF_LSP2' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 1456555913799
-    },
-    {
-        "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_NY_SF_LSP3%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "name": "NY_SF_LSP3",
-        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_NY_SF_LSP3' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 1456555913700
-    },
-    {
-        "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_NY_SF_LSP4%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "name": "NY_SF_LSP4",
-        "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_NY_SF_LSP4' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 1456555913709
-    },
-    {
-
-        "link": "SELECT * FROM LinkUtilization_ WHERE CAST(value AS DECIMAL) > 0.8",
+        {
+        "link": "SELECT * FROM LinkUtilization_ WHERE CAST(value AS DECIMAL) > 0.7",
         "name": "Hot links",
         "lsp": "...",
-        "id": 1456556846451
+        "id": 2
     },
     {
         "link": "SELECT * FROM LinkLspCount_ WHERE CAST(value AS DECIMAL) > 10",
         "name": "Busy links",
         "lsp": "...",
-        "id": 1456557768264
+        "id": 3
     },
     {
         "link": "SELECT * FROM Link_ WHERE CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "name": "Live network",
+        "name": "Group five network",
         "lsp": "SELECT * FROM Lsp_ WHERE key LIKE 'GROUP_FIVE%' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 145662357755
-    },
-    {
-        "link": "SELECT * FROM Link_",
-        "name": "Full network",
-        "lsp": "SELECT * FROM Lsp_",
-        "id": 1456623577556
+        "id": 4
     },
     {
         "link": "SELECT * FROM Link_ WHERE key in (SELECT key FROM LinkLspList_ WHERE value LIKE '%GROUP_FIVE_NY_SF_LSP1%') AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
         "name": "NY_SF_LSP1",
         "lsp": "SELECT * FROM Lsp_ WHERE key = 'GROUP_FIVE_NY_SF_LSP1' AND CAST(time AS INTEGER) > strftime('%s', 'now') - 60",
-        "id": 1456643254949
+        "id": 5
     }
 ]

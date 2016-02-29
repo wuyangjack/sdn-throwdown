@@ -10,6 +10,12 @@ download image
 
 demo:
 	Network analytics: topology
+		All links => messy
+		Hot links 
+		Busy links
+		Group five
+		Single LSP and its link
+
 	Network analytics: graph (multiple)
 	VLC transitioning during fiber cut
 	TE algorithm
