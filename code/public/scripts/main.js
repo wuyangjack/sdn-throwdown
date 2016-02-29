@@ -737,6 +737,7 @@ var NetworkMap = React.createClass({
     LinkPath.nodeNames = nodeNames;
     LspPath.nodeNames = nodeNames;
     ResultTable.nodeNames = nodeNames;
+    NetworkGraph.nodeNames = nodeNames;
 
     // update links
     var links = this.state.topology.links;
@@ -1077,8 +1078,6 @@ var drawTimeSeries = function (id, labels, values, times, labelTextX, labelTextY
         datas.push(values[labels[i]]);
         xy[labels[i]] = labelX;
     }
-    console.log(xy);
-    console.log(datas);
     chart.load({
         xs: xy,
         columns: datas,
@@ -1098,6 +1097,8 @@ var NetworkGraph = React.createClass({
 
   drawGraph: function() {
     if (_.isEmpty(this.state.sqlData) == false) {
+      // Replace all link keys with their respective link names in this json: sqlData
+      // the index to name is available in NetworkGraph.nodeNames
       var streams = NetworkStateService.groupState(this.state.sqlData, "key");
       var labels = _.map(streams, function(stream, key) {
         return key;
