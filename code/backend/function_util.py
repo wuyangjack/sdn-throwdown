@@ -11,9 +11,9 @@ LSP_INCR_UTIL_VAL = 0.1
 BAD_LINK_UTIL_VAL = 0.6
 VM_PINGER_PORT_NUMBER = 12345
 
-
 # TODO:
-# key = "1-8"
+key = "1-8"
+
 
 def getAuthHeader():
     username = 'group5'
@@ -82,10 +82,12 @@ def getAZToLinkDict(nodeDict):
             )
         azToLinkDict[str(ANode["nodeIndex"]) + "-" + str(ZNode["nodeIndex"])] = tmpLink
 
-    # global key
-    # if random.random() < 0.1:
-    #     key = random.choice(azToLinkDict.keys())
-    # azToLinkDict[key].status = "Down"
+    # TODO:
+    global key
+    if random.random() < 0.3:
+        key = random.choice(azToLinkDict.keys())
+    azToLinkDict[key].status = "Down"
+
     return azToLinkDict
 
 
@@ -313,6 +315,7 @@ def updateLSPPingLatency(LSPs):
         lsp.pingLatency = lspToLatenctDict[name]['latency']
         # print lsp.pingLatency
         # print lspToLatenctDict
+
 
 def getUtilityAverage(linkDict, nss):
     utilSum = sum([(link.AZUtility + link.ZAUtility) for link in linkDict.values()])

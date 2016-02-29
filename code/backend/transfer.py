@@ -95,7 +95,7 @@ def exeCmd(cmd, stderr=STDOUT):
 
 
 def transferFiles(fileList, ipAddress, remoteDir):
-    print ipAddress + " FILES: " + " ".join(file for file in fileList)
+    # print ipAddress + " FILES: " + " ".join(file for file in fileList)
     p = Popen(["scp"] + fileList + [ipAddress + ":" + remoteDir])
     p.wait()
 
@@ -134,4 +134,4 @@ for t in threads:
 
 time2 = time.time()
 
-print 'Transfering files took %0.3f s' % ((time2 - time1))
+print 'Transferring files in %s mode took %0.3f s' % (mode, (time2 - time1))
