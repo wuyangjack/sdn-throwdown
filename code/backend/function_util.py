@@ -314,7 +314,8 @@ def updateLSPPingLatency(LSPs):
         # print lsp.pingLatency
         # print lspToLatenctDict
 
-
-def getUtilityAverage(linkDict):
+def getUtilityAverage(linkDict, nss):
     utilSum = sum([(link.AZUtility + link.ZAUtility) for link in linkDict.values()])
-    return utilSum / (len(linkDict) * 2)
+    result = utilSum / (len(linkDict) * 2)
+    nss.save(NetworkStateService.UtilizationSum, "wan", time.time(), result)
+    return result

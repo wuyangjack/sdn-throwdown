@@ -372,7 +372,7 @@ var Query = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    this.props.onQuerySubmit({link: this.props.link, lsp: this.props.lsp, single: this.props.single});
+    this.props.onQuerySubmit({name: this.props.name, link: this.props.link, lsp: this.props.lsp, single: this.props.single});
   },
 
   componentDidMount: function() {
@@ -1099,6 +1099,24 @@ var NetworkGraph = React.createClass({
     if (_.isEmpty(this.state.sqlData) == false) {
       // Replace all link keys with their respective link names in this json: sqlData
       // the index to name is available in NetworkGraph.nodeNames
+      var len = Object.keys(this.state.sqlData).length;
+      for (var i = 0; i < len; i++) {
+        var ln = this.state.sqlData[i].key;
+        if (ln.length == 3) {
+          var from = ln.substring(0, 1);
+          var to = ln.substring(2, 3);
+          var abb_from = ResultTable.nodeNames[from].substring(0, 3);
+          var abb_to = ResultTable.nodeNames[to].substring(0, 3);
+          if (ResultTable.nodeNames[from] == "TAMPA") {
+            abb_from = "TPA";
+          }
+          if (ResultTable.nodeNames[to] == "TAMPA") {
+            abb_to = "TPA";
+          }
+          this.state.sqlData[i].key = abb_from + "-" + abb_to;
+        }
+      }
+
       var streams = NetworkStateService.groupState(this.state.sqlData, "key");
       var labels = _.map(streams, function(stream, key) {
         return key;
@@ -1143,6 +1161,7 @@ var NetworkGraph = React.createClass({
     var query_history = this.state.queries;
     query.id = Date.now();
     var newQueries = query_history.concat([query]);
+    this.state.graph_name = query.name;
     this.state.queries = newQueries;
     this.setState(this.state);
     $.ajax({
@@ -1202,6 +1221,7 @@ var NetworkGraph = React.createClass({
               <div className="panel panel-default">
                 <div className="panel-body">
                   <div id="graph">
+                  <div>{this.state.graph_name}</div>
                 </div>
               </div>
               </div>

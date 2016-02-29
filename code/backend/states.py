@@ -21,6 +21,7 @@ class NetworkStateService(object):
 	InterfaceInBps = "InterfaceInBps"
 	InterfaceOutBps = "InterfaceOutBps"
 	Topology = "Topology"
+	UtilizationSum = "UtilizationSum"
 
 	def snapshot(self, name):
 		return name + "_"
