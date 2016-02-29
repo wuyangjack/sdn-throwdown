@@ -26,7 +26,7 @@ def exeCmd(cmd, stderr=STDOUT):
 def getPingTime(ipAddress, lspName):
     global LSPToLatency
     while True:
-        cmd = "fping {ipAddress} -C 3 -q".format(ipAddress=ipAddress)
+        cmd = "fping {ipAddress} -C 10 -q".format(ipAddress=ipAddress)
         retVal = exeCmd(cmd)
         latency = 99999
         if "error" not in retVal:
