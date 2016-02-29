@@ -24,6 +24,7 @@ def updateTopology():
             updateLinkUtility(linkDict, trafficStatDict)
             LSPs = getLSPs(nodeDict, linkDict)
             updateLSPPingLatency(LSPs)
+            getUtilityAverage(linkDict, nss)
 
             for name in nodeDict:
                 nodeDict[name].log(nss)
