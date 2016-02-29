@@ -519,18 +519,28 @@ var ResultTable = React.createClass({
               }
             }
             tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);            
-          } else if (Object.keys(json)[j] == "Geo Latency (ms)") {
-            if (formatted == "9999") {
-              formatted = "NaN";
+          } else if (Object.keys(json)[j] == "Real Latency") {
+            if (formatted == "99999" || formatted == "9999") {
+              tds.push(<td className="col-md-{{12 / num_col}}">NaN</td>);                        
             } else {
               formatted = Math.round(formatted*100)/100;
+              if (formatted >= 300) {
+                tds.push(<td className="col-md-{{12 / num_col}} danger-value"><strong>{formatted + " ms"}</strong></td>);
+              } else {
+                tds.push(<td className="col-md-{{12 / num_col}}">{formatted + " ms"}</td>);
+              }
             }
-            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                        
-          } else if (Object.keys(json)[j] == "Real Latency (ms)") {
+          } else if (Object.keys(json)[j] == "Free") {
             formatted = Math.round(formatted*100)/100;
-            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                                    
+            if (formatted <= 0.3) {
+              tds.push(<td className="col-md-{{12 / num_col}} danger-value"><strong>{formatted + " Gbps"}</strong></td>);                                    
+            } else {
+              tds.push(<td className="col-md-{{12 / num_col}}">{formatted + " Gbps"}</td>);              
+            }
+          } else if (Object.keys(json)[j] == "Geo Latency") {
+            tds.push(<td className="col-md-{{12 / num_col}}">{formatted + " ms"}</td>);                                                
           } else {
-            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                                                
+            tds.push(<td className="col-md-{{12 / num_col}}">{formatted}</td>);                                                            
           }
         }
         trs.push(<tr>{tds}</tr>);
@@ -677,13 +687,13 @@ var NetworkMap = React.createClass({
     lspStatistics['Status'] = NetworkStateService.filterState(lspStatus, 'value');
 
     var lspLatency = NetworkStateService.cleanState(this.state.lspLatency, 'key', lspFilter); 
-    lspStatistics['Geo Latency (ms)'] = NetworkStateService.filterState(lspLatency, 'value');
+    lspStatistics['Geo Latency'] = NetworkStateService.filterState(lspLatency, 'value');
 
     var lspRealLatency = NetworkStateService.cleanState(this.state.lspRealLatency, 'key', lspFilter); 
-    lspStatistics['Real Latency (ms)'] = NetworkStateService.filterState(lspRealLatency, 'value');
+    lspStatistics['Real Latency'] = NetworkStateService.filterState(lspRealLatency, 'value');
 
     var lspFreeUtilization = NetworkStateService.cleanState(this.state.lspFreeUtilization, 'key', lspFilter); 
-    lspStatistics['Free (Gbps)'] = NetworkStateService.filterState(lspFreeUtilization, 'value');
+    lspStatistics['Free'] = NetworkStateService.filterState(lspFreeUtilization, 'value');
 
     var lspRoute = NetworkStateService.cleanState(this.state.lspRoute, 'key', lspFilter); 
     lspStatistics['Route'] = NetworkStateService.filterState(lspRoute, 'value');
